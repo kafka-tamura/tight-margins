@@ -24,63 +24,233 @@ const C = {
 };
 
 // ═══════════════════════════════════════════════════════
+// FONT LOADING — register FontFace objects for canvas reliability
+// ═══════════════════════════════════════════════════════
+// CSS @font-face from Google Fonts loads lazily and may not be available
+// when canvas draws. We register FontFace objects directly so canvas can
+// always resolve our font families, regardless of CSS load timing.
+
+let fontsLoadedPromise = null;
+function ensureFontsLoaded() {
+  if (!fontsLoadedPromise) {
+    fontsLoadedPromise = (async () => {
+      // Build a single Google Fonts CSS URL for all families we need
+      const cssUrl =
+        "https://fonts.googleapis.com/css2?" +
+        "family=Inter+Tight:wght@400;600;700;800;900" +
+        "&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500" +
+        "&family=JetBrains+Mono:wght@400;500;700" +
+        "&display=swap";
+
+      try {
+        // Fetch the CSS to get the actual @font-face declarations with woff2 URLs
+        const resp = await fetch(cssUrl);
+        const cssText = await resp.text();
+
+        // Parse @font-face blocks and register each as a FontFace
+        const faceRegex = /@font-face\s*\{([^}]+)\}/g;
+        let match;
+        const promises = [];
+
+        while ((match = faceRegex.exec(cssText)) !== null) {
+          const block = match[1];
+          const familyMatch = block.match(/font-family:\s*'([^']+)'/);
+          const styleMatch = block.match(/font-style:\s*(\w+)/);
+          const weightMatch = block.match(/font-weight:\s*(\d+)/);
+          const srcMatch = block.match(/src:\s*url\(([^)]+)\)/);
+
+          if (familyMatch && srcMatch) {
+            const face = new FontFace(familyMatch[1], `url(${srcMatch[1]})`, {
+              style: styleMatch ? styleMatch[1] : "normal",
+              weight: weightMatch ? weightMatch[1] : "400",
+            });
+            promises.push(
+              face
+                .load()
+                .then((loaded) => {
+                  document.fonts.add(loaded);
+                })
+                .catch((e) => {
+                  console.warn("Font face load failed:", familyMatch[1], e);
+                }),
+            );
+          }
+        }
+
+        await Promise.all(promises);
+      } catch (e) {
+        console.warn(
+          "Font CSS fetch failed, falling back to document.fonts.ready:",
+          e,
+        );
+      }
+
+      await document.fonts.ready;
+    })();
+  }
+  return fontsLoadedPromise;
+}
+
+// ═══════════════════════════════════════════════════════
 // TEMPLATE DEFINITIONS
 // ═══════════════════════════════════════════════════════
 const TEMPLATES = {
   cover: {
     name: "Cover (Corridor)",
     fields: [
-      { key: "title", label: "Title", max: 50, placeholder: "Why Most Frameworks Fail" },
-      { key: "subtitle", label: "Subtitle", max: 80, placeholder: "The difference between a model and a framework that sticks." },
+      {
+        key: "title",
+        label: "Title",
+        max: 50,
+        placeholder: "Why Most Frameworks Fail",
+      },
+      {
+        key: "subtitle",
+        label: "Subtitle",
+        max: 80,
+        placeholder:
+          "The difference between a model and a framework that sticks.",
+      },
     ],
   },
   single: {
     name: "Single Concept",
     fields: [
-      { key: "headline", label: "Headline", max: 50, placeholder: "Constraints Are Creative Fuel" },
-      { key: "body", label: "Body", max: 200, placeholder: "When you remove options, you force clarity. The best work happens inside tight margins, not open fields.", multiline: true },
-      { key: "emphasis", label: "Emphasis words (bold+underline)", max: 30, placeholder: "tight margins" },
+      {
+        key: "headline",
+        label: "Headline",
+        max: 50,
+        placeholder: "Constraints Are Creative Fuel",
+      },
+      {
+        key: "body",
+        label: "Body",
+        max: 200,
+        placeholder:
+          "When you remove options, you force clarity. The best work happens inside tight margins, not open fields.",
+        multiline: true,
+      },
+      {
+        key: "emphasis",
+        label: "Emphasis words (bold+underline)",
+        max: 30,
+        placeholder: "tight margins",
+      },
     ],
   },
   comparison: {
     name: "Comparison",
     fields: [
-      { key: "left_header", label: "Left header", max: 25, placeholder: "Storytelling" },
-      { key: "left_body", label: "Left body", max: 150, placeholder: "Linear narrative. One arc. Emotion-driven.", multiline: true },
-      { key: "right_header", label: "Right header", max: 25, placeholder: "Worldbuilding" },
-      { key: "right_body", label: "Right body", max: 150, placeholder: "Systemic context. Many layers. Intuition-driven.", multiline: true },
-      { key: "vs_label", label: "VS label (optional)", max: 10, placeholder: "VS" },
+      {
+        key: "left_header",
+        label: "Left header",
+        max: 25,
+        placeholder: "Storytelling",
+      },
+      {
+        key: "left_body",
+        label: "Left body",
+        max: 150,
+        placeholder: "Linear narrative. One arc. Emotion-driven.",
+        multiline: true,
+      },
+      {
+        key: "right_header",
+        label: "Right header",
+        max: 25,
+        placeholder: "Worldbuilding",
+      },
+      {
+        key: "right_body",
+        label: "Right body",
+        max: 150,
+        placeholder: "Systemic context. Many layers. Intuition-driven.",
+        multiline: true,
+      },
+      {
+        key: "vs_label",
+        label: "VS label (optional)",
+        max: 10,
+        placeholder: "VS",
+      },
     ],
   },
   framework: {
     name: "Framework / Diagram",
     fields: [
-      { key: "title", label: "Title", max: 40, placeholder: "4 Communication Styles" },
-      { key: "labels", label: "Labels (comma-separated, max 8)", max: 200, placeholder: "Messenger, Filter, Diffuser, Prism" },
-      { key: "caption", label: "Caption (optional)", max: 100, placeholder: "Be a Prism when engaging with different teams" },
+      {
+        key: "title",
+        label: "Title",
+        max: 40,
+        placeholder: "4 Communication Styles",
+      },
+      {
+        key: "labels",
+        label: "Labels (comma-separated, max 8)",
+        max: 200,
+        placeholder: "Messenger, Filter, Diffuser, Prism",
+      },
+      {
+        key: "caption",
+        label: "Caption (optional)",
+        max: 100,
+        placeholder: "Be a Prism when engaging with different teams",
+      },
     ],
   },
   punchline: {
     name: "Punchline",
     fields: [
-      { key: "text", label: "Punchline text", max: 80, placeholder: "The emptiness IS the emphasis." },
-      { key: "emphasis", label: "Emphasis word (in red)", max: 15, placeholder: "emphasis" },
+      {
+        key: "text",
+        label: "Punchline text",
+        max: 80,
+        placeholder: "The emptiness IS the emphasis.",
+      },
+      {
+        key: "emphasis",
+        label: "Emphasis word (in red)",
+        max: 15,
+        placeholder: "emphasis",
+      },
     ],
   },
   data: {
     name: "Data / Evidence",
     fields: [
       { key: "data_point", label: "Data point", max: 20, placeholder: "73%" },
-      { key: "context", label: "Context", max: 120, placeholder: "of enterprise decisions are made with incomplete data, despite having more tools than ever.", multiline: true },
-      { key: "source", label: "Source", max: 60, placeholder: "Gartner Research, 2024" },
+      {
+        key: "context",
+        label: "Context",
+        max: 120,
+        placeholder:
+          "of enterprise decisions are made with incomplete data, despite having more tools than ever.",
+        multiline: true,
+      },
+      {
+        key: "source",
+        label: "Source",
+        max: 60,
+        placeholder: "Gartner Research, 2024",
+      },
     ],
   },
   cta: {
     name: "Closing CTA",
     fields: [
-      { key: "cta_text", label: "CTA text", max: 40, placeholder: "Subscribe for more." },
+      {
+        key: "cta_text",
+        label: "CTA text",
+        max: 40,
+        placeholder: "Subscribe for more.",
+      },
       { key: "url", label: "URL", max: 60, placeholder: "tightmargins.com" },
-      { key: "handle", label: "Handle (optional)", max: 30, placeholder: "@tightmargins" },
+      {
+        key: "handle",
+        label: "Handle (optional)",
+        max: 30,
+        placeholder: "@tightmargins",
+      },
     ],
   },
 };
@@ -184,9 +354,21 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
   return lines.length;
 }
 
-function drawTextWithEmphasis(ctx, text, emphasisWord, x, y, maxWidth, lineHeight, emphColor = C.red) {
+function drawTextWithEmphasis(
+  ctx,
+  text,
+  emphasisWord,
+  x,
+  y,
+  maxWidth,
+  lineHeight,
+  emphColor = C.red,
+) {
   if (!text) return 0;
-  if (!emphasisWord || !text.toLowerCase().includes(emphasisWord.toLowerCase())) {
+  if (
+    !emphasisWord ||
+    !text.toLowerCase().includes(emphasisWord.toLowerCase())
+  ) {
     return wrapText(ctx, text, x, y, maxWidth, lineHeight);
   }
   const words = text.split(" ");
@@ -210,16 +392,16 @@ function drawTextWithEmphasis(ctx, text, emphasisWord, x, y, maxWidth, lineHeigh
   lines.forEach((l, i) => {
     const ly = y + i * lineHeight;
     const lineWords = l.split(" ");
+    const spW = ctx.measureText(" ").width;
     let cx = x;
     lineWords.forEach((w, wi) => {
-      const sp = wi < lineWords.length - 1 ? " " : "";
       const clean = w.toLowerCase().replace(/[.,!?;:'"]/g, "");
       const isEmph = emphWords.includes(clean);
       if (isEmph) {
         const boldFont = origFont.replace(/\d00/, "700");
         ctx.font = boldFont.includes("700") ? boldFont : "bold " + origFont;
         ctx.fillStyle = C.ink;
-        ctx.fillText(w + sp, cx, ly);
+        ctx.fillText(w, cx, ly);
         const ww = ctx.measureText(w).width;
         ctx.save();
         ctx.strokeStyle = emphColor;
@@ -229,13 +411,14 @@ function drawTextWithEmphasis(ctx, text, emphasisWord, x, y, maxWidth, lineHeigh
         ctx.lineTo(cx + ww, ly + 4);
         ctx.stroke();
         ctx.restore();
-        cx += ctx.measureText(w + sp).width;
+        cx += ww;
         ctx.font = origFont;
         ctx.fillStyle = origFill;
       } else {
-        ctx.fillText(w + sp, cx, ly);
-        cx += ctx.measureText(w + sp).width;
+        ctx.fillText(w, cx, ly);
+        cx += ctx.measureText(w).width;
       }
+      if (wi < lineWords.length - 1) cx += spW;
     });
   });
   return lines.length;
@@ -257,19 +440,26 @@ const renderers = {
     const tx = C.coverBandL + 24;
     const maxW = C.coverChannelW - 48;
     ctx.fillStyle = C.ink;
-    ctx.font = "700 52px 'Inter Tight', sans-serif";
-    const titleLines = wrapText(ctx, data.title || "Your Title Here", tx, 460, maxW, 58);
+    ctx.font = "700 72px 'Inter Tight', sans-serif";
+    const titleLines = wrapText(
+      ctx,
+      data.title || "Your Title Here",
+      tx,
+      420,
+      maxW,
+      80,
+    );
 
-    const ruleY = 460 + titleLines * 58 + 12;
+    const ruleY = 420 + titleLines * 80 + 16;
     ctx.fillStyle = C.red;
-    ctx.fillRect(tx, ruleY, 80, 3);
+    ctx.fillRect(tx, ruleY, 80, 4);
 
     ctx.fillStyle = C.red;
-    ctx.font = "400 24px 'Newsreader', Georgia, serif";
-    wrapText(ctx, data.subtitle || "", tx, ruleY + 36, maxW, 34);
+    ctx.font = "500 32px 'Newsreader', Georgia, serif";
+    wrapText(ctx, data.subtitle || "", tx, ruleY + 44, maxW, 42);
 
     ctx.fillStyle = C.grey;
-    ctx.font = "400 14px 'JetBrains Mono', monospace";
+    ctx.font = "400 18px 'JetBrains Mono', monospace";
     ctx.fillText("TIGHT MARGINS", tx, C.slide - 48);
   },
 
@@ -280,17 +470,32 @@ const renderers = {
     drawMarginLine(ctx);
     if (slideNum) {
       ctx.fillStyle = C.grey;
-      ctx.font = "400 16px 'JetBrains Mono', monospace";
+      ctx.font = "400 20px 'JetBrains Mono', monospace";
       ctx.fillText(String(slideNum).padStart(2, "0"), 64, 80);
     }
     ctx.fillStyle = C.ink;
-    ctx.font = "700 48px 'Inter Tight', sans-serif";
-    const hLines = wrapText(ctx, data.headline || "Headline", C.contentStart, 172, C.contentEnd - C.contentStart, 54);
+    ctx.font = "700 68px 'Inter Tight', sans-serif";
+    const hLines = wrapText(
+      ctx,
+      data.headline || "Headline",
+      C.contentStart,
+      180,
+      C.contentEnd - C.contentStart,
+      76,
+    );
 
-    const bodyY = 172 + hLines * 54 + 48;
+    const bodyY = 180 + hLines * 76 + 48;
     ctx.fillStyle = C.ink;
-    ctx.font = "400 26px 'Newsreader', Georgia, serif";
-    drawTextWithEmphasis(ctx, data.body || "", data.emphasis || "", C.contentStart, bodyY, C.contentEnd - C.contentStart, 37);
+    ctx.font = "500 34px 'Newsreader', Georgia, serif";
+    drawTextWithEmphasis(
+      ctx,
+      data.body || "",
+      data.emphasis || "",
+      C.contentStart,
+      bodyY,
+      C.contentEnd - C.contentStart,
+      46,
+    );
   },
 
   comparison: (ctx, data, slideNum) => {
@@ -300,7 +505,7 @@ const renderers = {
     drawMarginLine(ctx);
     if (slideNum) {
       ctx.fillStyle = C.grey;
-      ctx.font = "400 16px 'JetBrains Mono', monospace";
+      ctx.font = "400 20px 'JetBrains Mono', monospace";
       ctx.fillText(String(slideNum).padStart(2, "0"), 64, 80);
     }
     const colL = C.contentStart;
@@ -319,23 +524,23 @@ const renderers = {
 
     if (data.vs_label) {
       ctx.fillStyle = C.grey;
-      ctx.font = "700 18px 'JetBrains Mono', monospace";
+      ctx.font = "700 22px 'JetBrains Mono', monospace";
       ctx.textAlign = "center";
       ctx.fillText(data.vs_label, colMid, 310);
       ctx.textAlign = "start";
     }
 
     ctx.fillStyle = C.ink;
-    ctx.font = "600 32px 'Inter Tight', sans-serif";
-    ctx.fillText(data.left_header || "Left", colL, 172);
-    ctx.font = "400 22px 'Newsreader', Georgia, serif";
-    wrapText(ctx, data.left_body || "", colL, 220, colW, 32);
+    ctx.font = "600 44px 'Inter Tight', sans-serif";
+    ctx.fillText(data.left_header || "Left", colL, 180);
+    ctx.font = "500 30px 'Newsreader', Georgia, serif";
+    wrapText(ctx, data.left_body || "", colL, 236, colW, 42);
 
     ctx.fillStyle = C.ink;
-    ctx.font = "600 32px 'Inter Tight', sans-serif";
-    ctx.fillText(data.right_header || "Right", colMid + 12, 172);
-    ctx.font = "400 22px 'Newsreader', Georgia, serif";
-    wrapText(ctx, data.right_body || "", colMid + 12, 220, colW, 32);
+    ctx.font = "600 44px 'Inter Tight', sans-serif";
+    ctx.fillText(data.right_header || "Right", colMid + 12, 180);
+    ctx.font = "500 30px 'Newsreader', Georgia, serif";
+    wrapText(ctx, data.right_body || "", colMid + 12, 236, colW, 42);
   },
 
   framework: (ctx, data, slideNum) => {
@@ -345,20 +550,24 @@ const renderers = {
     drawMarginLine(ctx);
     if (slideNum) {
       ctx.fillStyle = C.grey;
-      ctx.font = "400 16px 'JetBrains Mono', monospace";
+      ctx.font = "400 20px 'JetBrains Mono', monospace";
       ctx.fillText(String(slideNum).padStart(2, "0"), 64, 80);
     }
     ctx.fillStyle = C.ink;
-    ctx.font = "700 36px 'Inter Tight', sans-serif";
-    ctx.fillText(data.title || "Framework", C.contentStart, 160);
+    ctx.font = "700 52px 'Inter Tight', sans-serif";
+    ctx.fillText(data.title || "Framework", C.contentStart, 172);
 
-    const labels = (data.labels || "").split(",").map((s) => s.trim()).filter(Boolean).slice(0, 8);
+    const labels = (data.labels || "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .slice(0, 8);
     if (labels.length > 0) {
-      const area = { x: C.contentStart + 40, y: 220, w: 700, h: 520 };
+      const area = { x: C.contentStart + 20, y: 240, w: 720, h: 540 };
       const cols = Math.min(labels.length, 4);
       const rows = Math.ceil(labels.length / cols);
       const boxW = (area.w - (cols - 1) * 24) / cols;
-      const boxH = Math.min((area.h - (rows - 1) * 24) / rows, 140);
+      const boxH = Math.min((area.h - (rows - 1) * 24) / rows, 160);
       labels.forEach((label, i) => {
         const col = i % cols;
         const row = Math.floor(i / cols);
@@ -369,16 +578,16 @@ const renderers = {
         ctx.lineWidth = 2;
         ctx.strokeRect(bx, by, boxW, boxH);
         ctx.fillStyle = i === 0 ? C.red : C.callout;
-        ctx.font = "400 20px 'JetBrains Mono', monospace";
+        ctx.font = "400 26px 'JetBrains Mono', monospace";
         ctx.textAlign = "center";
-        ctx.fillText(label, bx + boxW / 2, by + boxH / 2 + 7);
+        ctx.fillText(label, bx + boxW / 2, by + boxH / 2 + 9);
         ctx.textAlign = "start";
         ctx.restore();
       });
     }
     if (data.caption) {
       ctx.fillStyle = C.callout;
-      ctx.font = "400 18px 'Newsreader', Georgia, serif";
+      ctx.font = "500 24px 'Newsreader', Georgia, serif";
       ctx.fillText(data.caption, C.contentStart, C.slide - 80);
     }
   },
@@ -392,7 +601,7 @@ const renderers = {
     const text = data.text || "Your punchline here.";
     const emphasis = data.emphasis || "";
     ctx.fillStyle = C.ink;
-    ctx.font = "700 56px 'Inter Tight', sans-serif";
+    ctx.font = "700 76px 'Inter Tight', sans-serif";
     const fullW = C.contentEnd - C.contentStart;
 
     // Measure lines for vertical centering
@@ -409,21 +618,23 @@ const renderers = {
       }
     }
     testLines.push(testLine.trim());
-    const totalH = testLines.length * 62;
-    const startY = (C.slide - totalH) / 2 + 56;
+    const totalH = testLines.length * 84;
+    const startY = (C.slide - totalH) / 2 + 76;
     const emphWords = emphasis ? emphasis.toLowerCase().split(" ") : [];
 
+    const spaceW = ctx.measureText(" ").width;
     testLines.forEach((line, i) => {
-      const ly = startY + i * 62;
+      const ly = startY + i * 84;
       if (emphWords.length > 0) {
         const lineWords = line.split(" ");
         let cx = C.contentStart;
-        lineWords.forEach((w) => {
+        lineWords.forEach((w, wi) => {
           const clean = w.toLowerCase().replace(/[.,!?;:'"]/g, "");
           const isEmph = emphWords.includes(clean);
           ctx.fillStyle = isEmph ? C.red : C.ink;
-          ctx.fillText(w + " ", cx, ly);
-          cx += ctx.measureText(w + " ").width;
+          ctx.fillText(w, cx, ly);
+          cx += ctx.measureText(w).width;
+          if (wi < lineWords.length - 1) cx += spaceW;
         });
       } else {
         ctx.fillText(line, C.contentStart, ly);
@@ -438,18 +649,25 @@ const renderers = {
     drawMarginLine(ctx);
     if (slideNum) {
       ctx.fillStyle = C.grey;
-      ctx.font = "400 16px 'JetBrains Mono', monospace";
+      ctx.font = "400 20px 'JetBrains Mono', monospace";
       ctx.fillText(String(slideNum).padStart(2, "0"), 64, 80);
     }
     ctx.fillStyle = C.red;
-    ctx.font = "700 80px 'JetBrains Mono', monospace";
-    ctx.fillText(data.data_point || "0%", C.contentStart, 460);
+    ctx.font = "700 108px 'JetBrains Mono', monospace";
+    ctx.fillText(data.data_point || "0%", C.contentStart, 480);
     ctx.fillStyle = C.ink;
-    ctx.font = "400 24px 'Newsreader', Georgia, serif";
-    wrapText(ctx, data.context || "", C.contentStart, 520, C.contentEnd - C.contentStart, 34);
+    ctx.font = "500 32px 'Newsreader', Georgia, serif";
+    wrapText(
+      ctx,
+      data.context || "",
+      C.contentStart,
+      548,
+      C.contentEnd - C.contentStart,
+      44,
+    );
     if (data.source) {
       ctx.fillStyle = C.grey;
-      ctx.font = "italic 400 16px 'Newsreader', Georgia, serif";
+      ctx.font = "italic 500 20px 'Newsreader', Georgia, serif";
       ctx.fillText(data.source, C.contentStart, C.slide - 80);
     }
   },
@@ -460,24 +678,24 @@ const renderers = {
     drawMarginLine(ctx, C.marginLine, 0.6);
 
     ctx.fillStyle = C.paper;
-    ctx.font = "900 56px 'Inter Tight', sans-serif";
+    ctx.font = "900 72px 'Inter Tight', sans-serif";
     ctx.fillText("TIGHT MARGINS", C.contentStart, 440);
 
     ctx.fillStyle = C.red;
-    ctx.fillRect(C.contentStart, 464, 80, 3);
+    ctx.fillRect(C.contentStart, 468, 80, 4);
 
     ctx.fillStyle = C.paper;
-    ctx.font = "600 30px 'Inter Tight', sans-serif";
-    ctx.fillText(data.cta_text || "Subscribe for more.", C.contentStart, 524);
+    ctx.font = "600 40px 'Inter Tight', sans-serif";
+    ctx.fillText(data.cta_text || "Subscribe for more.", C.contentStart, 540);
 
     ctx.fillStyle = C.red;
-    ctx.font = "400 20px 'JetBrains Mono', monospace";
-    ctx.fillText(data.url || "tightmargins.com", C.contentStart, 568);
+    ctx.font = "400 26px 'JetBrains Mono', monospace";
+    ctx.fillText(data.url || "tightmargins.com", C.contentStart, 592);
 
     if (data.handle) {
       ctx.fillStyle = C.grey;
-      ctx.font = "400 18px 'JetBrains Mono', monospace";
-      ctx.fillText(data.handle, C.contentStart, 600);
+      ctx.font = "400 22px 'JetBrains Mono', monospace";
+      ctx.fillText(data.handle, C.contentStart, 628);
     }
   },
 };
@@ -489,15 +707,22 @@ function SlideCanvas({ template, data, slideNum, size = 540 }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    canvas.width = C.slide;
-    canvas.height = C.slide;
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, C.slide, C.slide);
-    if (renderers[template]) {
-      renderers[template](ctx, data || {}, slideNum);
-    }
+    let cancelled = false;
+    ensureFontsLoaded().then(() => {
+      if (cancelled) return;
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      canvas.width = C.slide;
+      canvas.height = C.slide;
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, C.slide, C.slide);
+      if (renderers[template]) {
+        renderers[template](ctx, data || {}, slideNum);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [template, data, slideNum]);
 
   return (
@@ -522,11 +747,31 @@ function FieldEditor({ field, value, onChange }) {
 
   return (
     <div style={{ marginBottom: 12 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
-        <label style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 600, fontSize: 12, color: C.ink }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "baseline",
+          marginBottom: 4,
+        }}
+      >
+        <label
+          style={{
+            fontFamily: "'Inter Tight', sans-serif",
+            fontWeight: 600,
+            fontSize: 12,
+            color: C.ink,
+          }}
+        >
           {field.label}
         </label>
-        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: over ? C.red : C.grey }}>
+        <span
+          style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 10,
+            color: over ? C.red : C.grey,
+          }}
+        >
           {len}/{field.max}
         </span>
       </div>
@@ -538,9 +783,17 @@ function FieldEditor({ field, value, onChange }) {
           rows={3}
           maxLength={field.max}
           style={{
-            width: "100%", padding: "8px 10px", fontFamily: "'Newsreader', Georgia, serif",
-            fontSize: 14, color: C.ink, background: "#fff", border: `1px solid ${over ? C.red : C.grey}`,
-            borderRadius: 3, resize: "vertical", outline: "none", lineHeight: 1.5,
+            width: "100%",
+            padding: "8px 10px",
+            fontFamily: "'Newsreader', Georgia, serif",
+            fontSize: 14,
+            color: C.ink,
+            background: "#fff",
+            border: `1px solid ${over ? C.red : C.grey}`,
+            borderRadius: 3,
+            resize: "vertical",
+            outline: "none",
+            lineHeight: 1.5,
           }}
         />
       ) : (
@@ -551,9 +804,15 @@ function FieldEditor({ field, value, onChange }) {
           placeholder={field.placeholder}
           maxLength={field.max}
           style={{
-            width: "100%", padding: "8px 10px", fontFamily: "'Newsreader', Georgia, serif",
-            fontSize: 14, color: C.ink, background: "#fff", border: `1px solid ${over ? C.red : C.grey}`,
-            borderRadius: 3, outline: "none",
+            width: "100%",
+            padding: "8px 10px",
+            fontFamily: "'Newsreader', Georgia, serif",
+            fontSize: 14,
+            color: C.ink,
+            background: "#fff",
+            border: `1px solid ${over ? C.red : C.grey}`,
+            borderRadius: 3,
+            outline: "none",
           }}
         />
       )}
@@ -564,29 +823,37 @@ function FieldEditor({ field, value, onChange }) {
 // ═══════════════════════════════════════════════════════
 // PDF EXPORT (using jsPDF from npm)
 // ═══════════════════════════════════════════════════════
-function exportPDF(slides) {
+async function exportPDF(slides) {
+  await ensureFontsLoaded();
+
+  const scale = 2;
+  const canvasSize = C.slide * scale;
   const canvas = document.createElement("canvas");
-  canvas.width = C.slide;
-  canvas.height = C.slide;
+  canvas.width = canvasSize;
+  canvas.height = canvasSize;
   const ctx = canvas.getContext("2d");
 
+  // PDF page in pt: use half the pixel size so effective DPI = 2160/7.5in ≈ 288
+  const pageSize = C.slide / 2;
   const pdf = new jsPDF({
     orientation: "landscape",
-    unit: "px",
-    format: [C.slide, C.slide],
-    hotfixes: ["px_scaling"],
+    unit: "pt",
+    format: [pageSize, pageSize],
   });
 
   for (let i = 0; i < slides.length; i++) {
-    if (i > 0) pdf.addPage([C.slide, C.slide], "landscape");
-    ctx.clearRect(0, 0, C.slide, C.slide);
+    if (i > 0) pdf.addPage([pageSize, pageSize], "landscape");
+    ctx.clearRect(0, 0, canvasSize, canvasSize);
+    ctx.save();
+    ctx.scale(scale, scale);
     const s = slides[i];
     const showNum = !["cover", "cta", "punchline"].includes(s.template);
     if (renderers[s.template]) {
       renderers[s.template](ctx, s.data || {}, showNum ? i + 1 : null);
     }
+    ctx.restore();
     const imgData = canvas.toDataURL("image/png", 1.0);
-    pdf.addImage(imgData, "PNG", 0, 0, C.slide, C.slide);
+    pdf.addImage(imgData, "PNG", 0, 0, pageSize, pageSize);
   }
 
   pdf.save("tight-margins-carousel.pdf");
@@ -617,16 +884,26 @@ export default function App() {
 
   function initFromSequence(seqKey) {
     const seq = SEQUENCES[seqKey];
-    setSlides(seq.slides.map((s) => ({
-      template: s.template, locked: s.locked || false, note: s.note, data: {},
-    })));
+    setSlides(
+      seq.slides.map((s) => ({
+        template: s.template,
+        locked: s.locked || false,
+        note: s.note,
+        data: {},
+      })),
+    );
     setSelectedIdx(0);
     setPreviewMode(false);
   }
 
   function initCustom() {
     setSlides([
-      { template: "cover", locked: true, note: "Cover (always first)", data: {} },
+      {
+        template: "cover",
+        locked: true,
+        note: "Cover (always first)",
+        data: {},
+      },
       { template: "single", note: "Your content", data: {} },
       { template: "cta", locked: true, note: "CTA (always last)", data: {} },
     ]);
@@ -719,13 +996,49 @@ export default function App() {
   // ─── SEQUENCE PICKER ───
   if (!slides) {
     return (
-      <div style={{ minHeight: "100vh", background: C.paper, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Inter Tight', sans-serif" }}>
+      <div
+        style={{
+          minHeight: "100vh",
+          background: C.paper,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontFamily: "'Inter Tight', sans-serif",
+        }}
+      >
         <div style={{ maxWidth: 640, padding: "48px 24px" }}>
           <div style={{ marginBottom: 32 }}>
-            <h1 style={{ fontSize: 36, fontWeight: 900, color: C.ink, letterSpacing: "-0.04em", margin: 0 }}>TIGHT MARGINS</h1>
-            <div style={{ width: 64, height: 3, background: C.red, marginTop: 8, marginBottom: 12 }} />
-            <p style={{ fontFamily: "'Newsreader', Georgia, serif", fontSize: 16, color: C.callout, lineHeight: 1.5, margin: 0 }}>
-              LinkedIn carousel builder. Choose a sequence pattern to get started, or build a custom carousel.
+            <h1
+              style={{
+                fontSize: 36,
+                fontWeight: 900,
+                color: C.ink,
+                letterSpacing: "-0.04em",
+                margin: 0,
+              }}
+            >
+              TIGHT MARGINS
+            </h1>
+            <div
+              style={{
+                width: 64,
+                height: 3,
+                background: C.red,
+                marginTop: 8,
+                marginBottom: 12,
+              }}
+            />
+            <p
+              style={{
+                fontFamily: "'Newsreader', Georgia, serif",
+                fontSize: 16,
+                color: C.callout,
+                lineHeight: 1.5,
+                margin: 0,
+              }}
+            >
+              LinkedIn carousel builder. Choose a sequence pattern to get
+              started, or build a custom carousel.
             </p>
           </div>
 
@@ -735,38 +1048,116 @@ export default function App() {
                 key={key}
                 onClick={() => initFromSequence(key)}
                 style={{
-                  display: "flex", flexDirection: "column", padding: "16px 20px",
-                  background: "#fff", border: `1px solid ${C.grey}`, borderRadius: 4,
-                  cursor: "pointer", textAlign: "left", transition: "all 0.15s",
+                  display: "flex",
+                  flexDirection: "column",
+                  padding: "16px 20px",
+                  background: "#fff",
+                  border: `1px solid ${C.grey}`,
+                  borderRadius: 4,
+                  cursor: "pointer",
+                  textAlign: "left",
+                  transition: "all 0.15s",
                   borderLeft: `3px solid ${C.red}`,
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.red; e.currentTarget.style.boxShadow = "0 2px 8px rgba(200,50,50,0.1)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.grey; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderLeftColor = C.red; }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = C.red;
+                  e.currentTarget.style.boxShadow =
+                    "0 2px 8px rgba(200,50,50,0.1)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = C.grey;
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.borderLeftColor = C.red;
+                }}
               >
-                <span style={{ fontWeight: 700, fontSize: 16, color: C.ink, letterSpacing: "-0.02em" }}>{seq.name}</span>
-                <span style={{ fontFamily: "'Newsreader', serif", fontSize: 13, color: C.callout, marginTop: 4 }}>{seq.desc}</span>
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: C.grey, marginTop: 6 }}>
-                  {seq.slides.length} slides: {seq.slides.map((s) => s.template === "cover" ? "C" : s.template === "cta" ? "CTA" : s.template[0].toUpperCase()).join(" → ")}
+                <span
+                  style={{
+                    fontWeight: 700,
+                    fontSize: 16,
+                    color: C.ink,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {seq.name}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "'Newsreader', serif",
+                    fontSize: 13,
+                    color: C.callout,
+                    marginTop: 4,
+                  }}
+                >
+                  {seq.desc}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 11,
+                    color: C.grey,
+                    marginTop: 6,
+                  }}
+                >
+                  {seq.slides.length} slides:{" "}
+                  {seq.slides
+                    .map((s) =>
+                      s.template === "cover"
+                        ? "C"
+                        : s.template === "cta"
+                          ? "CTA"
+                          : s.template[0].toUpperCase(),
+                    )
+                    .join(" → ")}
                 </span>
               </button>
             ))}
             <button
               onClick={initCustom}
               style={{
-                padding: "16px 20px", background: "transparent", border: `1px dashed ${C.grey}`,
-                borderRadius: 4, cursor: "pointer", textAlign: "left", fontFamily: "'Inter Tight', sans-serif",
-                fontWeight: 600, fontSize: 14, color: C.callout,
+                padding: "16px 20px",
+                background: "transparent",
+                border: `1px dashed ${C.grey}`,
+                borderRadius: 4,
+                cursor: "pointer",
+                textAlign: "left",
+                fontFamily: "'Inter Tight', sans-serif",
+                fontWeight: 600,
+                fontSize: 14,
+                color: C.callout,
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.red; e.currentTarget.style.color = C.red; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.grey; e.currentTarget.style.color = C.callout; }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = C.red;
+                e.currentTarget.style.color = C.red;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = C.grey;
+                e.currentTarget.style.color = C.callout;
+              }}
             >
               Custom — start from scratch (Cover + CTA, add slides manually)
             </button>
           </div>
 
-          <div style={{ marginTop: 32, padding: "12px 16px", background: "rgba(200,50,50,0.04)", border: "1px solid rgba(200,50,50,0.15)", borderRadius: 3 }}>
-            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: C.red, margin: 0, lineHeight: 1.6 }}>
-              RULES: 6–12 slides · Cover always first · CTA always last · No images · No custom colors · 7 templates only
+          <div
+            style={{
+              marginTop: 32,
+              padding: "12px 16px",
+              background: "rgba(200,50,50,0.04)",
+              border: "1px solid rgba(200,50,50,0.15)",
+              borderRadius: 3,
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 11,
+                color: C.red,
+                margin: 0,
+                lineHeight: 1.6,
+              }}
+            >
+              RULES: 6–12 slides · Cover always first · CTA always last · No
+              images · No custom colors · 7 templates only
             </p>
           </div>
         </div>
@@ -776,16 +1167,47 @@ export default function App() {
 
   const currentSlide = slides[selectedIdx];
   const templateDef = TEMPLATES[currentSlide.template];
-  const showSlideNum = !["cover", "cta", "punchline"].includes(currentSlide.template);
+  const showSlideNum = !["cover", "cta", "punchline"].includes(
+    currentSlide.template,
+  );
 
   // ─── PREVIEW MODE ───
   if (previewMode) {
     return (
-      <div style={{ minHeight: "100vh", background: C.dark, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", position: "relative", padding: 24 }}>
-        <div style={{ position: "absolute", top: 16, right: 24, display: "flex", gap: 8 }}>
+      <div
+        style={{
+          minHeight: "100vh",
+          background: C.dark,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "relative",
+          padding: 24,
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 16,
+            right: 24,
+            display: "flex",
+            gap: 8,
+          }}
+        >
           <button
             onClick={() => setPreviewMode(false)}
-            style={{ padding: "8px 16px", background: "transparent", border: `1px solid ${C.grey}`, borderRadius: 3, color: C.paper, fontFamily: "'Inter Tight', sans-serif", fontWeight: 600, fontSize: 12, cursor: "pointer" }}
+            style={{
+              padding: "8px 16px",
+              background: "transparent",
+              border: `1px solid ${C.grey}`,
+              borderRadius: 3,
+              color: C.paper,
+              fontFamily: "'Inter Tight', sans-serif",
+              fontWeight: 600,
+              fontSize: 12,
+              cursor: "pointer",
+            }}
           >
             ← Back to Editor
           </button>
@@ -793,42 +1215,106 @@ export default function App() {
         <SlideCanvas
           template={slides[selectedIdx].template}
           data={slides[selectedIdx].data}
-          slideNum={!["cover", "cta", "punchline"].includes(slides[selectedIdx].template) ? selectedIdx + 1 : null}
+          slideNum={
+            !["cover", "cta", "punchline"].includes(
+              slides[selectedIdx].template,
+            )
+              ? selectedIdx + 1
+              : null
+          }
           size={Math.min(640, window.innerWidth - 48)}
         />
-        <div style={{ display: "flex", gap: 8, marginTop: 24, alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 8,
+            marginTop: 24,
+            alignItems: "center",
+          }}
+        >
           <button
             disabled={selectedIdx === 0}
             onClick={() => setSelectedIdx(selectedIdx - 1)}
-            style={{ padding: "8px 20px", background: selectedIdx === 0 ? "transparent" : C.paper, border: "none", borderRadius: 3, cursor: selectedIdx === 0 ? "default" : "pointer", fontFamily: "'Inter Tight', sans-serif", fontWeight: 600, fontSize: 14, color: selectedIdx === 0 ? C.grey : C.ink, opacity: selectedIdx === 0 ? 0.4 : 1 }}
+            style={{
+              padding: "8px 20px",
+              background: selectedIdx === 0 ? "transparent" : C.paper,
+              border: "none",
+              borderRadius: 3,
+              cursor: selectedIdx === 0 ? "default" : "pointer",
+              fontFamily: "'Inter Tight', sans-serif",
+              fontWeight: 600,
+              fontSize: 14,
+              color: selectedIdx === 0 ? C.grey : C.ink,
+              opacity: selectedIdx === 0 ? 0.4 : 1,
+            }}
           >
             ← Prev
           </button>
-          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 14, color: C.grey, padding: "8px 12px" }}>
+          <span
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 14,
+              color: C.grey,
+              padding: "8px 12px",
+            }}
+          >
             {selectedIdx + 1} / {slides.length}
           </span>
           <button
             disabled={selectedIdx === slides.length - 1}
             onClick={() => setSelectedIdx(selectedIdx + 1)}
-            style={{ padding: "8px 20px", background: selectedIdx === slides.length - 1 ? "transparent" : C.paper, border: "none", borderRadius: 3, cursor: selectedIdx === slides.length - 1 ? "default" : "pointer", fontFamily: "'Inter Tight', sans-serif", fontWeight: 600, fontSize: 14, color: selectedIdx === slides.length - 1 ? C.grey : C.ink, opacity: selectedIdx === slides.length - 1 ? 0.4 : 1 }}
+            style={{
+              padding: "8px 20px",
+              background:
+                selectedIdx === slides.length - 1 ? "transparent" : C.paper,
+              border: "none",
+              borderRadius: 3,
+              cursor: selectedIdx === slides.length - 1 ? "default" : "pointer",
+              fontFamily: "'Inter Tight', sans-serif",
+              fontWeight: 600,
+              fontSize: 14,
+              color: selectedIdx === slides.length - 1 ? C.grey : C.ink,
+              opacity: selectedIdx === slides.length - 1 ? 0.4 : 1,
+            }}
           >
             Next →
           </button>
         </div>
         {/* Thumbnail strip */}
-        <div style={{ display: "flex", gap: 8, marginTop: 16, overflowX: "auto", maxWidth: "100%", padding: "4px 0" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 8,
+            marginTop: 16,
+            overflowX: "auto",
+            maxWidth: "100%",
+            padding: "4px 0",
+          }}
+        >
           {slides.map((s, i) => (
             <div
               key={i}
               onClick={() => setSelectedIdx(i)}
               style={{
-                width: 48, height: 48, borderRadius: 2, cursor: "pointer",
-                border: i === selectedIdx ? `2px solid ${C.red}` : `1px solid ${C.callout}`,
+                width: 48,
+                height: 48,
+                borderRadius: 2,
+                cursor: "pointer",
+                border:
+                  i === selectedIdx
+                    ? `2px solid ${C.red}`
+                    : `1px solid ${C.callout}`,
                 opacity: i === selectedIdx ? 1 : 0.5,
-                overflow: "hidden", flexShrink: 0,
+                overflow: "hidden",
+                flexShrink: 0,
               }}
             >
-              <SlideCanvas template={s.template} data={s.data} slideNum={null} size={48} />
+              <SlideCanvas
+                template={s.template}
+                data={s.data}
+                slideNum={null}
+                size={48}
+              />
             </div>
           ))}
         </div>
@@ -838,35 +1324,212 @@ export default function App() {
 
   // ─── EDITOR MODE ───
   return (
-    <div style={{ minHeight: "100vh", background: C.paper, display: "flex", flexDirection: "column" }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: C.paper,
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      {/* Hidden font primers — force browser to download all font faces */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: -9999,
+          top: -9999,
+          visibility: "hidden",
+          pointerEvents: "none",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "'Newsreader', serif",
+            fontWeight: 400,
+            fontStyle: "normal",
+          }}
+        >
+          x
+        </span>
+        <span
+          style={{
+            fontFamily: "'Newsreader', serif",
+            fontWeight: 500,
+            fontStyle: "normal",
+          }}
+        >
+          x
+        </span>
+        <span
+          style={{
+            fontFamily: "'Newsreader', serif",
+            fontWeight: 600,
+            fontStyle: "normal",
+          }}
+        >
+          x
+        </span>
+        <span
+          style={{
+            fontFamily: "'Newsreader', serif",
+            fontWeight: 400,
+            fontStyle: "italic",
+          }}
+        >
+          x
+        </span>
+        <span
+          style={{
+            fontFamily: "'Newsreader', serif",
+            fontWeight: 500,
+            fontStyle: "italic",
+          }}
+        >
+          x
+        </span>
+        <span
+          style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 400 }}
+        >
+          x
+        </span>
+        <span
+          style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 700 }}
+        >
+          x
+        </span>
+        <span
+          style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 800 }}
+        >
+          x
+        </span>
+        <span
+          style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 900 }}
+        >
+          x
+        </span>
+        <span
+          style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 400 }}
+        >
+          x
+        </span>
+        <span
+          style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}
+        >
+          x
+        </span>
+      </div>
       {/* Top bar */}
-      <div style={{ background: C.ink, padding: "10px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 100, flexWrap: "wrap", gap: 8 }}>
+      <div
+        style={{
+          background: C.ink,
+          padding: "10px 24px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          position: "sticky",
+          top: 0,
+          zIndex: 100,
+          flexWrap: "wrap",
+          gap: 8,
+        }}
+      >
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <span style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 900, fontSize: 18, color: C.paper, letterSpacing: "-0.04em" }}>TIGHT MARGINS</span>
-          <span style={{ width: 1, height: 20, background: C.callout, opacity: 0.3 }} />
-          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: C.grey }}>
+          <span
+            style={{
+              fontFamily: "'Inter Tight', sans-serif",
+              fontWeight: 900,
+              fontSize: 18,
+              color: C.paper,
+              letterSpacing: "-0.04em",
+            }}
+          >
+            TIGHT MARGINS
+          </span>
+          <span
+            style={{
+              width: 1,
+              height: 20,
+              background: C.callout,
+              opacity: 0.3,
+            }}
+          />
+          <span
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 11,
+              color: C.grey,
+            }}
+          >
             {slides.length} slides
           </span>
           {(slides.length < 6 || slides.length > 12) && (
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: C.red }}>
-              ⚠ Need {slides.length < 6 ? `${6 - slides.length} more` : `${slides.length - 12} fewer`}
+            <span
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 11,
+                color: C.red,
+              }}
+            >
+              ⚠ Need{" "}
+              {slides.length < 6
+                ? `${6 - slides.length} more`
+                : `${slides.length - 12} fewer`}
             </span>
           )}
         </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <button onClick={() => { setSlides(null); setSelectedIdx(0); }} style={{ padding: "6px 12px", background: "transparent", border: `1px solid ${C.callout}`, borderRadius: 3, color: C.grey, fontFamily: "'Inter Tight', sans-serif", fontWeight: 500, fontSize: 12, cursor: "pointer" }}>
+          <button
+            onClick={() => {
+              setSlides(null);
+              setSelectedIdx(0);
+            }}
+            style={{
+              padding: "6px 12px",
+              background: "transparent",
+              border: `1px solid ${C.callout}`,
+              borderRadius: 3,
+              color: C.grey,
+              fontFamily: "'Inter Tight', sans-serif",
+              fontWeight: 500,
+              fontSize: 12,
+              cursor: "pointer",
+            }}
+          >
             New
           </button>
-          <button onClick={() => setPreviewMode(true)} style={{ padding: "6px 12px", background: "transparent", border: `1px solid ${C.grey}`, borderRadius: 3, color: C.paper, fontFamily: "'Inter Tight', sans-serif", fontWeight: 600, fontSize: 12, cursor: "pointer" }}>
+          <button
+            onClick={() => setPreviewMode(true)}
+            style={{
+              padding: "6px 12px",
+              background: "transparent",
+              border: `1px solid ${C.grey}`,
+              borderRadius: 3,
+              color: C.paper,
+              fontFamily: "'Inter Tight', sans-serif",
+              fontWeight: 600,
+              fontSize: 12,
+              cursor: "pointer",
+            }}
+          >
             Preview
           </button>
           <button
             onClick={handleExport}
             disabled={exporting || slides.length < 6 || slides.length > 12}
             style={{
-              padding: "6px 16px", background: C.red, border: "none", borderRadius: 3,
-              color: C.paper, fontFamily: "'Inter Tight', sans-serif", fontWeight: 700, fontSize: 12,
-              cursor: slides.length < 6 || slides.length > 12 ? "not-allowed" : "pointer",
+              padding: "6px 16px",
+              background: C.red,
+              border: "none",
+              borderRadius: 3,
+              color: C.paper,
+              fontFamily: "'Inter Tight', sans-serif",
+              fontWeight: 700,
+              fontSize: 12,
+              cursor:
+                slides.length < 6 || slides.length > 12
+                  ? "not-allowed"
+                  : "pointer",
               opacity: slides.length < 6 || slides.length > 12 ? 0.4 : 1,
             }}
           >
@@ -877,29 +1540,71 @@ export default function App() {
 
       <div style={{ display: "flex", flex: 1, minHeight: 0 }}>
         {/* Left: Slide list */}
-        <div style={{ width: 200, borderRight: `1px solid ${C.grey}`, padding: "12px 0", overflowY: "auto", background: "#fff", flexShrink: 0 }}>
+        <div
+          style={{
+            width: 200,
+            borderRight: `1px solid ${C.grey}`,
+            padding: "12px 0",
+            overflowY: "auto",
+            background: "#fff",
+            flexShrink: 0,
+          }}
+        >
           {slides.map((s, i) => (
             <div
               key={i}
               onClick={() => setSelectedIdx(i)}
               style={{
-                padding: "8px 16px", cursor: "pointer",
-                background: i === selectedIdx ? "rgba(200,50,50,0.06)" : "transparent",
-                borderLeft: i === selectedIdx ? `3px solid ${C.red}` : "3px solid transparent",
+                padding: "8px 16px",
+                cursor: "pointer",
+                background:
+                  i === selectedIdx ? "rgba(200,50,50,0.06)" : "transparent",
+                borderLeft:
+                  i === selectedIdx
+                    ? `3px solid ${C.red}`
+                    : "3px solid transparent",
                 transition: "all 0.1s",
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: C.red, flexShrink: 0 }}>
+                <span
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 10,
+                    color: C.red,
+                    flexShrink: 0,
+                  }}
+                >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 600, fontSize: 12, color: C.ink, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                <span
+                  style={{
+                    fontFamily: "'Inter Tight', sans-serif",
+                    fontWeight: 600,
+                    fontSize: 12,
+                    color: C.ink,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   {TEMPLATES[s.template].name}
                 </span>
                 {s.locked && <span style={{ fontSize: 9 }}>🔒</span>}
               </div>
               {s.note && (
-                <div style={{ fontFamily: "'Newsreader', serif", fontSize: 11, color: C.callout, marginTop: 2, marginLeft: 22, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                <div
+                  style={{
+                    fontFamily: "'Newsreader', serif",
+                    fontSize: 11,
+                    color: C.callout,
+                    marginTop: 2,
+                    marginLeft: 22,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   {s.note}
                 </div>
               )}
@@ -908,9 +1613,26 @@ export default function App() {
           {slides.length < 12 && (
             <button
               onClick={() => addSlide(slides.length - 2)}
-              style={{ width: "100%", padding: "10px 16px", background: "transparent", border: "none", borderTop: `1px solid ${C.grey}`, cursor: "pointer", fontFamily: "'Inter Tight', sans-serif", fontWeight: 600, fontSize: 12, color: C.callout, textAlign: "left", marginTop: 4 }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = C.red; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = C.callout; }}
+              style={{
+                width: "100%",
+                padding: "10px 16px",
+                background: "transparent",
+                border: "none",
+                borderTop: `1px solid ${C.grey}`,
+                cursor: "pointer",
+                fontFamily: "'Inter Tight', sans-serif",
+                fontWeight: 600,
+                fontSize: 12,
+                color: C.callout,
+                textAlign: "left",
+                marginTop: 4,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = C.red;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = C.callout;
+              }}
             >
               + Add Slide
             </button>
@@ -918,7 +1640,17 @@ export default function App() {
         </div>
 
         {/* Center: Canvas preview */}
-        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: "#e8e5e2", padding: 24, minWidth: 0 }}>
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#e8e5e2",
+            padding: 24,
+            minWidth: 0,
+          }}
+        >
           <SlideCanvas
             template={currentSlide.template}
             data={currentSlide.data}
@@ -928,10 +1660,39 @@ export default function App() {
         </div>
 
         {/* Right: Editor panel */}
-        <div style={{ width: 320, borderLeft: `1px solid ${C.grey}`, padding: 20, overflowY: "auto", background: "#fff", flexShrink: 0 }}>
-          <div style={{ marginBottom: 16, paddingBottom: 16, borderBottom: `1px solid ${C.grey}` }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-              <span style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 700, fontSize: 14, color: C.ink }}>
+        <div
+          style={{
+            width: 320,
+            borderLeft: `1px solid ${C.grey}`,
+            padding: 20,
+            overflowY: "auto",
+            background: "#fff",
+            flexShrink: 0,
+          }}
+        >
+          <div
+            style={{
+              marginBottom: 16,
+              paddingBottom: 16,
+              borderBottom: `1px solid ${C.grey}`,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: 8,
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "'Inter Tight', sans-serif",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  color: C.ink,
+                }}
+              >
                 Slide {selectedIdx + 1}: {TEMPLATES[currentSlide.template].name}
               </span>
             </div>
@@ -940,18 +1701,37 @@ export default function App() {
                 value={currentSlide.template}
                 onChange={(e) => changeTemplate(selectedIdx, e.target.value)}
                 style={{
-                  width: "100%", padding: "6px 8px", fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: 12, color: C.ink, border: `1px solid ${C.grey}`, borderRadius: 3,
-                  background: "#fff", cursor: "pointer",
+                  width: "100%",
+                  padding: "6px 8px",
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 12,
+                  color: C.ink,
+                  border: `1px solid ${C.grey}`,
+                  borderRadius: 3,
+                  background: "#fff",
+                  cursor: "pointer",
                 }}
               >
-                {Object.entries(TEMPLATES).filter(([k]) => k !== "cover" && k !== "cta").map(([k, t]) => (
-                  <option key={k} value={k}>{t.name}</option>
-                ))}
+                {Object.entries(TEMPLATES)
+                  .filter(([k]) => k !== "cover" && k !== "cta")
+                  .map(([k, t]) => (
+                    <option key={k} value={k}>
+                      {t.name}
+                    </option>
+                  ))}
               </select>
             ) : (
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: C.grey }}>
-                Position locked — {currentSlide.template === "cover" ? "always first" : "always last"}
+              <span
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 11,
+                  color: C.grey,
+                }}
+              >
+                Position locked —{" "}
+                {currentSlide.template === "cover"
+                  ? "always first"
+                  : "always last"}
               </span>
             )}
           </div>
@@ -966,21 +1746,85 @@ export default function App() {
           ))}
 
           {!currentSlide.locked && (
-            <div style={{ marginTop: 20, paddingTop: 16, borderTop: `1px solid ${C.grey}`, display: "flex", gap: 8, flexWrap: "wrap" }}>
-              <button onClick={() => moveSlide(selectedIdx, -1)} disabled={selectedIdx <= 1}
-                style={{ padding: "6px 10px", background: "transparent", border: `1px solid ${C.grey}`, borderRadius: 3, cursor: selectedIdx <= 1 ? "not-allowed" : "pointer", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: C.callout, opacity: selectedIdx <= 1 ? 0.4 : 1 }}>
+            <div
+              style={{
+                marginTop: 20,
+                paddingTop: 16,
+                borderTop: `1px solid ${C.grey}`,
+                display: "flex",
+                gap: 8,
+                flexWrap: "wrap",
+              }}
+            >
+              <button
+                onClick={() => moveSlide(selectedIdx, -1)}
+                disabled={selectedIdx <= 1}
+                style={{
+                  padding: "6px 10px",
+                  background: "transparent",
+                  border: `1px solid ${C.grey}`,
+                  borderRadius: 3,
+                  cursor: selectedIdx <= 1 ? "not-allowed" : "pointer",
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 11,
+                  color: C.callout,
+                  opacity: selectedIdx <= 1 ? 0.4 : 1,
+                }}
+              >
                 ↑ Move up
               </button>
-              <button onClick={() => moveSlide(selectedIdx, 1)} disabled={selectedIdx >= slides.length - 2}
-                style={{ padding: "6px 10px", background: "transparent", border: `1px solid ${C.grey}`, borderRadius: 3, cursor: selectedIdx >= slides.length - 2 ? "not-allowed" : "pointer", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: C.callout, opacity: selectedIdx >= slides.length - 2 ? 0.4 : 1 }}>
+              <button
+                onClick={() => moveSlide(selectedIdx, 1)}
+                disabled={selectedIdx >= slides.length - 2}
+                style={{
+                  padding: "6px 10px",
+                  background: "transparent",
+                  border: `1px solid ${C.grey}`,
+                  borderRadius: 3,
+                  cursor:
+                    selectedIdx >= slides.length - 2
+                      ? "not-allowed"
+                      : "pointer",
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 11,
+                  color: C.callout,
+                  opacity: selectedIdx >= slides.length - 2 ? 0.4 : 1,
+                }}
+              >
                 ↓ Move down
               </button>
-              <button onClick={() => addSlide(selectedIdx)} disabled={slides.length >= 12}
-                style={{ padding: "6px 10px", background: "transparent", border: `1px solid ${C.grey}`, borderRadius: 3, cursor: slides.length >= 12 ? "not-allowed" : "pointer", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: C.callout, opacity: slides.length >= 12 ? 0.4 : 1 }}>
+              <button
+                onClick={() => addSlide(selectedIdx)}
+                disabled={slides.length >= 12}
+                style={{
+                  padding: "6px 10px",
+                  background: "transparent",
+                  border: `1px solid ${C.grey}`,
+                  borderRadius: 3,
+                  cursor: slides.length >= 12 ? "not-allowed" : "pointer",
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 11,
+                  color: C.callout,
+                  opacity: slides.length >= 12 ? 0.4 : 1,
+                }}
+              >
                 + Insert after
               </button>
-              <button onClick={() => removeSlide(selectedIdx)} disabled={slides.length <= 6}
-                style={{ padding: "6px 10px", background: "transparent", border: `1px solid ${C.red}`, borderRadius: 3, cursor: slides.length <= 6 ? "not-allowed" : "pointer", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: C.red, opacity: slides.length <= 6 ? 0.4 : 1 }}>
+              <button
+                onClick={() => removeSlide(selectedIdx)}
+                disabled={slides.length <= 6}
+                style={{
+                  padding: "6px 10px",
+                  background: "transparent",
+                  border: `1px solid ${C.red}`,
+                  borderRadius: 3,
+                  cursor: slides.length <= 6 ? "not-allowed" : "pointer",
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 11,
+                  color: C.red,
+                  opacity: slides.length <= 6 ? 0.4 : 1,
+                }}
+              >
                 ✕ Remove
               </button>
             </div>
