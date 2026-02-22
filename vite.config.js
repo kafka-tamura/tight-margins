@@ -8,7 +8,7 @@ export default defineConfig({
   // For custom domain or root deploy, use '/'
   base: '/tight-margins/',
   build: {
-    outDir: 'dist',
+    outDir: 'docs',
     assetsInlineLimit: 0,
   },
 })
