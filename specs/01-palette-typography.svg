@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+      .spec-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #999; }
+      .spec-title { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 28px; fill: #2A2A2A; letter-spacing: -0.04em; }
+      .spec-subtitle { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 18px; fill: #2A2A2A; letter-spacing: -0.02em; }
+      .spec-body { font-family: 'Newsreader', Georgia, serif; font-size: 14px; fill: #555; }
+      .spec-mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #2A2A2A; }
+      .spec-mono-sm { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #999; }
+      .dim-line { stroke: #C83232; stroke-width: 0.75; stroke-dasharray: 3,2; }
+      .dim-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #C83232; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="1400" fill="#FAFAF8"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1200" height="80" fill="#2A2A2A"/>
+  <text x="48" y="35" font-family="'Inter Tight', sans-serif" font-weight="900" font-size="22" fill="#F0EDEA" letter-spacing="-0.04em">TIGHT MARGINS</text>
+  <text x="48" y="58" font-family="'JetBrains Mono', monospace" font-size="11" fill="#D0CCC8">Design System Specification &#8212; 01 Palette &amp; Typography</text>
+  <line x1="48" y1="68" x2="280" y2="68" stroke="#C83232" stroke-width="2"/>
+
+  <!-- ============================================ -->
+  <!-- SECTION: COLOR PALETTE                       -->
+  <!-- ============================================ -->
+  <text x="48" y="128" class="spec-subtitle">Color Palette</text>
+  <text x="48" y="148" class="spec-body">Exactly 5 colors. No custom colors permitted. No opacity variations except ruled lines (0.35) and margin line on CTA (0.6).</text>
+
+  <!-- Paper -->
+  <rect x="48" y="172" width="200" height="120" rx="4" fill="#F0EDEA" stroke="#D0CCC8" stroke-width="1"/>
+  <text x="68" y="205" class="spec-mono">Paper</text>
+  <text x="68" y="225" class="spec-mono-sm">#F0EDEA</text>
+  <text x="68" y="245" class="spec-mono-sm">rgb(240, 237, 234)</text>
+  <text x="68" y="268" class="spec-label">Slide backgrounds, center</text>
+  <text x="68" y="280" class="spec-label">channel on Cover slide</text>
+
+  <!-- Ink Black -->
+  <rect x="268" y="172" width="200" height="120" rx="4" fill="#2A2A2A"/>
+  <text x="288" y="205" class="spec-mono" fill="#F0EDEA">Ink Black</text>
+  <text x="288" y="225" class="spec-mono-sm" fill="#D0CCC8">#2A2A2A</text>
+  <text x="288" y="245" class="spec-mono-sm" fill="#D0CCC8">rgb(42, 42, 42)</text>
+  <text x="288" y="268" class="spec-label" fill="#999">All headlines, body text,</text>
+  <text x="288" y="280" class="spec-label" fill="#999">primary foreground</text>
+
+  <!-- Margin Red -->
+  <rect x="488" y="172" width="200" height="120" rx="4" fill="#C83232"/>
+  <text x="508" y="205" class="spec-mono" fill="#F0EDEA">Margin Red</text>
+  <text x="508" y="225" class="spec-mono-sm" fill="rgba(255,255,255,0.7)">#C83232</text>
+  <text x="508" y="245" class="spec-mono-sm" fill="rgba(255,255,255,0.7)">rgb(200, 50, 50)</text>
+  <text x="508" y="268" class="spec-label" fill="rgba(255,255,255,0.6)">Margin line, accents, data</text>
+  <text x="508" y="280" class="spec-label" fill="rgba(255,255,255,0.6)">points, emphasis, CTAs</text>
+
+  <!-- Corridor Dark -->
+  <rect x="708" y="172" width="200" height="120" rx="4" fill="#333333"/>
+  <text x="728" y="205" class="spec-mono" fill="#F0EDEA">Corridor Dark</text>
+  <text x="728" y="225" class="spec-mono-sm" fill="#D0CCC8">#333333</text>
+  <text x="728" y="245" class="spec-mono-sm" fill="#D0CCC8">rgb(51, 51, 51)</text>
+  <text x="728" y="268" class="spec-label" fill="#999">Cover side bands, CTA</text>
+  <text x="728" y="280" class="spec-label" fill="#999">background, preview bg</text>
+
+  <!-- Rule Grey -->
+  <rect x="928" y="172" width="200" height="120" rx="4" fill="#D0CCC8" stroke="#bbb" stroke-width="0.5"/>
+  <text x="948" y="205" class="spec-mono">Rule Grey</text>
+  <text x="948" y="225" class="spec-mono-sm">#D0CCC8</text>
+  <text x="948" y="245" class="spec-mono-sm">rgb(208, 204, 200)</text>
+  <text x="948" y="268" class="spec-label">Ruled lines, borders,</text>
+  <text x="948" y="280" class="spec-label">metadata, slide numbers</text>
+
+  <!-- FORBIDDEN note -->
+  <rect x="48" y="310" width="1080" height="36" rx="2" fill="rgba(200,50,50,0.06)" stroke="#C83232" stroke-width="0.5"/>
+  <text x="68" y="333" class="spec-mono" fill="#C83232">FORBIDDEN: No other colors. No opacity adjustments on text/fills. No gradients. No shadows on slide content.</text>
+
+  <!-- ============================================ -->
+  <!-- SECTION: TYPOGRAPHY                          -->
+  <!-- ============================================ -->
+  <text x="48" y="400" class="spec-subtitle">Typography &#8212; Three Font Families</text>
+  <text x="48" y="420" class="spec-body">No other typefaces permitted. Each has a strict role. No font-size overrides outside defined ranges.</text>
+
+  <!-- Font 1: Inter Tight -->
+  <rect x="48" y="444" width="1080" height="260" rx="4" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+  <rect x="48" y="444" width="4" height="260" rx="2" fill="#C83232"/>
+
+  <text x="72" y="474" class="spec-mono" fill="#C83232">01  INTER TIGHT</text>
+  <text x="72" y="494" class="spec-label">Role: Headlines, brand name, UI labels, CTA text</text>
+  <text x="72" y="510" class="spec-label">Google Fonts: family=Inter+Tight:wght@400;500;600;700;800;900</text>
+
+  <text x="72" y="546" font-family="'Inter Tight', sans-serif" font-weight="900" font-size="52" fill="#2A2A2A" letter-spacing="-0.04em">TIGHT MARGINS</text>
+  <text x="620" y="546" class="spec-mono-sm">weight: 900 | size: 52-56px | tracking: -0.04em</text>
+  <text x="620" y="560" class="spec-mono-sm">Used for: Brand name on Cover &amp; CTA slides</text>
+
+  <text x="72" y="588" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="68" fill="#2A2A2A" letter-spacing="-0.02em">Slide Headlines</text>
+  <text x="620" y="588" class="spec-mono-sm">weight: 700 | size: 68px | tracking: -0.02em</text>
+  <text x="620" y="602" class="spec-mono-sm">Used for: All slide headlines/titles</text>
+
+  <text x="72" y="628" font-family="'Inter Tight', sans-serif" font-weight="600" font-size="32" fill="#2A2A2A" letter-spacing="-0.01em">Subheadings</text>
+  <text x="620" y="628" class="spec-mono-sm">weight: 600 | size: 30-32px | tracking: -0.01em</text>
+  <text x="620" y="642" class="spec-mono-sm">Used for: Comparison headers, CTA text</text>
+
+  <text x="72" y="668" font-family="'Inter Tight', sans-serif" font-weight="600" font-size="14" fill="#2A2A2A">UI Labels &amp; Buttons</text>
+  <text x="620" y="668" class="spec-mono-sm">weight: 600 | size: 12-14px | tracking: -0.01em</text>
+  <text x="620" y="682" class="spec-mono-sm">Used for: App chrome only, not slide content</text>
+
+  <!-- Font 2: Newsreader -->
+  <rect x="48" y="724" width="1080" height="200" rx="4" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+  <rect x="48" y="724" width="4" height="200" rx="2" fill="#C83232"/>
+
+  <text x="72" y="754" class="spec-mono" fill="#C83232">02  NEWSREADER</text>
+  <text x="72" y="774" class="spec-label">Role: Body text, descriptions, captions, source attributions</text>
+  <text x="72" y="790" class="spec-label">Google Fonts: family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500</text>
+
+  <text x="72" y="830" font-family="'Newsreader', Georgia, serif" font-weight="500" font-size="32" fill="#2A2A2A">Body text at 32px. Three lines maximum per slide.</text>
+  <text x="72" y="856" class="spec-mono-sm">weight: 500 | size: 32px | line-height: 1.4 | Used for: Slide body copy</text>
+
+  <text x="72" y="888" font-family="'Newsreader', Georgia, serif" font-style="italic" font-weight="400" font-size="16" fill="#D0CCC8">Source attribution in italic at 16px, Rule Grey color</text>
+  <text x="72" y="908" class="spec-mono-sm">weight: 400 italic | size: 16-18px | Used for: Source lines, captions</text>
+
+  <!-- Font 3: JetBrains Mono -->
+  <rect x="48" y="944" width="1080" height="220" rx="4" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+  <rect x="48" y="944" width="4" height="220" rx="2" fill="#C83232"/>
+
+  <text x="72" y="974" class="spec-mono" fill="#C83232">03  JETBRAINS MONO</text>
+  <text x="72" y="994" class="spec-label">Role: Data callouts, diagram labels, metadata, slide numbers, version tags</text>
+  <text x="72" y="1010" class="spec-label">Google Fonts: family=JetBrains+Mono:wght@400;500;700</text>
+
+  <text x="72" y="1056" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="108" fill="#C83232">73%</text>
+  <text x="320" y="1040" class="spec-mono-sm">weight: 700 | size: 108px | color: Margin Red</text>
+  <text x="320" y="1054" class="spec-mono-sm">Used for: Hero data points on Data/Evidence slide</text>
+
+  <text x="72" y="1100" font-family="'JetBrains Mono', monospace" font-weight="400" font-size="14" fill="#D0CCC8">TIGHT MARGINS</text>
+  <text x="320" y="1100" class="spec-mono-sm">weight: 400 | size: 14px | tracking: 0.05em | color: Rule Grey</text>
+  <text x="320" y="1114" class="spec-mono-sm">Used for: Brand watermark on Cover slide bottom</text>
+
+  <text x="72" y="1140" font-family="'JetBrains Mono', monospace" font-weight="400" font-size="16" fill="#555">02</text>
+  <text x="320" y="1140" class="spec-mono-sm">weight: 400 | size: 16px | color: Rule Grey</text>
+  <text x="320" y="1154" class="spec-mono-sm">Used for: Slide numbers in left margin column</text>
+
+  <!-- ============================================ -->
+  <!-- SECTION: CONSTRAINTS SUMMARY                 -->
+  <!-- ============================================ -->
+  <text x="48" y="1216" class="spec-subtitle">Hard Constraints</text>
+
+  <rect x="48" y="1234" width="1080" height="140" rx="4" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+  <text x="72" y="1260" class="spec-mono">SLIDE COUNT      6-12 slides per carousel (hard enforced)</text>
+  <text x="72" y="1280" class="spec-mono">LOCKED SLOTS     Cover always slide 1, Closing CTA always last slide</text>
+  <text x="72" y="1300" class="spec-mono">NO IMAGES        Zero image uploads. Text and diagrams only.</text>
+  <text x="72" y="1320" class="spec-mono">NO CUSTOM COLOR  Only the 5 palette colors above. No hex input, no picker.</text>
+  <text x="72" y="1340" class="spec-mono">EXPORT FORMAT    PDF only. 1080x1080px per page, square format.</text>
+  <text x="72" y="1360" class="spec-mono">NO POSITIONING   All layout is template-driven. No drag/drop within slides.</text>
+</svg>

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- THREE-UP CALLOUT SLIDE — NEW TEMPLATE -->
+  <!-- Design intent: Three concepts side-by-side, each with a marker (circle/number), -->
+  <!-- title, and short description. Good for "3 pillars" / "3 steps" / "3 principles". -->
+  <!-- Since no images: use numbered circles as visual anchors (Margin Red stroke). -->
+  <!-- Each column is equal width. Content fills the space naturally. -->
+  <!-- This is the "3 images with callouts" equivalent for a text-only system. -->
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="#F0EDEA"/>
+
+  <!-- Ruled lines -->
+  <g opacity="0.35">
+    <line x1="0" y1="64" x2="1080" y2="64" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="96" x2="1080" y2="96" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="128" x2="1080" y2="128" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="160" x2="1080" y2="160" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="192" x2="1080" y2="192" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="224" x2="1080" y2="224" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="256" x2="1080" y2="256" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="288" x2="1080" y2="288" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="320" x2="1080" y2="320" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="352" x2="1080" y2="352" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="384" x2="1080" y2="384" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="416" x2="1080" y2="416" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="448" x2="1080" y2="448" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="480" x2="1080" y2="480" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="512" x2="1080" y2="512" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="544" x2="1080" y2="544" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="576" x2="1080" y2="576" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="608" x2="1080" y2="608" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="640" x2="1080" y2="640" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="672" x2="1080" y2="672" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="704" x2="1080" y2="704" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="736" x2="1080" y2="736" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="768" x2="1080" y2="768" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="800" x2="1080" y2="800" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="832" x2="1080" y2="832" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="864" x2="1080" y2="864" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="896" x2="1080" y2="896" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="928" x2="1080" y2="928" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="960" x2="1080" y2="960" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="992" x2="1080" y2="992" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="1024" x2="1080" y2="1024" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="1056" x2="1080" y2="1056" stroke="#D0CCC8" stroke-width="0.5"/>
+  </g>
+
+  <!-- Red margin line -->
+  <line x1="144" y1="0" x2="144" y2="1080" stroke="#C83232" stroke-width="2" opacity="0.7"/>
+
+  <!-- Slide number -->
+  <text x="64" y="80" font-family="'JetBrains Mono', monospace" font-weight="400" font-size="16" fill="#D0CCC8">06</text>
+
+  <!-- Section title at top -->
+  <text x="176" y="180" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="68" fill="#2A2A2A" letter-spacing="-0.02em">The three pillars</text>
+
+  <!-- Three columns layout -->
+  <!-- Content area: 176 to 1016 = 840px -->
+  <!-- 3 cols with 32px gutters: (840 - 64) / 3 = 258.67px each ≈ 256px, gutters 36px -->
+  <!-- Col 1: 176-432, Col 2: 468-724, Col 3: 760-1016 -->
+
+  <!-- Column 1 -->
+  <g transform="translate(176, 260)">
+    <!-- Numbered circle marker -->
+    <circle cx="28" cy="28" r="28" fill="none" stroke="#C83232" stroke-width="2"/>
+    <text x="28" y="35" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="22" fill="#C83232" text-anchor="middle">1</text>
+    <!-- Title -->
+    <text x="0" y="88" font-family="'Inter Tight', sans-serif" font-weight="600" font-size="22" fill="#2A2A2A" letter-spacing="-0.01em">Clarity</text>
+    <!-- Description -->
+    <text font-family="'Newsreader', Georgia, serif" font-weight="400" font-size="18" fill="#2A2A2A">
+      <tspan x="0" y="118">Say the thing directly.</tspan>
+      <tspan x="0" dy="26">No hedging, no jargon,</tspan>
+      <tspan x="0" dy="26">no corporate safety</tspan>
+      <tspan x="0" dy="26">blankets.</tspan>
+    </text>
+  </g>
+
+  <!-- Column divider 1 -->
+  <line x1="450" y1="260" x2="450" y2="520" stroke="#D0CCC8" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Column 2 -->
+  <g transform="translate(468, 260)">
+    <circle cx="28" cy="28" r="28" fill="none" stroke="#2A2A2A" stroke-width="2"/>
+    <text x="28" y="35" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="22" fill="#2A2A2A" text-anchor="middle">2</text>
+    <text x="0" y="88" font-family="'Inter Tight', sans-serif" font-weight="600" font-size="22" fill="#2A2A2A" letter-spacing="-0.01em">Constraint</text>
+    <text font-family="'Newsreader', Georgia, serif" font-weight="400" font-size="18" fill="#2A2A2A">
+      <tspan x="0" y="118">Work within limits</tspan>
+      <tspan x="0" dy="26">you've chosen. The</tspan>
+      <tspan x="0" dy="26">boundary is where</tspan>
+      <tspan x="0" dy="26">creativity starts.</tspan>
+    </text>
+  </g>
+
+  <!-- Column divider 2 -->
+  <line x1="742" y1="260" x2="742" y2="520" stroke="#D0CCC8" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Column 3 -->
+  <g transform="translate(760, 260)">
+    <circle cx="28" cy="28" r="28" fill="none" stroke="#2A2A2A" stroke-width="2"/>
+    <text x="28" y="35" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="22" fill="#2A2A2A" text-anchor="middle">3</text>
+    <text x="0" y="88" font-family="'Inter Tight', sans-serif" font-weight="600" font-size="22" fill="#2A2A2A" letter-spacing="-0.01em">Rhythm</text>
+    <text font-family="'Newsreader', Georgia, serif" font-weight="400" font-size="18" fill="#2A2A2A">
+      <tspan x="0" y="118">Alternate between</tspan>
+      <tspan x="0" dy="26">density and space.</tspan>
+      <tspan x="0" dy="26">Let the reader breathe</tspan>
+      <tspan x="0" dy="26">between thoughts.</tspan>
+    </text>
+  </g>
+</svg>

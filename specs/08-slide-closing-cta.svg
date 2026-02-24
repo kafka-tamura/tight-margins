@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+      .spec-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #999; }
+      .spec-subtitle { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 18px; fill: #2A2A2A; letter-spacing: -0.02em; }
+      .spec-mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #2A2A2A; }
+      .spec-mono-sm { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #999; }
+      .dim-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #C83232; }
+      .dim-solid { stroke: #C83232; stroke-width: 0.75; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="800" fill="#FAFAF8"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1400" height="80" fill="#2A2A2A"/>
+  <text x="48" y="35" font-family="'Inter Tight', sans-serif" font-weight="900" font-size="22" fill="#F0EDEA" letter-spacing="-0.04em">TIGHT MARGINS</text>
+  <text x="48" y="58" font-family="'JetBrains Mono', monospace" font-size="11" fill="#D0CCC8">Design System Specification &#8212; 08 Closing CTA Slide</text>
+  <line x1="48" y1="68" x2="380" y2="68" stroke="#C83232" stroke-width="2"/>
+
+  <!-- Slide at 60% (648x648) -->
+  <g transform="translate(48, 110)">
+    <rect width="648" height="648" fill="#333333" stroke="#555" stroke-width="0.5"/>
+
+    <!-- Red margin line at 144px (86.4 at 60%) -->
+    <line x1="86.4" y1="0" x2="86.4" y2="648" stroke="#C83232" stroke-width="1.2" opacity="0.6"/>
+
+    <!-- Content - vertically centered -->
+    <!-- Brand name -->
+    <text x="105.6" y="268" font-family="'Inter Tight', sans-serif" font-weight="900" font-size="34" fill="#F0EDEA" letter-spacing="-0.04em">TIGHT MARGINS</text>
+
+    <!-- Red rule -->
+    <rect x="105.6" y="288" width="48" height="1.8" fill="#C83232"/>
+
+    <!-- CTA text -->
+    <text x="105.6" y="326" font-family="'Inter Tight', sans-serif" font-weight="600" font-size="18" fill="#F0EDEA">Subscribe for more.</text>
+
+    <!-- URL -->
+    <text x="105.6" y="358" font-family="'JetBrains Mono', monospace" font-size="12" fill="#C83232">tightmargins.com</text>
+
+    <!-- Handle -->
+    <text x="105.6" y="382" font-family="'JetBrains Mono', monospace" font-size="10.8" fill="#D0CCC8">@tightmargins</text>
+
+    <!-- Zone annotations -->
+    <rect x="105.6" y="240" width="380" height="42" fill="none" stroke="rgba(200,50,50,0.4)" stroke-width="0.4" stroke-dasharray="3,2" rx="1"/>
+    <text x="500" y="264" class="dim-text">BRAND NAME</text>
+
+    <rect x="105.6" y="286" width="48" height="6" fill="none" stroke="rgba(200,50,50,0.4)" stroke-width="0.4" stroke-dasharray="3,2"/>
+    <text x="500" y="293" class="dim-text">RED RULE</text>
+
+    <rect x="105.6" y="308" width="300" height="26" fill="none" stroke="rgba(200,50,50,0.4)" stroke-width="0.4" stroke-dasharray="3,2" rx="1"/>
+    <text x="500" y="326" class="dim-text">CTA TEXT</text>
+
+    <rect x="105.6" y="344" width="200" height="20" fill="none" stroke="rgba(200,50,50,0.4)" stroke-width="0.4" stroke-dasharray="3,2" rx="1"/>
+    <text x="500" y="358" class="dim-text">URL</text>
+
+    <rect x="105.6" y="370" width="160" height="18" fill="none" stroke="rgba(200,50,50,0.4)" stroke-width="0.4" stroke-dasharray="3,2" rx="1"/>
+    <text x="500" y="384" class="dim-text">HANDLE</text>
+
+    <!-- Spacing callouts -->
+    <line x1="530" y1="282" x2="530" y2="286" class="dim-solid"/>
+    <text x="540" y="288" font-family="'JetBrains Mono', monospace" font-size="8" fill="#C83232">32px</text>
+
+    <line x1="530" y1="294" x2="530" y2="308" class="dim-solid"/>
+    <text x="540" y="304" font-family="'JetBrains Mono', monospace" font-size="8" fill="#C83232">32px</text>
+
+    <line x1="530" y1="334" x2="530" y2="344" class="dim-solid"/>
+    <text x="540" y="342" font-family="'JetBrains Mono', monospace" font-size="8" fill="#C83232">24px</text>
+
+    <line x1="530" y1="364" x2="530" y2="370" class="dim-solid"/>
+    <text x="540" y="370" font-family="'JetBrains Mono', monospace" font-size="8" fill="#C83232">16px</text>
+  </g>
+
+  <!-- Spec notes -->
+  <g transform="translate(740, 110)">
+    <text x="0" y="0" class="spec-subtitle">Closing CTA Slide</text>
+    <text x="0" y="18" class="spec-label">Always the last slide. Brand + call to action on dark background.</text>
+
+    <text x="0" y="50" class="spec-mono" fill="#C83232">BACKGROUND</text>
+    <text x="0" y="68" class="spec-mono">#333333 (Corridor Dark)</text>
+    <text x="0" y="84" class="spec-mono">NO ruled lines on this slide</text>
+
+    <text x="0" y="116" class="spec-mono" fill="#C83232">RED MARGIN LINE</text>
+    <text x="0" y="134" class="spec-mono">position: absolute, left: 144px</text>
+    <text x="0" y="150" class="spec-mono">width: 2px, full height</text>
+    <text x="0" y="166" class="spec-mono">color: #C83232, opacity: 0.6</text>
+    <text x="0" y="182" class="spec-mono">(lower opacity than standard slides)</text>
+
+    <text x="0" y="214" class="spec-mono" fill="#C83232">CONTENT AREA</text>
+    <text x="0" y="232" class="spec-mono">left: 176px, right: 80px</text>
+    <text x="0" y="248" class="spec-mono">top: 0, bottom: 0</text>
+    <text x="0" y="264" class="spec-mono">Vertically centered (flex column, justify: center)</text>
+
+    <text x="0" y="296" class="spec-mono" fill="#C83232">BRAND NAME (Inter Tight)</text>
+    <text x="0" y="314" class="spec-mono">weight: 900, size: 56px</text>
+    <text x="0" y="330" class="spec-mono">line-height: 1.05, tracking: -0.04em</text>
+    <text x="0" y="346" class="spec-mono">color: #F0EDEA (Paper)</text>
+    <text x="0" y="362" class="spec-mono">margin-bottom: 32px</text>
+    <text x="0" y="378" class="spec-mono">Text: "TIGHT MARGINS" (hardcoded)</text>
+
+    <text x="0" y="410" class="spec-mono" fill="#C83232">RED RULE SEPARATOR</text>
+    <text x="0" y="428" class="spec-mono">width: 80px, height: 3px</text>
+    <text x="0" y="444" class="spec-mono">color: #C83232, margin-bottom: 32px</text>
+
+    <text x="0" y="476" class="spec-mono" fill="#C83232">CTA TEXT (Inter Tight)</text>
+    <text x="0" y="494" class="spec-mono">weight: 600, size: 30px</text>
+    <text x="0" y="510" class="spec-mono">line-height: 1.3</text>
+    <text x="0" y="526" class="spec-mono">color: #F0EDEA (Paper)</text>
+    <text x="0" y="542" class="spec-mono">max-width: 500px, margin-bottom: 24px</text>
+    <rect x="0" y="550" width="450" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="564" class="dim-text">LIMIT: 40 chars</text>
+
+    <text x="0" y="596" class="spec-mono" fill="#C83232">URL (JetBrains Mono)</text>
+    <text x="0" y="614" class="spec-mono">weight: 400, size: 20px</text>
+    <text x="0" y="630" class="spec-mono">color: #C83232 (Margin Red)</text>
+    <text x="0" y="646" class="spec-mono">margin-bottom: 16px, conditional</text>
+    <rect x="0" y="654" width="450" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="668" class="dim-text">LIMIT: 60 chars</text>
+
+    <text x="0" y="700" class="spec-mono" fill="#C83232">HANDLE (JetBrains Mono)</text>
+    <text x="0" y="718" class="spec-mono">weight: 400, size: 18px</text>
+    <text x="0" y="734" class="spec-mono">color: #D0CCC8 (Rule Grey)</text>
+    <text x="0" y="750" class="spec-mono">conditional (only shows if non-empty)</text>
+    <rect x="0" y="758" width="450" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="772" class="dim-text">LIMIT: 30 chars</text>
+  </g>
+</svg>

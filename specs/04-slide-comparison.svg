@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+      .spec-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #999; }
+      .spec-subtitle { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 18px; fill: #2A2A2A; letter-spacing: -0.02em; }
+      .spec-mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #2A2A2A; }
+      .spec-mono-sm { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #999; }
+      .dim-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #C83232; }
+      .dim-solid { stroke: #C83232; stroke-width: 0.75; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="900" fill="#FAFAF8"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1400" height="80" fill="#2A2A2A"/>
+  <text x="48" y="35" font-family="'Inter Tight', sans-serif" font-weight="900" font-size="22" fill="#F0EDEA" letter-spacing="-0.04em">TIGHT MARGINS</text>
+  <text x="48" y="58" font-family="'JetBrains Mono', monospace" font-size="11" fill="#D0CCC8">Design System Specification &#8212; 04 Comparison Slide</text>
+  <line x1="48" y1="68" x2="360" y2="68" stroke="#C83232" stroke-width="2"/>
+
+  <!-- Slide at 60% scale -->
+  <g transform="translate(48, 120)">
+    <rect width="648" height="648" fill="#F0EDEA" stroke="#D0CCC8" stroke-width="0.5"/>
+
+    <!-- Ruled lines -->
+    <g opacity="0.35">
+      <line x1="0" y1="38.4" x2="648" y2="38.4" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="57.6" x2="648" y2="57.6" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="76.8" x2="648" y2="76.8" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="96" x2="648" y2="96" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="115.2" x2="648" y2="115.2" stroke="#D0CCC8" stroke-width="0.3"/>
+    </g>
+
+    <!-- Red margin line -->
+    <line x1="86.4" y1="0" x2="86.4" y2="648" stroke="#C83232" stroke-width="1.2" opacity="0.7"/>
+
+    <!-- Content zone: left=176(105.6), right=64(38.4) from edge -->
+    <!-- Content width = 1080-176-64 = 840px (504 at 60%) -->
+    <!-- Column divider in middle of content -->
+    <!-- col width = (840-24)/2 = 408px each, gutter = 24px -->
+    <!-- at 60%: colW=244.8, gutter=14.4 -->
+    <!-- divider at 176 + 408 + 12 = 596px (357.6 at 60%) -->
+
+    <!-- Column divider line -->
+    <line x1="357.6" y1="72" x2="357.6" y2="576" stroke="#D0CCC8" stroke-width="0.3"/>
+
+    <!-- VS marker -->
+    <rect x="343.6" y="310" width="28" height="22" fill="#F0EDEA"/>
+    <text x="357.6" y="326" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="11" fill="#D0CCC8" text-anchor="middle">VS</text>
+
+    <!-- Left column header -->
+    <text x="105.6" y="148" font-family="'Inter Tight', sans-serif" font-weight="600" font-size="19" fill="#2A2A2A" letter-spacing="-0.01em">Old Way</text>
+    <!-- Left column body -->
+    <text x="105.6" y="181" font-family="'Newsreader', serif" font-size="13" fill="#2A2A2A">Left column body text</text>
+    <text x="105.6" y="199" font-family="'Newsreader', serif" font-size="13" fill="#2A2A2A">in Ink Black color.</text>
+
+    <!-- Right column header -->
+    <text x="372" y="148" font-family="'Inter Tight', sans-serif" font-weight="600" font-size="19" fill="#2A2A2A" letter-spacing="-0.01em">New Way</text>
+    <!-- Right column body - NOTE: in Margin Red -->
+    <text x="372" y="181" font-family="'Newsreader', serif" font-size="13" fill="#C83232">Right column body text</text>
+    <text x="372" y="199" font-family="'Newsreader', serif" font-size="13" fill="#C83232">in Margin Red color.</text>
+
+    <!-- Zone annotations -->
+    <rect x="105.6" y="119" width="244.8" height="144" fill="none" stroke="#C83232" stroke-width="0.4" stroke-dasharray="3,2" rx="1"/>
+    <rect x="365" y="119" width="244.8" height="144" fill="none" stroke="#C83232" stroke-width="0.4" stroke-dasharray="3,2" rx="1"/>
+    <text x="228" y="246" class="dim-text" text-anchor="middle">LEFT COL</text>
+    <text x="487" y="246" class="dim-text" text-anchor="middle">RIGHT COL</text>
+  </g>
+
+  <!-- Dimensions under the slide -->
+  <g transform="translate(48, 780)">
+    <line x1="105.6" y1="0" x2="350.4" y2="0" class="dim-solid"/>
+    <line x1="105.6" y1="-4" x2="105.6" y2="4" class="dim-solid"/>
+    <line x1="350.4" y1="-4" x2="350.4" y2="4" class="dim-solid"/>
+    <text x="228" y="14" class="dim-text" text-anchor="middle">408px (col 1)</text>
+
+    <text x="357.6" y="14" class="dim-text" text-anchor="middle">24px</text>
+
+    <line x1="364.8" y1="0" x2="609.6" y2="0" class="dim-solid"/>
+    <line x1="364.8" y1="-4" x2="364.8" y2="4" class="dim-solid"/>
+    <line x1="609.6" y1="-4" x2="609.6" y2="4" class="dim-solid"/>
+    <text x="487.2" y="14" class="dim-text" text-anchor="middle">408px (col 2)</text>
+  </g>
+
+  <!-- Spec notes -->
+  <g transform="translate(740, 120)">
+    <text x="0" y="0" class="spec-subtitle">Comparison Slide</text>
+    <text x="0" y="18" class="spec-label">Side-by-side comparison. "Old vs New" or "A vs B".</text>
+
+    <text x="0" y="50" class="spec-mono" fill="#C83232">BACKGROUND</text>
+    <text x="0" y="68" class="spec-mono">#F0EDEA (Paper) + RuledLines + MarginLine</text>
+
+    <text x="0" y="100" class="spec-mono" fill="#C83232">LAYOUT MATH</text>
+    <text x="0" y="118" class="spec-mono">contentLeft  = 176px</text>
+    <text x="0" y="134" class="spec-mono">contentRight = 1080 - 64 = 1016px</text>
+    <text x="0" y="150" class="spec-mono">contentWidth = 840px</text>
+    <text x="0" y="166" class="spec-mono">gutterWidth  = 24px</text>
+    <text x="0" y="182" class="spec-mono">colWidth     = (840 - 24) / 2 = 408px</text>
+    <text x="0" y="198" class="spec-mono">col2Left     = 176 + 408 + 24 = 608px</text>
+    <text x="0" y="214" class="spec-mono">dividerX     = 176 + 408 + 12 = 596px</text>
+
+    <text x="0" y="246" class="spec-mono" fill="#C83232">COLUMN DIVIDER</text>
+    <text x="0" y="264" class="spec-mono">x: dividerX (596px)</text>
+    <text x="0" y="280" class="spec-mono">top: 120px, bottom: 120px</text>
+    <text x="0" y="296" class="spec-mono">width: 0.5px, color: #D0CCC8</text>
+
+    <text x="0" y="328" class="spec-mono" fill="#C83232">VS MARKER</text>
+    <text x="0" y="346" class="spec-mono">Centered on divider, vertically at 50%</text>
+    <text x="0" y="362" class="spec-mono">Font: JetBrains Mono 18px, weight: 700</text>
+    <text x="0" y="378" class="spec-mono">Color: #D0CCC8 on Paper background</text>
+    <text x="0" y="394" class="spec-mono">Default text: "VS"</text>
+
+    <text x="0" y="426" class="spec-mono" fill="#C83232">COLUMN HEADERS (Inter Tight)</text>
+    <text x="0" y="444" class="spec-mono">weight: 600, size: 32px</text>
+    <text x="0" y="460" class="spec-mono">line-height: 1.2, tracking: -0.01em</text>
+    <text x="0" y="476" class="spec-mono">color: #2A2A2A (both columns)</text>
+    <text x="0" y="492" class="spec-mono">margin-bottom: 24px</text>
+    <rect x="0" y="500" width="400" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="514" class="dim-text">LIMIT: 25 chars each</text>
+
+    <text x="0" y="544" class="spec-mono" fill="#C83232">COLUMN BODY (Newsreader)</text>
+    <text x="0" y="562" class="spec-mono">weight: 500, size: 32px, line-height: 1.4</text>
+    <text x="0" y="578" class="spec-mono">Left body:  color #2A2A2A (Ink Black)</text>
+    <text x="0" y="594" class="spec-mono">Right body: color #C83232 (Margin Red)</text>
+    <text x="0" y="610" class="spec-mono">  (Right col highlighted to denote "better")</text>
+    <rect x="0" y="618" width="400" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="632" class="dim-text">LIMIT: 150 chars each column</text>
+
+    <text x="0" y="662" class="spec-mono" fill="#C83232">COLUMNS START</text>
+    <text x="0" y="680" class="spec-mono">Vertical: optical center (top: 43%, translateY: -43%)</text>
+    <text x="0" y="696" class="spec-mono">  → Both columns wrapped in a single flex container</text>
+    <text x="0" y="712" class="spec-mono">  → Container positioned at optical center</text>
+    <text x="0" y="728" class="spec-mono">  → Adapts to content height (short vs long text)</text>
+    <text x="0" y="744" class="spec-mono">  → Matches single-concept, quote, section-divider</text>
+    <rect x="0" y="752" width="400" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="766" class="dim-text">METHOD: flex/transform optical center, NOT fixed top: 246px</text>
+  </g>
+</svg>

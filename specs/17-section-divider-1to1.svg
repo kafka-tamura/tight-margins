@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- SECTION DIVIDER / CHAPTER MARKER — NEW TEMPLATE -->
+  <!-- Design intent: Transition slide between sections of a longer carousel (8+ slides). -->
+  <!-- Minimal content: a part number and a section title. That's it. -->
+  <!-- The ruled paper does the heavy lifting — this slide is a PAUSE. -->
+  <!-- Content at optical center. Feels like a chapter heading in a book. -->
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="#F0EDEA"/>
+
+  <!-- Ruled lines -->
+  <g opacity="0.35">
+    <line x1="0" y1="64" x2="1080" y2="64" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="96" x2="1080" y2="96" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="128" x2="1080" y2="128" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="160" x2="1080" y2="160" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="192" x2="1080" y2="192" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="224" x2="1080" y2="224" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="256" x2="1080" y2="256" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="288" x2="1080" y2="288" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="320" x2="1080" y2="320" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="352" x2="1080" y2="352" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="384" x2="1080" y2="384" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="416" x2="1080" y2="416" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="448" x2="1080" y2="448" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="480" x2="1080" y2="480" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="512" x2="1080" y2="512" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="544" x2="1080" y2="544" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="576" x2="1080" y2="576" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="608" x2="1080" y2="608" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="640" x2="1080" y2="640" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="672" x2="1080" y2="672" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="704" x2="1080" y2="704" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="736" x2="1080" y2="736" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="768" x2="1080" y2="768" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="800" x2="1080" y2="800" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="832" x2="1080" y2="832" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="864" x2="1080" y2="864" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="896" x2="1080" y2="896" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="928" x2="1080" y2="928" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="960" x2="1080" y2="960" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="992" x2="1080" y2="992" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="1024" x2="1080" y2="1024" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="1056" x2="1080" y2="1056" stroke="#D0CCC8" stroke-width="0.5"/>
+  </g>
+
+  <!-- Red margin line -->
+  <line x1="144" y1="0" x2="144" y2="1080" stroke="#C83232" stroke-width="2" opacity="0.7"/>
+
+  <!-- CONTENT — optically centered, minimal -->
+
+  <!-- Part label: JetBrains Mono, small, Margin Red -->
+  <text x="176" y="440" font-family="'JetBrains Mono', monospace" font-weight="400" font-size="16" fill="#C83232" letter-spacing="0.08em">PART TWO</text>
+
+  <!-- Red rule, short -->
+  <rect x="176" y="456" width="48" height="2" fill="#C83232"/>
+
+  <!-- Section title: Inter Tight 700, 44px, Ink Black -->
+  <text x="176" y="510" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="44" fill="#2A2A2A" letter-spacing="-0.02em">The Solution</text>
+</svg>

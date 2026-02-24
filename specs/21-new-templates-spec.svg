@@ -1,0 +1,295 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="3200" viewBox="0 0 1400 3200">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+      .spec-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #999; }
+      .spec-subtitle { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 18px; fill: #2A2A2A; letter-spacing: -0.02em; }
+      .spec-mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #2A2A2A; }
+      .spec-mono-sm { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #999; }
+      .dim-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #C83232; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="3200" fill="#FAFAF8"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1400" height="80" fill="#2A2A2A"/>
+  <text x="48" y="35" font-family="'Inter Tight', sans-serif" font-weight="900" font-size="22" fill="#F0EDEA" letter-spacing="-0.04em">TIGHT MARGINS</text>
+  <text x="48" y="58" font-family="'JetBrains Mono', monospace" font-size="11" fill="#D0CCC8">Design System &#8212; New Templates: Detailed Specifications</text>
+  <line x1="48" y1="68" x2="400" y2="68" stroke="#C83232" stroke-width="2"/>
+
+  <!-- ============================================ -->
+  <!-- TEMPLATE: NUMBERED LIST                      -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 120)">
+    <text x="0" y="0" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="24" fill="#C83232" letter-spacing="-0.02em">Numbered List</text>
+    <text x="0" y="22" class="spec-label">The LinkedIn workhorse. 3-5 items, scannable, shareable, high save-rate.</text>
+
+    <g transform="translate(0, 44)">
+      <rect x="0" y="0" width="1300" height="480" rx="4" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+
+      <text x="24" y="32" class="spec-mono" fill="#C83232">LAYOUT</text>
+      <text x="24" y="52" class="spec-mono">Background: Paper (#F0EDEA) + ruled lines + margin line</text>
+      <text x="24" y="68" class="spec-mono">Headline at y: 180px (below slide number zone)</text>
+      <text x="24" y="84" class="spec-mono">List starts 80px below headline baseline</text>
+      <text x="24" y="100" class="spec-mono">Vertical centering NOT used — list fills top-down naturally</text>
+
+      <text x="24" y="132" class="spec-mono" fill="#C83232">HEADLINE (Inter Tight 700, 68px)</text>
+      <text x="24" y="152" class="spec-mono">tracking: -0.02em, color: #2A2A2A</text>
+      <text x="24" y="168" class="spec-mono">Position: x: 176, y: 180</text>
+      <rect x="24" y="176" width="300" height="18" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+      <text x="32" y="190" class="dim-text">LIMIT: 40 chars, max 6 words</text>
+
+      <text x="24" y="220" class="spec-mono" fill="#C83232">LIST ITEM STRUCTURE (each item)</text>
+      <text x="24" y="240" class="spec-mono">Number:  JetBrains Mono 700, 36px, #C83232</text>
+      <text x="24" y="256" class="spec-mono">         Position: x: 176 (aligned with content left)</text>
+      <text x="24" y="272" class="spec-mono">Title:   Inter Tight 600, 24px, #2A2A2A, tracking: -0.01em</text>
+      <text x="24" y="288" class="spec-mono">         Position: x: 248 (72px right of number left edge)</text>
+      <text x="24" y="304" class="spec-mono">Desc:    Newsreader 500, 32px, #2A2A2A, line-height: 1.4</text>
+      <text x="24" y="320" class="spec-mono">         Position: x: 248, max 2 lines, max-width: 680px</text>
+      <text x="24" y="336" class="spec-mono">Divider: Rule Grey 0.5px, opacity 0.5, between items (not after last)</text>
+      <text x="24" y="352" class="spec-mono">         x: 248 to ~700, 30px below desc baseline</text>
+
+      <text x="24" y="384" class="spec-mono" fill="#C83232">ITEM SPACING</text>
+      <text x="24" y="404" class="spec-mono">Title baseline to desc: 8px</text>
+      <text x="24" y="420" class="spec-mono">Desc last line to divider: 30px</text>
+      <text x="24" y="436" class="spec-mono">Divider to next item number: 32px</text>
+      <text x="24" y="452" class="spec-mono">Total per item: ~140px (3 items), ~120px (4 items), ~100px (5 items)</text>
+      <text x="24" y="468" class="spec-mono">Auto-scales spacing to fit 3-5 items in available height</text>
+
+      <rect x="650" y="32" width="600" height="120" rx="2" fill="rgba(200,50,50,0.03)" stroke="#C83232" stroke-width="0.3"/>
+      <text x="668" y="52" class="spec-mono" fill="#C83232">VALIDATION</text>
+      <text x="668" y="72" class="spec-mono">headline:     40 chars</text>
+      <text x="668" y="88" class="spec-mono">items[]:      3-5 items required</text>
+      <text x="668" y="104" class="spec-mono">item.title:   30 chars, max 4 words</text>
+      <text x="668" y="120" class="spec-mono">item.desc:    80 chars (optional)</text>
+      <text x="668" y="136" class="spec-mono">slideNumber:  5 chars</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- TEMPLATE: QUOTE                              -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 680)">
+    <text x="0" y="0" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="24" fill="#C83232" letter-spacing="-0.02em">Quote / Pull Quote</text>
+    <text x="0" y="22" class="spec-label">Authority builder. A single compelling quote with attribution. High credibility format.</text>
+
+    <g transform="translate(0, 44)">
+      <rect x="0" y="0" width="1300" height="440" rx="4" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+
+      <text x="24" y="32" class="spec-mono" fill="#C83232">LAYOUT</text>
+      <text x="24" y="52" class="spec-mono">Background: Paper (#F0EDEA) + ruled lines + margin line</text>
+      <text x="24" y="68" class="spec-mono">Content: vertically centered at optical center (~43%)</text>
+      <text x="24" y="84" class="spec-mono">Minimal elements: quotation mark + quote + rule + attribution</text>
+
+      <text x="24" y="116" class="spec-mono" fill="#C83232">DECORATIVE QUOTATION MARK</text>
+      <text x="24" y="136" class="spec-mono">Font: Newsreader 600, 120px</text>
+      <text x="24" y="152" class="spec-mono">Color: #C83232, opacity: 0.25</text>
+      <text x="24" y="168" class="spec-mono">Position: x: 164, baseline ~40px above quote text top</text>
+      <text x="24" y="184" class="spec-mono">Character: left double quotation mark (Unicode 201C or just ")</text>
+      <text x="24" y="200" class="spec-mono">This is decorative — sits behind/overlaps top of quote text slightly</text>
+
+      <text x="24" y="232" class="spec-mono" fill="#C83232">QUOTE TEXT (Newsreader italic 500, 32px)</text>
+      <text x="24" y="252" class="spec-mono">style: italic, weight: 500, size: 32px</text>
+      <text x="24" y="268" class="spec-mono">line-height: 1.45, color: #2A2A2A</text>
+      <text x="24" y="284" class="spec-mono">max-width: 740px, position: x: 176</text>
+      <rect x="24" y="292" width="300" height="18" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+      <text x="32" y="306" class="dim-text">LIMIT: 160 chars</text>
+
+      <text x="24" y="336" class="spec-mono" fill="#C83232">RED RULE SEPARATOR</text>
+      <text x="24" y="356" class="spec-mono">width: 48px, height: 2px, color: #C83232</text>
+      <text x="24" y="372" class="spec-mono">32px below quote text last baseline</text>
+
+      <text x="24" y="402" class="spec-mono" fill="#C83232">ATTRIBUTION</text>
+      <text x="24" y="422" class="spec-mono">Name:  JetBrains Mono 400, 16px, #D0CCC8. 32px below rule.</text>
+      <text x="24" y="438" class="spec-mono">Role:  JetBrains Mono 400, 13px, #D0CCC8 at 70% opacity. 8px below name.</text>
+
+      <rect x="650" y="32" width="600" height="100" rx="2" fill="rgba(200,50,50,0.03)" stroke="#C83232" stroke-width="0.3"/>
+      <text x="668" y="52" class="spec-mono" fill="#C83232">VALIDATION</text>
+      <text x="668" y="72" class="spec-mono">quoteText:    160 chars</text>
+      <text x="668" y="88" class="spec-mono">attribution:  40 chars</text>
+      <text x="668" y="104" class="spec-mono">role:         60 chars (optional)</text>
+      <text x="668" y="120" class="spec-mono">slideNumber:  5 chars</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- TEMPLATE: SECTION DIVIDER                    -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 1200)">
+    <text x="0" y="0" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="24" fill="#C83232" letter-spacing="-0.02em">Section Divider / Chapter Marker</text>
+    <text x="0" y="22" class="spec-label">Transition pause in longer carousels (8+ slides). Says "here's what's next." Minimal.</text>
+
+    <g transform="translate(0, 44)">
+      <rect x="0" y="0" width="1300" height="340" rx="4" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+
+      <text x="24" y="32" class="spec-mono" fill="#C83232">LAYOUT</text>
+      <text x="24" y="52" class="spec-mono">Background: Paper (#F0EDEA) + ruled lines + margin line</text>
+      <text x="24" y="68" class="spec-mono">Content: vertically centered at optical center</text>
+      <text x="24" y="84" class="spec-mono">Only 3 elements: part label, short rule, section title. That's it.</text>
+
+      <text x="24" y="116" class="spec-mono" fill="#C83232">PART LABEL (JetBrains Mono 400, 16px)</text>
+      <text x="24" y="136" class="spec-mono">tracking: 0.08em, color: #C83232</text>
+      <text x="24" y="152" class="spec-mono">Text like: "PART TWO" or "SECTION 03"</text>
+      <text x="24" y="168" class="spec-mono">Position: x: 176</text>
+      <rect x="24" y="176" width="300" height="18" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+      <text x="32" y="190" class="dim-text">LIMIT: 20 chars</text>
+
+      <text x="24" y="220" class="spec-mono" fill="#C83232">RED RULE</text>
+      <text x="24" y="240" class="spec-mono">width: 48px, height: 2px, color: #C83232</text>
+      <text x="24" y="256" class="spec-mono">16px below part label baseline</text>
+
+      <text x="24" y="288" class="spec-mono" fill="#C83232">SECTION TITLE (Inter Tight 700, 44px)</text>
+      <text x="24" y="308" class="spec-mono">tracking: -0.02em, color: #2A2A2A</text>
+      <text x="24" y="324" class="spec-mono">38px below rule, position: x: 176</text>
+      <rect x="24" y="332" width="300" height="18" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+      <text x="32" y="346" class="dim-text">LIMIT: 30 chars</text>
+
+      <rect x="650" y="32" width="600" height="80" rx="2" fill="rgba(200,50,50,0.03)" stroke="#C83232" stroke-width="0.3"/>
+      <text x="668" y="52" class="spec-mono" fill="#C83232">VALIDATION</text>
+      <text x="668" y="72" class="spec-mono">partLabel:     20 chars</text>
+      <text x="668" y="88" class="spec-mono">sectionTitle:  30 chars</text>
+      <text x="668" y="104" class="spec-mono">No slide number displayed (transition slide)</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- TEMPLATE: THREE-UP CALLOUT                   -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 1620)">
+    <text x="0" y="0" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="24" fill="#C83232" letter-spacing="-0.02em">Three-Up Callout</text>
+    <text x="0" y="22" class="spec-label">Three equal concepts in columns. Each has a visual marker (numbered circle), title, and body.</text>
+
+    <g transform="translate(0, 44)">
+      <rect x="0" y="0" width="1300" height="520" rx="4" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+
+      <text x="24" y="32" class="spec-mono" fill="#C83232">LAYOUT</text>
+      <text x="24" y="52" class="spec-mono">Background: Paper + ruled lines + margin line</text>
+      <text x="24" y="68" class="spec-mono">Headline at top (y: 180), columns start 80px below</text>
+      <text x="24" y="84" class="spec-mono">Content area: 176 to 1016 = 840px</text>
+
+      <text x="24" y="116" class="spec-mono" fill="#C83232">COLUMN MATH</text>
+      <text x="24" y="136" class="spec-mono">3 columns, 2 gutters of 36px each</text>
+      <text x="24" y="152" class="spec-mono">Column width: (840 - 72) / 3 = 256px</text>
+      <text x="24" y="168" class="spec-mono">Col 1: 176 - 432    Col 2: 468 - 724    Col 3: 760 - 1016</text>
+      <text x="24" y="184" class="spec-mono">Dividers: 0.5px, #D0CCC8, opacity 0.4, between columns</text>
+      <text x="24" y="200" class="spec-mono">Divider positions: x: 450, x: 742 (centered in gutter)</text>
+
+      <text x="24" y="232" class="spec-mono" fill="#C83232">NUMBERED CIRCLE MARKER</text>
+      <text x="24" y="252" class="spec-mono">Circle: r: 28px, stroke: 2px, fill: none</text>
+      <text x="24" y="268" class="spec-mono">First marker: stroke #C83232, number #C83232</text>
+      <text x="24" y="284" class="spec-mono">Other markers: stroke #2A2A2A, number #2A2A2A</text>
+      <text x="24" y="300" class="spec-mono">Number inside: JetBrains Mono 700, 22px, centered</text>
+      <text x="24" y="316" class="spec-mono">Circle position: top of column, left-aligned (cx: col_left + 28)</text>
+
+      <text x="24" y="348" class="spec-mono" fill="#C83232">COLUMN ITEM TITLE (Inter Tight 600, 22px)</text>
+      <text x="24" y="368" class="spec-mono">32px below circle bottom, left-aligned with column</text>
+      <text x="24" y="384" class="spec-mono">color: #2A2A2A, tracking: -0.01em</text>
+
+      <text x="24" y="416" class="spec-mono" fill="#C83232">COLUMN ITEM BODY (Newsreader 500, 18px)</text>
+      <text x="24" y="436" class="spec-mono">12px below title, color: #2A2A2A, line-height: 1.45</text>
+      <text x="24" y="452" class="spec-mono">Max: 4 lines, wraps within column width (256px)</text>
+
+      <rect x="650" y="32" width="600" height="120" rx="2" fill="rgba(200,50,50,0.03)" stroke="#C83232" stroke-width="0.3"/>
+      <text x="668" y="52" class="spec-mono" fill="#C83232">VALIDATION</text>
+      <text x="668" y="72" class="spec-mono">headline:     40 chars</text>
+      <text x="668" y="88" class="spec-mono">items[]:      exactly 3 items</text>
+      <text x="668" y="104" class="spec-mono">item.title:   20 chars</text>
+      <text x="668" y="120" class="spec-mono">item.body:    100 chars</text>
+      <text x="668" y="136" class="spec-mono">slideNumber:  5 chars</text>
+
+      <text x="24" y="484" class="spec-mono" fill="#C83232">DESIGN NOTE</text>
+      <text x="24" y="504" class="spec-mono">This replaces the "3 images + callouts" pattern. Numbered circles serve as visual anchors</text>
+      <text x="24" y="520" class="spec-mono">in a text-only system. The consistent circle size creates rhythm across the three columns.</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- TEMPLATE: TWO-UP CALLOUT                     -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 2220)">
+    <text x="0" y="0" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="24" fill="#C83232" letter-spacing="-0.02em">Two-Up Callout</text>
+    <text x="0" y="22" class="spec-label">Two concepts stacked vertically. More breathing room than three-up. Good for deeper explanation.</text>
+
+    <g transform="translate(0, 44)">
+      <rect x="0" y="0" width="1300" height="420" rx="4" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+
+      <text x="24" y="32" class="spec-mono" fill="#C83232">LAYOUT</text>
+      <text x="24" y="52" class="spec-mono">Background: Paper + ruled lines + margin line</text>
+      <text x="24" y="68" class="spec-mono">Headline at y: 180, items stacked below with divider between</text>
+
+      <text x="24" y="100" class="spec-mono" fill="#C83232">LARGE DECORATIVE NUMBER</text>
+      <text x="24" y="120" class="spec-mono">Font: JetBrains Mono 700, 52px, #C83232, opacity: 0.25</text>
+      <text x="24" y="136" class="spec-mono">Position: x: 176, acts as background visual anchor</text>
+      <text x="24" y="152" class="spec-mono">The low opacity makes it a texture element, not competing with title</text>
+
+      <text x="24" y="184" class="spec-mono" fill="#C83232">ITEM TITLE (Inter Tight 600, 26px)</text>
+      <text x="24" y="204" class="spec-mono">Position: x: 256 (80px right of number left edge)</text>
+      <text x="24" y="220" class="spec-mono">color: #2A2A2A, tracking: -0.01em</text>
+
+      <text x="24" y="252" class="spec-mono" fill="#C83232">ITEM BODY (Newsreader 500, 32px)</text>
+      <text x="24" y="272" class="spec-mono">Position: x: 256, max 3 lines, max-width: 700px</text>
+      <text x="24" y="288" class="spec-mono">color: #2A2A2A, line-height: 1.45</text>
+
+      <text x="24" y="320" class="spec-mono" fill="#C83232">DIVIDER BETWEEN ITEMS</text>
+      <text x="24" y="340" class="spec-mono">Rule Grey (#D0CCC8), 0.5px, opacity 0.5</text>
+      <text x="24" y="356" class="spec-mono">x: 256 to 900, centered vertically between items</text>
+
+      <text x="24" y="388" class="spec-mono" fill="#C83232">SPACING</text>
+      <text x="24" y="408" class="spec-mono">Headline to first item: 88px. Item height: ~180px. Divider gap: 40px each side.</text>
+
+      <rect x="650" y="32" width="600" height="100" rx="2" fill="rgba(200,50,50,0.03)" stroke="#C83232" stroke-width="0.3"/>
+      <text x="668" y="52" class="spec-mono" fill="#C83232">VALIDATION</text>
+      <text x="668" y="72" class="spec-mono">headline:     40 chars</text>
+      <text x="668" y="88" class="spec-mono">items[]:      exactly 2 items</text>
+      <text x="668" y="104" class="spec-mono">item.title:   35 chars</text>
+      <text x="668" y="120" class="spec-mono">item.body:    140 chars</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- TEMPLATE: CHECKLIST                          -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 2720)">
+    <text x="0" y="0" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="24" fill="#C83232" letter-spacing="-0.02em">Checklist / Do's and Don'ts</text>
+    <text x="0" y="22" class="spec-label">Two-column list with check marks (do) and X marks (don't). Extremely high engagement format.</text>
+
+    <g transform="translate(0, 44)">
+      <rect x="0" y="0" width="1300" height="440" rx="4" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+
+      <text x="24" y="32" class="spec-mono" fill="#C83232">LAYOUT</text>
+      <text x="24" y="52" class="spec-mono">Background: Paper + ruled lines + margin line</text>
+      <text x="24" y="68" class="spec-mono">Headline at y: 180. Two columns below.</text>
+      <text x="24" y="84" class="spec-mono">Content area: 176-1016 = 840px. Two cols: (840-32)/2 = 404px each, 32px gutter.</text>
+      <text x="24" y="100" class="spec-mono">Col 1 (Do): 176-580. Col 2 (Don't): 612-1016.</text>
+
+      <text x="24" y="132" class="spec-mono" fill="#C83232">COLUMN HEADERS</text>
+      <text x="24" y="152" class="spec-mono">Font: JetBrains Mono 700, 14px, tracking: 0.05em</text>
+      <text x="24" y="168" class="spec-mono">Do header: "DO THIS" in #C83232, underline in #C83232 1px</text>
+      <text x="24" y="184" class="spec-mono">Don't header: "NOT THIS" in #D0CCC8, underline in #D0CCC8 1px</text>
+
+      <text x="24" y="216" class="spec-mono" fill="#C83232">CHECK MARK (SVG path)</text>
+      <text x="24" y="236" class="spec-mono">Path: M4 10 L9 15 L20 4 (simple checkmark)</text>
+      <text x="24" y="252" class="spec-mono">Stroke: #C83232, 2.5px, round cap/join, no fill</text>
+      <text x="24" y="268" class="spec-mono">Bounding box: ~24x20px, vertically centered with first text line</text>
+
+      <text x="24" y="300" class="spec-mono" fill="#C83232">X MARK (SVG path)</text>
+      <text x="24" y="320" class="spec-mono">Path: M4 4 L18 18 M18 4 L4 18 (simple X)</text>
+      <text x="24" y="336" class="spec-mono">Stroke: #D0CCC8, 2.5px, round cap, no fill</text>
+
+      <text x="24" y="368" class="spec-mono" fill="#C83232">ITEM TEXT</text>
+      <text x="24" y="388" class="spec-mono">Do items: Newsreader 500, 32px, #2A2A2A</text>
+      <text x="24" y="404" class="spec-mono">Don't items: Newsreader 500, 32px, #D0CCC8 (muted = secondary)</text>
+      <text x="24" y="420" class="spec-mono">Text starts 36px right of mark. Max 2 lines per item.</text>
+      <text x="24" y="436" class="spec-mono">Item-to-item: 80px (generous for scanability)</text>
+
+      <rect x="650" y="32" width="600" height="120" rx="2" fill="rgba(200,50,50,0.03)" stroke="#C83232" stroke-width="0.3"/>
+      <text x="668" y="52" class="spec-mono" fill="#C83232">VALIDATION</text>
+      <text x="668" y="72" class="spec-mono">headline:       40 chars</text>
+      <text x="668" y="88" class="spec-mono">doItems[]:      3-5 items</text>
+      <text x="668" y="104" class="spec-mono">dontItems[]:    3-5 items</text>
+      <text x="668" y="120" class="spec-mono">item text:      60 chars each</text>
+      <text x="668" y="136" class="spec-mono">doItems.length should equal dontItems.length</text>
+    </g>
+  </g>
+</svg>

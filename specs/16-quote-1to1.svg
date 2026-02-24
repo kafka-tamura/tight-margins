@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- QUOTE / PULL QUOTE SLIDE — NEW TEMPLATE -->
+  <!-- Design intent: A powerful quote that lends authority. The oversized red -->
+  <!-- quotation mark acts as a visual anchor. The quote itself is in Newsreader -->
+  <!-- italic (the "voice" font), large enough to command the slide. -->
+  <!-- Attribution below in mono, small and structured. -->
+  <!-- Vertically centered at optical center. Minimal elements = maximum impact. -->
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="#F0EDEA"/>
+
+  <!-- Ruled lines -->
+  <g opacity="0.35">
+    <line x1="0" y1="64" x2="1080" y2="64" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="96" x2="1080" y2="96" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="128" x2="1080" y2="128" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="160" x2="1080" y2="160" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="192" x2="1080" y2="192" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="224" x2="1080" y2="224" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="256" x2="1080" y2="256" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="288" x2="1080" y2="288" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="320" x2="1080" y2="320" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="352" x2="1080" y2="352" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="384" x2="1080" y2="384" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="416" x2="1080" y2="416" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="448" x2="1080" y2="448" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="480" x2="1080" y2="480" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="512" x2="1080" y2="512" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="544" x2="1080" y2="544" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="576" x2="1080" y2="576" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="608" x2="1080" y2="608" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="640" x2="1080" y2="640" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="672" x2="1080" y2="672" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="704" x2="1080" y2="704" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="736" x2="1080" y2="736" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="768" x2="1080" y2="768" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="800" x2="1080" y2="800" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="832" x2="1080" y2="832" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="864" x2="1080" y2="864" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="896" x2="1080" y2="896" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="928" x2="1080" y2="928" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="960" x2="1080" y2="960" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="992" x2="1080" y2="992" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="1024" x2="1080" y2="1024" stroke="#D0CCC8" stroke-width="0.5"/>
+    <line x1="0" y1="1056" x2="1080" y2="1056" stroke="#D0CCC8" stroke-width="0.5"/>
+  </g>
+
+  <!-- Red margin line -->
+  <line x1="144" y1="0" x2="144" y2="1080" stroke="#C83232" stroke-width="2" opacity="0.7"/>
+
+  <!-- Slide number -->
+  <text x="64" y="80" font-family="'JetBrains Mono', monospace" font-weight="400" font-size="16" fill="#D0CCC8">05</text>
+
+  <!-- CONTENT CLUSTER — optically centered -->
+
+  <!-- Oversized quotation mark — decorative anchor -->
+  <!-- Sits at top of content cluster, left-aligned with content -->
+  <!-- Large enough to be a visual element, not just punctuation -->
+  <text x="164" y="400" font-family="'Newsreader', Georgia, serif" font-weight="600" font-size="120" fill="#C83232" opacity="0.25">"</text>
+
+  <!-- Quote text: Newsreader italic 500, 32px -->
+  <!-- Indented slightly right of the quote mark for visual alignment -->
+  <text font-family="'Newsreader', Georgia, serif" font-weight="500" font-style="italic" font-size="32" fill="#2A2A2A">
+    <tspan x="176" y="440">The best frameworks don't tell you</tspan>
+    <tspan x="176" dy="46">what to think. They tell you what</tspan>
+    <tspan x="176" dy="46">to look at.</tspan>
+  </text>
+
+  <!-- Red rule separator — 48px wide, thin -->
+  <rect x="176" y="564" width="48" height="2" fill="#C83232"/>
+
+  <!-- Attribution: JetBrains Mono 16px, Rule Grey -->
+  <text x="176" y="596" font-family="'JetBrains Mono', monospace" font-weight="400" font-size="16" fill="#D0CCC8">Charlie Munger</text>
+  <!-- Role/context: even smaller, optional -->
+  <text x="176" y="618" font-family="'JetBrains Mono', monospace" font-weight="400" font-size="13" fill="#D0CCC8" opacity="0.7">Vice Chairman, Berkshire Hathaway</text>
+</svg>

@@ -1,0 +1,432 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1600" viewBox="0 0 1400 1600">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+      .spec-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #999; }
+      .spec-subtitle { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 18px; fill: #2A2A2A; letter-spacing: -0.02em; }
+      .spec-mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #2A2A2A; }
+      .spec-mono-sm { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #999; }
+      .dim-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #C83232; }
+      .step-box { fill: rgba(208,204,200,0.15); stroke: #D0CCC8; stroke-width: 0.5; rx: 2; }
+      .step-box-locked { fill: rgba(200,50,50,0.06); stroke: #C83232; stroke-width: 0.5; rx: 2; }
+      .step-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #2A2A2A; }
+      .step-type { font-family: 'JetBrains Mono', monospace; font-size: 7px; fill: #999; }
+      .step-locked { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #C83232; }
+      .arrow { stroke: #D0CCC8; stroke-width: 1; fill: none; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="1600" fill="#FAFAF8"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1400" height="80" fill="#2A2A2A"/>
+  <text x="48" y="35" font-family="'Inter Tight', sans-serif" font-weight="900" font-size="22" fill="#F0EDEA" letter-spacing="-0.04em">TIGHT MARGINS</text>
+  <text x="48" y="58" font-family="'JetBrains Mono', monospace" font-size="11" fill="#D0CCC8">Design System Specification &#8212; 09 Sequencing Patterns &amp; Validation Constraints</text>
+  <line x1="48" y1="68" x2="480" y2="68" stroke="#C83232" stroke-width="2"/>
+
+  <!-- ============================================ -->
+  <!-- THE ARGUMENT                                 -->
+  <!-- ============================================ -->
+  <text x="48" y="128" class="spec-subtitle">Pattern 1: The Argument (8-10 slides)</text>
+  <text x="48" y="146" class="spec-label">For frameworks, mental models, or structured insights. The most common format.</text>
+
+  <!-- Flow diagram of steps -->
+  <g transform="translate(48, 168)">
+    <!-- Step 1: Cover (LOCKED) -->
+    <rect x="0" y="0" width="110" height="48" class="step-box-locked"/>
+    <text x="55" y="18" class="step-locked" text-anchor="middle">Cover</text>
+    <text x="55" y="32" class="step-type" text-anchor="middle">cover</text>
+    <text x="55" y="44" font-family="'JetBrains Mono', monospace" font-size="6" fill="#C83232" text-anchor="middle">LOCKED SLOT 1</text>
+
+    <line x1="114" y1="24" x2="124" y2="24" class="arrow" marker-end="url(#arrowGrey)"/>
+
+    <!-- Step 2: Setup -->
+    <rect x="128" y="0" width="110" height="48" class="step-box"/>
+    <text x="183" y="18" class="step-label" text-anchor="middle">Setup</text>
+    <text x="183" y="32" class="step-type" text-anchor="middle">single-concept</text>
+
+    <line x1="242" y1="24" x2="252" y2="24" class="arrow"/>
+
+    <!-- Step 3: Complication -->
+    <rect x="256" y="0" width="110" height="48" class="step-box"/>
+    <text x="311" y="18" class="step-label" text-anchor="middle">Complication</text>
+    <text x="311" y="32" class="step-type" text-anchor="middle">single-concept</text>
+
+    <line x1="370" y1="24" x2="380" y2="24" class="arrow"/>
+
+    <!-- Step 4: Model -->
+    <rect x="384" y="0" width="110" height="48" class="step-box"/>
+    <text x="439" y="18" class="step-label" text-anchor="middle">Model</text>
+    <text x="439" y="32" class="step-type" text-anchor="middle">framework</text>
+
+    <line x1="498" y1="24" x2="508" y2="24" class="arrow"/>
+
+    <!-- Step 5: Unpack 1 -->
+    <rect x="512" y="0" width="110" height="48" class="step-box"/>
+    <text x="567" y="18" class="step-label" text-anchor="middle">Unpack 1</text>
+    <text x="567" y="32" class="step-type" text-anchor="middle">single-concept</text>
+
+    <line x1="626" y1="24" x2="636" y2="24" class="arrow"/>
+
+    <!-- Step 6: Unpack 2 -->
+    <rect x="640" y="0" width="110" height="48" class="step-box"/>
+    <text x="695" y="18" class="step-label" text-anchor="middle">Unpack 2</text>
+    <text x="695" y="32" class="step-type" text-anchor="middle">single-concept</text>
+
+    <line x1="754" y1="24" x2="764" y2="24" class="arrow"/>
+
+    <!-- Step 7: Unpack 3 -->
+    <rect x="768" y="0" width="110" height="48" class="step-box"/>
+    <text x="823" y="18" class="step-label" text-anchor="middle">Unpack 3</text>
+    <text x="823" y="32" class="step-type" text-anchor="middle">comparison</text>
+
+    <line x1="882" y1="24" x2="892" y2="24" class="arrow"/>
+
+    <!-- Step 8: Payoff -->
+    <rect x="896" y="0" width="110" height="48" class="step-box"/>
+    <text x="951" y="18" class="step-label" text-anchor="middle">Payoff</text>
+    <text x="951" y="32" class="step-type" text-anchor="middle">punchline</text>
+
+    <line x1="1010" y1="24" x2="1020" y2="24" class="arrow"/>
+
+    <!-- Step 9: Proof -->
+    <rect x="1024" y="0" width="110" height="48" class="step-box"/>
+    <text x="1079" y="18" class="step-label" text-anchor="middle">Proof</text>
+    <text x="1079" y="32" class="step-type" text-anchor="middle">data</text>
+
+    <line x1="1138" y1="24" x2="1148" y2="24" class="arrow"/>
+
+    <!-- Step 10: Exit (LOCKED) -->
+    <rect x="1152" y="0" width="110" height="48" class="step-box-locked"/>
+    <text x="1207" y="18" class="step-locked" text-anchor="middle">Exit</text>
+    <text x="1207" y="32" class="step-type" text-anchor="middle">closing-cta</text>
+    <text x="1207" y="44" font-family="'JetBrains Mono', monospace" font-size="6" fill="#C83232" text-anchor="middle">LOCKED LAST</text>
+  </g>
+
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowGrey" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+      <polygon points="0 0, 6 2, 0 4" fill="#D0CCC8"/>
+    </marker>
+  </defs>
+
+  <!-- ============================================ -->
+  <!-- THE HOT TAKE                                 -->
+  <!-- ============================================ -->
+  <text x="48" y="290" class="spec-subtitle">Pattern 2: The Hot Take (6-8 slides)</text>
+  <text x="48" y="308" class="spec-label">A provocative claim or sharp observation. Shorter, punchier.</text>
+
+  <g transform="translate(48, 330)">
+    <rect x="0" y="0" width="110" height="48" class="step-box-locked"/>
+    <text x="55" y="18" class="step-locked" text-anchor="middle">Cover</text>
+    <text x="55" y="32" class="step-type" text-anchor="middle">cover</text>
+    <text x="55" y="44" font-family="'JetBrains Mono', monospace" font-size="6" fill="#C83232" text-anchor="middle">LOCKED SLOT 1</text>
+
+    <line x1="114" y1="24" x2="124" y2="24" class="arrow"/>
+
+    <rect x="128" y="0" width="110" height="48" class="step-box"/>
+    <text x="183" y="18" class="step-label" text-anchor="middle">Shock</text>
+    <text x="183" y="32" class="step-type" text-anchor="middle">data</text>
+
+    <line x1="242" y1="24" x2="252" y2="24" class="arrow"/>
+
+    <rect x="256" y="0" width="110" height="48" class="step-box"/>
+    <text x="311" y="18" class="step-label" text-anchor="middle">Context</text>
+    <text x="311" y="32" class="step-type" text-anchor="middle">single-concept</text>
+
+    <line x1="370" y1="24" x2="380" y2="24" class="arrow"/>
+
+    <rect x="384" y="0" width="110" height="48" class="step-box"/>
+    <text x="439" y="18" class="step-label" text-anchor="middle">Contrast</text>
+    <text x="439" y="32" class="step-type" text-anchor="middle">comparison</text>
+
+    <line x1="498" y1="24" x2="508" y2="24" class="arrow"/>
+
+    <rect x="512" y="0" width="110" height="48" class="step-box"/>
+    <text x="567" y="18" class="step-label" text-anchor="middle">Resolution</text>
+    <text x="567" y="32" class="step-type" text-anchor="middle">punchline</text>
+
+    <line x1="626" y1="24" x2="636" y2="24" class="arrow"/>
+
+    <rect x="640" y="0" width="110" height="48" class="step-box-locked"/>
+    <text x="695" y="18" class="step-locked" text-anchor="middle">Exit</text>
+    <text x="695" y="32" class="step-type" text-anchor="middle">closing-cta</text>
+    <text x="695" y="44" font-family="'JetBrains Mono', monospace" font-size="6" fill="#C83232" text-anchor="middle">LOCKED LAST</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- THE CASE STUDY                               -->
+  <!-- ============================================ -->
+  <text x="48" y="450" class="spec-subtitle">Pattern 3: The Case Study (8-12 slides)</text>
+  <text x="48" y="468" class="spec-label">Analyzing a real-world decision through the Tight Margins lens.</text>
+
+  <g transform="translate(48, 490)">
+    <rect x="0" y="0" width="110" height="48" class="step-box-locked"/>
+    <text x="55" y="18" class="step-locked" text-anchor="middle">Cover</text>
+    <text x="55" y="32" class="step-type" text-anchor="middle">cover</text>
+    <text x="55" y="44" font-family="'JetBrains Mono', monospace" font-size="6" fill="#C83232" text-anchor="middle">LOCKED SLOT 1</text>
+
+    <line x1="114" y1="24" x2="124" y2="24" class="arrow"/>
+
+    <rect x="128" y="0" width="110" height="48" class="step-box"/>
+    <text x="183" y="18" class="step-label" text-anchor="middle">Situation</text>
+    <text x="183" y="32" class="step-type" text-anchor="middle">single-concept</text>
+
+    <line x1="242" y1="24" x2="252" y2="24" class="arrow"/>
+
+    <rect x="256" y="0" width="110" height="48" class="step-box"/>
+    <text x="311" y="18" class="step-label" text-anchor="middle">Scale</text>
+    <text x="311" y="32" class="step-type" text-anchor="middle">data</text>
+
+    <line x1="370" y1="24" x2="380" y2="24" class="arrow"/>
+
+    <rect x="384" y="0" width="110" height="48" class="step-box"/>
+    <text x="439" y="18" class="step-label" text-anchor="middle">Constraint</text>
+    <text x="439" y="32" class="step-type" text-anchor="middle">single-concept</text>
+
+    <line x1="498" y1="24" x2="508" y2="24" class="arrow"/>
+
+    <rect x="512" y="0" width="110" height="48" class="step-box"/>
+    <text x="567" y="18" class="step-label" text-anchor="middle">Option A</text>
+    <text x="567" y="32" class="step-type" text-anchor="middle">single-concept</text>
+
+    <line x1="626" y1="24" x2="636" y2="24" class="arrow"/>
+
+    <rect x="640" y="0" width="110" height="48" class="step-box"/>
+    <text x="695" y="18" class="step-label" text-anchor="middle">The Options</text>
+    <text x="695" y="32" class="step-type" text-anchor="middle">comparison</text>
+
+    <line x1="754" y1="24" x2="764" y2="24" class="arrow"/>
+
+    <rect x="768" y="0" width="110" height="48" class="step-box"/>
+    <text x="823" y="18" class="step-label" text-anchor="middle">The Call</text>
+    <text x="823" y="32" class="step-type" text-anchor="middle">single-concept</text>
+
+    <line x1="882" y1="24" x2="892" y2="24" class="arrow"/>
+
+    <rect x="896" y="0" width="110" height="48" class="step-box"/>
+    <text x="951" y="18" class="step-label" text-anchor="middle">Outcome</text>
+    <text x="951" y="32" class="step-type" text-anchor="middle">punchline</text>
+
+    <line x1="1010" y1="24" x2="1020" y2="24" class="arrow"/>
+
+    <rect x="1024" y="0" width="110" height="48" class="step-box"/>
+    <text x="1079" y="18" class="step-label" text-anchor="middle">Lesson</text>
+    <text x="1079" y="32" class="step-type" text-anchor="middle">punchline</text>
+
+    <line x1="1138" y1="24" x2="1148" y2="24" class="arrow"/>
+
+    <rect x="1152" y="0" width="110" height="48" class="step-box-locked"/>
+    <text x="1207" y="18" class="step-locked" text-anchor="middle">Exit</text>
+    <text x="1207" y="32" class="step-type" text-anchor="middle">closing-cta</text>
+    <text x="1207" y="44" font-family="'JetBrains Mono', monospace" font-size="6" fill="#C83232" text-anchor="middle">LOCKED LAST</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- CUSTOM                                       -->
+  <!-- ============================================ -->
+  <text x="48" y="610" class="spec-subtitle">Pattern 4: Custom</text>
+  <text x="48" y="628" class="spec-label">User builds their own sequence. Starts with Cover + Single Concept + Closing CTA (3 slides).</text>
+
+  <g transform="translate(48, 650)">
+    <rect x="0" y="0" width="110" height="48" class="step-box-locked"/>
+    <text x="55" y="18" class="step-locked" text-anchor="middle">Cover</text>
+    <text x="55" y="32" class="step-type" text-anchor="middle">cover</text>
+    <text x="55" y="44" font-family="'JetBrains Mono', monospace" font-size="6" fill="#C83232" text-anchor="middle">LOCKED SLOT 1</text>
+
+    <line x1="114" y1="24" x2="124" y2="24" class="arrow"/>
+
+    <rect x="128" y="0" width="110" height="48" class="step-box"/>
+    <text x="183" y="18" class="step-label" text-anchor="middle">(any type)</text>
+    <text x="183" y="32" class="step-type" text-anchor="middle">single-concept</text>
+
+    <line x1="242" y1="24" x2="252" y2="24" class="arrow"/>
+
+    <rect x="256" y="0" width="140" height="48" fill="none" stroke="#D0CCC8" stroke-width="0.5" stroke-dasharray="4,3" rx="2"/>
+    <text x="326" y="18" class="step-label" text-anchor="middle">+ Add slides</text>
+    <text x="326" y="32" class="step-type" text-anchor="middle">6-12 total, any type</text>
+
+    <line x1="400" y1="24" x2="410" y2="24" class="arrow"/>
+
+    <rect x="414" y="0" width="110" height="48" class="step-box-locked"/>
+    <text x="469" y="18" class="step-locked" text-anchor="middle">Exit</text>
+    <text x="469" y="32" class="step-type" text-anchor="middle">closing-cta</text>
+    <text x="469" y="44" font-family="'JetBrains Mono', monospace" font-size="6" fill="#C83232" text-anchor="middle">LOCKED LAST</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- VALIDATION CONSTRAINTS TABLE                 -->
+  <!-- ============================================ -->
+  <text x="48" y="770" class="spec-subtitle">Validation Constraints (Character Limits)</text>
+  <text x="48" y="788" class="spec-label">All fields enforced via maxLength on input + VALIDATION map. No field may exceed its limit.</text>
+
+  <!-- Table header -->
+  <g transform="translate(48, 810)">
+    <rect x="0" y="0" width="1266" height="28" fill="#2A2A2A" rx="2"/>
+    <text x="16" y="18" font-family="'JetBrains Mono', monospace" font-size="10" fill="#F0EDEA">SLIDE TYPE</text>
+    <text x="200" y="18" font-family="'JetBrains Mono', monospace" font-size="10" fill="#F0EDEA">FIELD</text>
+    <text x="460" y="18" font-family="'JetBrains Mono', monospace" font-size="10" fill="#F0EDEA">MAX CHARS</text>
+    <text x="580" y="18" font-family="'JetBrains Mono', monospace" font-size="10" fill="#F0EDEA">WORD LIMIT</text>
+    <text x="720" y="18" font-family="'JetBrains Mono', monospace" font-size="10" fill="#F0EDEA">NOTES</text>
+
+    <!-- Cover -->
+    <rect x="0" y="32" width="1266" height="24" fill="rgba(200,50,50,0.03)"/>
+    <text x="16" y="48" class="spec-mono">cover</text>
+    <text x="200" y="48" class="spec-mono">title</text>
+    <text x="460" y="48" class="spec-mono" fill="#C83232">50</text>
+    <text x="580" y="48" class="spec-mono">-</text>
+    <text x="720" y="48" class="spec-mono-sm">Provocative hook</text>
+
+    <rect x="0" y="56" width="1266" height="24" fill="white"/>
+    <text x="200" y="72" class="spec-mono">subtitle</text>
+    <text x="460" y="72" class="spec-mono" fill="#C83232">80</text>
+    <text x="580" y="72" class="spec-mono">-</text>
+    <text x="720" y="72" class="spec-mono-sm">Brief teaser</text>
+
+    <!-- Single Concept -->
+    <rect x="0" y="80" width="1266" height="24" fill="rgba(200,50,50,0.03)"/>
+    <text x="16" y="96" class="spec-mono">single-concept</text>
+    <text x="200" y="96" class="spec-mono">headline</text>
+    <text x="460" y="96" class="spec-mono" fill="#C83232">50</text>
+    <text x="580" y="96" class="spec-mono" fill="#C83232">8 words</text>
+    <text x="720" y="96" class="spec-mono-sm">One idea only</text>
+
+    <rect x="0" y="104" width="1266" height="24" fill="white"/>
+    <text x="200" y="120" class="spec-mono">body</text>
+    <text x="460" y="120" class="spec-mono" fill="#C83232">200</text>
+    <text x="580" y="120" class="spec-mono" fill="#C83232">3 lines</text>
+    <text x="720" y="120" class="spec-mono-sm">Max 3 visual lines</text>
+
+    <rect x="0" y="128" width="1266" height="24" fill="rgba(200,50,50,0.03)"/>
+    <text x="200" y="144" class="spec-mono">emphasisWords</text>
+    <text x="460" y="144" class="spec-mono" fill="#C83232">30</text>
+    <text x="580" y="144" class="spec-mono" fill="#C83232">3 words</text>
+    <text x="720" y="144" class="spec-mono-sm">Comma-separated, get red underline</text>
+
+    <rect x="0" y="152" width="1266" height="24" fill="white"/>
+    <text x="200" y="168" class="spec-mono">slideNumber</text>
+    <text x="460" y="168" class="spec-mono" fill="#C83232">5</text>
+    <text x="580" y="168" class="spec-mono">-</text>
+    <text x="720" y="168" class="spec-mono-sm">e.g., "02" - sits in left margin</text>
+
+    <!-- Comparison -->
+    <rect x="0" y="176" width="1266" height="24" fill="rgba(200,50,50,0.03)"/>
+    <text x="16" y="192" class="spec-mono">comparison</text>
+    <text x="200" y="192" class="spec-mono">leftHeader / rightHeader</text>
+    <text x="460" y="192" class="spec-mono" fill="#C83232">25 each</text>
+    <text x="580" y="192" class="spec-mono">-</text>
+    <text x="720" y="192" class="spec-mono-sm">Short labels</text>
+
+    <rect x="0" y="200" width="1266" height="24" fill="white"/>
+    <text x="200" y="216" class="spec-mono">leftBody / rightBody</text>
+    <text x="460" y="216" class="spec-mono" fill="#C83232">150 each</text>
+    <text x="580" y="216" class="spec-mono">-</text>
+    <text x="720" y="216" class="spec-mono-sm">Left=#2A2A2A, Right=#C83232</text>
+
+    <rect x="0" y="224" width="1266" height="24" fill="rgba(200,50,50,0.03)"/>
+    <text x="200" y="240" class="spec-mono">vsMarker</text>
+    <text x="460" y="240" class="spec-mono" fill="#C83232">10</text>
+    <text x="580" y="240" class="spec-mono">-</text>
+    <text x="720" y="240" class="spec-mono-sm">Default "VS"</text>
+
+    <!-- Framework -->
+    <rect x="0" y="248" width="1266" height="24" fill="white"/>
+    <text x="16" y="264" class="spec-mono">framework</text>
+    <text x="200" y="264" class="spec-mono">title</text>
+    <text x="460" y="264" class="spec-mono" fill="#C83232">40</text>
+    <text x="580" y="264" class="spec-mono">-</text>
+    <text x="720" y="264" class="spec-mono-sm">Framework name</text>
+
+    <rect x="0" y="272" width="1266" height="24" fill="rgba(200,50,50,0.03)"/>
+    <text x="200" y="288" class="spec-mono">labels[]</text>
+    <text x="460" y="288" class="spec-mono" fill="#C83232">20 each</text>
+    <text x="580" y="288" class="spec-mono" fill="#C83232">2-8 items</text>
+    <text x="720" y="288" class="spec-mono-sm">Diagram node labels</text>
+
+    <rect x="0" y="296" width="1266" height="24" fill="white"/>
+    <text x="200" y="312" class="spec-mono">caption</text>
+    <text x="460" y="312" class="spec-mono" fill="#C83232">100</text>
+    <text x="580" y="312" class="spec-mono">-</text>
+    <text x="720" y="312" class="spec-mono-sm">Below diagram</text>
+
+    <!-- Punchline -->
+    <rect x="0" y="320" width="1266" height="24" fill="rgba(200,50,50,0.03)"/>
+    <text x="16" y="336" class="spec-mono">punchline</text>
+    <text x="200" y="336" class="spec-mono">text</text>
+    <text x="460" y="336" class="spec-mono" fill="#C83232">80</text>
+    <text x="580" y="336" class="spec-mono" fill="#C83232">12 words</text>
+    <text x="720" y="336" class="spec-mono-sm">The big statement</text>
+
+    <rect x="0" y="344" width="1266" height="24" fill="white"/>
+    <text x="200" y="360" class="spec-mono">emphasisWord</text>
+    <text x="460" y="360" class="spec-mono" fill="#C83232">15</text>
+    <text x="580" y="360" class="spec-mono" fill="#C83232">1 word</text>
+    <text x="720" y="360" class="spec-mono-sm">Turns red (color only, not underline)</text>
+
+    <!-- Data -->
+    <rect x="0" y="368" width="1266" height="24" fill="rgba(200,50,50,0.03)"/>
+    <text x="16" y="384" class="spec-mono">data</text>
+    <text x="200" y="384" class="spec-mono">dataPoint</text>
+    <text x="460" y="384" class="spec-mono" fill="#C83232">20</text>
+    <text x="580" y="384" class="spec-mono">-</text>
+    <text x="720" y="384" class="spec-mono-sm">The hero number: "73%" or "$4.2B"</text>
+
+    <rect x="0" y="392" width="1266" height="24" fill="white"/>
+    <text x="200" y="408" class="spec-mono">context</text>
+    <text x="460" y="408" class="spec-mono" fill="#C83232">120</text>
+    <text x="580" y="408" class="spec-mono">-</text>
+    <text x="720" y="408" class="spec-mono-sm">Why this number matters</text>
+
+    <rect x="0" y="416" width="1266" height="24" fill="rgba(200,50,50,0.03)"/>
+    <text x="200" y="432" class="spec-mono">source</text>
+    <text x="460" y="432" class="spec-mono" fill="#C83232">60</text>
+    <text x="580" y="432" class="spec-mono">-</text>
+    <text x="720" y="432" class="spec-mono-sm">Optional attribution, italic Rule Grey</text>
+
+    <!-- Closing CTA -->
+    <rect x="0" y="440" width="1266" height="24" fill="white"/>
+    <text x="16" y="456" class="spec-mono">closing-cta</text>
+    <text x="200" y="456" class="spec-mono">ctaText</text>
+    <text x="460" y="456" class="spec-mono" fill="#C83232">40</text>
+    <text x="580" y="456" class="spec-mono">-</text>
+    <text x="720" y="456" class="spec-mono-sm">Subscribe prompt</text>
+
+    <rect x="0" y="464" width="1266" height="24" fill="rgba(200,50,50,0.03)"/>
+    <text x="200" y="480" class="spec-mono">url</text>
+    <text x="460" y="480" class="spec-mono" fill="#C83232">60</text>
+    <text x="580" y="480" class="spec-mono">-</text>
+    <text x="720" y="480" class="spec-mono-sm">Optional, JetBrains Mono, Margin Red</text>
+
+    <rect x="0" y="488" width="1266" height="24" fill="white"/>
+    <text x="200" y="504" class="spec-mono">handle</text>
+    <text x="460" y="504" class="spec-mono" fill="#C83232">30</text>
+    <text x="580" y="504" class="spec-mono">-</text>
+    <text x="720" y="504" class="spec-mono-sm">Optional, JetBrains Mono, Rule Grey</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- STRUCTURAL CONSTRAINTS                       -->
+  <!-- ============================================ -->
+  <text x="48" y="1370" class="spec-subtitle">Structural Constraints (Enforced in Code)</text>
+
+  <g transform="translate(48, 1390)">
+    <rect x="0" y="0" width="1266" height="180" rx="4" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+
+    <text x="24" y="28" class="spec-mono" fill="#C83232">SLIDE COUNT</text>
+    <text x="200" y="28" class="spec-mono">Minimum 6, Maximum 12. addSlide() blocked at 12, removeSlide() blocked at 6.</text>
+
+    <text x="24" y="56" class="spec-mono" fill="#C83232">LOCKED POSITIONS</text>
+    <text x="200" y="56" class="spec-mono">Cover (index 0) cannot be moved, removed, or replaced.</text>
+    <text x="200" y="72" class="spec-mono">Closing CTA (last index) cannot be moved, removed, or replaced.</text>
+
+    <text x="24" y="100" class="spec-mono" fill="#C83232">MOVE CONSTRAINTS</text>
+    <text x="200" y="100" class="spec-mono">moveSlide() rejects fromIndex=0, fromIndex=last, toIndex=0, toIndex=last.</text>
+
+    <text x="24" y="128" class="spec-mono" fill="#C83232">ADD SLIDE TYPES</text>
+    <text x="200" y="128" class="spec-mono">Only these may be added: single-concept, comparison, framework, punchline, data.</text>
+    <text x="200" y="144" class="spec-mono">Cover and closing-cta cannot be added manually (only via pattern selection).</text>
+
+    <text x="24" y="172" class="spec-mono" fill="#C83232">INSERT POSITION</text>
+    <text x="200" y="172" class="spec-mono">New slides insert before the closing CTA (at slides.length - 1).</text>
+  </g>
+</svg>

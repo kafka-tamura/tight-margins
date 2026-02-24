@@ -1,0 +1,244 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="2200" viewBox="0 0 1400 2200">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+      .spec-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #999; }
+      .spec-subtitle { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 18px; fill: #2A2A2A; letter-spacing: -0.02em; }
+      .spec-mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #2A2A2A; }
+      .spec-mono-sm { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #999; }
+      .dim-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #C83232; }
+      .principle-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 48px; fill: #C83232; opacity: 0.2; }
+      .principle-title { font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 20px; fill: #2A2A2A; letter-spacing: -0.02em; }
+      .principle-body { font-family: 'Newsreader', Georgia, serif; font-size: 15px; fill: #2A2A2A; line-height: 1.5; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="2200" fill="#FAFAF8"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1400" height="80" fill="#2A2A2A"/>
+  <text x="48" y="35" font-family="'Inter Tight', sans-serif" font-weight="900" font-size="22" fill="#F0EDEA" letter-spacing="-0.04em">TIGHT MARGINS</text>
+  <text x="48" y="58" font-family="'JetBrains Mono', monospace" font-size="11" fill="#D0CCC8">Design System &#8212; 00 Aesthetic Principles &amp; Composition Rules</text>
+  <line x1="48" y1="68" x2="420" y2="68" stroke="#C83232" stroke-width="2"/>
+
+  <text x="48" y="130" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="28" fill="#2A2A2A" letter-spacing="-0.03em">The spec defines the grammar. These principles define the feel.</text>
+  <text x="48" y="158" class="principle-body">Every slide should look like it was designed by someone who cares about typography on ruled paper.</text>
+
+  <!-- ============================================ -->
+  <!-- PRINCIPLE 1: OPTICAL CENTER                  -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 200)">
+    <text x="0" y="44" class="principle-num">01</text>
+    <text x="60" y="30" class="principle-title">Optical Center, Not Mathematical Center</text>
+    <text x="60" y="52" class="principle-body">Content clusters sit at ~45% from top (not 50%). This is where the eye rests.</text>
+    <text x="60" y="72" class="principle-body">The bottom third of a slide should breathe more than the top third.</text>
+
+    <!-- Visual: two mini slides showing wrong vs right -->
+    <g transform="translate(60, 96)">
+      <!-- Wrong: math center -->
+      <rect width="160" height="160" fill="#F0EDEA" stroke="#D0CCC8" stroke-width="0.5"/>
+      <line x1="22" y1="0" x2="22" y2="160" stroke="#C83232" stroke-width="0.75" opacity="0.5"/>
+      <rect x="30" y="60" width="100" height="40" fill="rgba(42,42,42,0.08)" stroke="#2A2A2A" stroke-width="0.3" stroke-dasharray="2,2"/>
+      <line x1="0" y1="80" x2="160" y2="80" stroke="#C83232" stroke-width="0.3" stroke-dasharray="4,4" opacity="0.4"/>
+      <text x="80" y="176" class="spec-mono-sm" text-anchor="middle">y = 50%</text>
+      <text x="80" y="188" class="dim-text" text-anchor="middle">Feels bottom-heavy</text>
+
+      <!-- Right: optical center -->
+      <g transform="translate(220, 0)">
+        <rect width="160" height="160" fill="#F0EDEA" stroke="#D0CCC8" stroke-width="0.5"/>
+        <line x1="22" y1="0" x2="22" y2="160" stroke="#C83232" stroke-width="0.75" opacity="0.5"/>
+        <rect x="30" y="50" width="100" height="40" fill="rgba(42,42,42,0.08)" stroke="#2A2A2A" stroke-width="0.3" stroke-dasharray="2,2"/>
+        <line x1="0" y1="70" x2="160" y2="70" stroke="#C83232" stroke-width="0.3" stroke-dasharray="4,4" opacity="0.4"/>
+        <text x="80" y="176" class="spec-mono-sm" text-anchor="middle">y = 43%</text>
+        <text x="80" y="188" font-family="'JetBrains Mono', monospace" font-size="10" fill="#2A2A2A" text-anchor="middle">Feels balanced</text>
+      </g>
+    </g>
+
+    <g transform="translate(600, 96)">
+      <rect x="0" y="0" width="700" height="80" rx="2" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+      <text x="16" y="22" class="spec-mono" fill="#C83232">IMPLEMENTATION</text>
+      <text x="16" y="42" class="spec-mono">Content container: padding-top ~38-43% of slide height</text>
+      <text x="16" y="58" class="spec-mono">For centered layouts: use flex with slight top bias</text>
+      <text x="16" y="74" class="spec-mono">padding-top: 360-420px, padding-bottom: 64-120px</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- PRINCIPLE 2: CONTENT CLUSTERING              -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 520)">
+    <text x="0" y="44" class="principle-num">02</text>
+    <text x="60" y="30" class="principle-title">Tight Clusters, Generous Surrounds</text>
+    <text x="60" y="52" class="principle-body">Related elements (headline + body + emphasis) form a tight group with small internal spacing (16-24px).</text>
+    <text x="60" y="72" class="principle-body">The cluster as a whole floats in generous whitespace. The paper breathes around the thought.</text>
+
+    <g transform="translate(60, 96)">
+      <!-- Mini slide showing cluster -->
+      <rect width="200" height="200" fill="#F0EDEA" stroke="#D0CCC8" stroke-width="0.5"/>
+      <line x1="27" y1="0" x2="27" y2="200" stroke="#C83232" stroke-width="0.75" opacity="0.5"/>
+
+      <!-- Content cluster -->
+      <g transform="translate(36, 68)">
+        <rect x="0" y="0" width="140" height="68" fill="none" stroke="#C83232" stroke-width="0.3" stroke-dasharray="3,2" rx="1"/>
+        <rect x="4" y="4" width="90" height="10" fill="#2A2A2A" opacity="0.3" rx="1"/>
+        <rect x="4" y="20" width="130" height="6" fill="#2A2A2A" opacity="0.12" rx="1"/>
+        <rect x="4" y="30" width="110" height="6" fill="#2A2A2A" opacity="0.12" rx="1"/>
+        <rect x="4" y="40" width="120" height="6" fill="#2A2A2A" opacity="0.12" rx="1"/>
+        <rect x="4" y="54" width="40" height="6" fill="#C83232" opacity="0.2" rx="1"/>
+      </g>
+
+      <!-- Spacing annotations -->
+      <text x="100" y="218" class="spec-mono-sm" text-anchor="middle">Cluster floats in space</text>
+    </g>
+
+    <g transform="translate(340, 96)">
+      <rect x="0" y="0" width="700" height="104" rx="2" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+      <text x="16" y="22" class="spec-mono" fill="#C83232">SPACING SCALE (within clusters)</text>
+      <text x="16" y="42" class="spec-mono">Headline to body:      24px</text>
+      <text x="16" y="58" class="spec-mono">Body to emphasis/meta:  16px</text>
+      <text x="16" y="74" class="spec-mono">Section to section:     48px</text>
+      <text x="16" y="90" class="spec-mono">Cluster to slide edge:  64-120px minimum</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- PRINCIPLE 3: MARGIN LINE AS ANCHOR           -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 780)">
+    <text x="0" y="44" class="principle-num">03</text>
+    <text x="60" y="30" class="principle-title">The Margin Line Is a Design Anchor, Not a Fence</text>
+    <text x="60" y="52" class="principle-body">The red margin line at 144px creates a strong vertical rhythm. Content aligns to it, not away from it.</text>
+    <text x="60" y="72" class="principle-body">The left column (0-144px) is for metadata only: slide numbers, subtle markers. Never main content.</text>
+    <text x="60" y="92" class="principle-body">Content starts at 176px (32px right of margin line). This 32px gutter is sacred &#8212; never collapse it.</text>
+
+    <g transform="translate(60, 116)">
+      <rect x="0" y="0" width="700" height="60" rx="2" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+      <text x="16" y="22" class="spec-mono" fill="#C83232">MARGIN LINE OPACITY BY SLIDE TYPE</text>
+      <text x="16" y="42" class="spec-mono">Standard slides (Paper bg): opacity 0.7  |  Cover (Corridor): opacity 1.0  |  CTA (Dark bg): opacity 0.6</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- PRINCIPLE 4: RULED LINES AS TEXTURE          -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 970)">
+    <text x="0" y="44" class="principle-num">04</text>
+    <text x="60" y="30" class="principle-title">Ruled Lines Are Texture, Not Grid Lines</text>
+    <text x="60" y="52" class="principle-body">The horizontal ruled lines (every 32px) are subtle paper texture. They suggest a notebook, not a spreadsheet.</text>
+    <text x="60" y="72" class="principle-body">Text does NOT need to snap to ruled lines. They are decorative at 0.35 opacity, almost subliminal.</text>
+    <text x="60" y="92" class="principle-body">Consistent on all Paper-background slides. Never on dark backgrounds (Cover bands, CTA).</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- PRINCIPLE 5: TYPOGRAPHIC HIERARCHY           -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 1100)">
+    <text x="0" y="44" class="principle-num">05</text>
+    <text x="60" y="30" class="principle-title">Three Levels of Voice, Always Clear</text>
+    <text x="60" y="52" class="principle-body">Every slide has a clear primary, secondary, and (optional) tertiary element. Never ambiguous.</text>
+
+    <g transform="translate(60, 76)">
+      <rect x="0" y="0" width="1200" height="120" rx="2" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+
+      <text x="16" y="28" class="spec-mono" fill="#C83232">PRIMARY (commands attention)</text>
+      <text x="16" y="48" class="spec-mono">Inter Tight 700 at 68-72px, Ink Black. OR JetBrains Mono 700 at 108px, Margin Red (data slides).</text>
+
+      <text x="16" y="72" class="spec-mono" fill="#C83232">SECONDARY (explains)</text>
+      <text x="16" y="92" class="spec-mono">Newsreader 500 at 32px, Ink Black. Supports the primary. Never competes.</text>
+
+      <text x="16" y="112" class="spec-mono" fill="#C83232">TERTIARY (whispers)</text>
+      <text x="16" y="130" class="spec-mono">Newsreader 400 italic at 16px, Rule Grey. OR JetBrains Mono 400 at 14-16px, Rule Grey. Sources, numbers, metadata.</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- PRINCIPLE 6: COLOR RESTRAINT                 -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 1330)">
+    <text x="0" y="44" class="principle-num">06</text>
+    <text x="60" y="30" class="principle-title">Red Is a Scalpel, Not a Paintbrush</text>
+    <text x="60" y="52" class="principle-body">Margin Red (#C83232) appears in exactly three roles: the margin line, emphasis/accent marks, and data points.</text>
+    <text x="60" y="72" class="principle-body">If everything is red, nothing is. Each slide should have 1-2 red touches maximum beyond the margin line.</text>
+    <text x="60" y="92" class="principle-body">The rest is a conversation between Ink Black and Paper. The notebook feel comes from this restraint.</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- PRINCIPLE 7: SLIDE-TO-SLIDE RHYTHM           -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 1470)">
+    <text x="0" y="44" class="principle-num">07</text>
+    <text x="60" y="30" class="principle-title">Carousel Rhythm: Dense → Sparse → Dense → Punch</text>
+    <text x="60" y="52" class="principle-body">A good carousel alternates density. Two text-heavy slides followed by a punchline or data slide creates breathing room.</text>
+    <text x="60" y="72" class="principle-body">The patterns encode this rhythm. "The Argument" gradually builds density, then releases with a punchline.</text>
+
+    <g transform="translate(60, 100)">
+      <!-- Visual rhythm bar chart -->
+      <text x="0" y="0" class="spec-mono-sm">Visual density per slide position:</text>
+      <rect x="0" y="10" width="90" height="30" fill="#333333" rx="1"/>
+      <text x="45" y="30" font-family="'JetBrains Mono', monospace" font-size="7" fill="#F0EDEA" text-anchor="middle">Cover</text>
+
+      <rect x="96" y="10" width="90" height="50" fill="#2A2A2A" opacity="0.5" rx="1"/>
+      <text x="141" y="40" font-family="'JetBrains Mono', monospace" font-size="7" fill="white" text-anchor="middle">Setup</text>
+
+      <rect x="192" y="10" width="90" height="55" fill="#2A2A2A" opacity="0.55" rx="1"/>
+      <text x="237" y="42" font-family="'JetBrains Mono', monospace" font-size="7" fill="white" text-anchor="middle">Build</text>
+
+      <rect x="288" y="10" width="90" height="65" fill="#2A2A2A" opacity="0.65" rx="1"/>
+      <text x="333" y="48" font-family="'JetBrains Mono', monospace" font-size="7" fill="white" text-anchor="middle">Framework</text>
+
+      <rect x="384" y="10" width="90" height="50" fill="#2A2A2A" opacity="0.5" rx="1"/>
+      <text x="429" y="40" font-family="'JetBrains Mono', monospace" font-size="7" fill="white" text-anchor="middle">Unpack</text>
+
+      <rect x="480" y="10" width="90" height="50" fill="#2A2A2A" opacity="0.5" rx="1"/>
+      <text x="525" y="40" font-family="'JetBrains Mono', monospace" font-size="7" fill="white" text-anchor="middle">Unpack</text>
+
+      <rect x="576" y="10" width="90" height="20" fill="#C83232" opacity="0.3" rx="1"/>
+      <text x="621" y="26" font-family="'JetBrains Mono', monospace" font-size="7" fill="#C83232" text-anchor="middle">PUNCH</text>
+
+      <rect x="672" y="10" width="90" height="35" fill="#C83232" opacity="0.2" rx="1"/>
+      <text x="717" y="32" font-family="'JetBrains Mono', monospace" font-size="7" fill="#C83232" text-anchor="middle">Data</text>
+
+      <rect x="768" y="10" width="90" height="30" fill="#333333" rx="1"/>
+      <text x="813" y="30" font-family="'JetBrains Mono', monospace" font-size="7" fill="#F0EDEA" text-anchor="middle">CTA</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- PRINCIPLE 8: BALANCE THE ASYMMETRY           -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 1700)">
+    <text x="0" y="44" class="principle-num">08</text>
+    <text x="60" y="30" class="principle-title">The Left Margin Creates Asymmetry &#8212; Embrace It</text>
+    <text x="60" y="52" class="principle-body">The margin line + left metadata column means slides are inherently left-weighted. Don't fight this.</text>
+    <text x="60" y="72" class="principle-body">Content should fill rightward confidently. Use max-widths of 700-840px so text doesn't strand against the right edge.</text>
+    <text x="60" y="92" class="principle-body">The asymmetry is the brand. It says "notebook." A centered layout would kill the metaphor.</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- CANONICAL SPACING VALUES                     -->
+  <!-- ============================================ -->
+  <g transform="translate(48, 1860)">
+    <text x="0" y="0" class="spec-subtitle">Canonical Spacing Values (all slides)</text>
+
+    <rect x="0" y="18" width="1300" height="300" rx="4" fill="white" stroke="#D0CCC8" stroke-width="0.5"/>
+
+    <text x="24" y="46" class="spec-mono" fill="#C83232">HORIZONTAL</text>
+    <text x="24" y="66" class="spec-mono">Left margin column:    0-144px  (metadata zone, slide numbers)</text>
+    <text x="24" y="82" class="spec-mono">Margin line:           144px    (2px wide, #C83232)</text>
+    <text x="24" y="98" class="spec-mono">Gutter after margin:   32px     (sacred, never collapse)</text>
+    <text x="24" y="114" class="spec-mono">Content left edge:     176px    (144 + 32)</text>
+    <text x="24" y="130" class="spec-mono">Content right edge:    1016px   (1080 - 64)</text>
+    <text x="24" y="146" class="spec-mono">Content max-width:     840px    (1016 - 176)</text>
+
+    <text x="24" y="178" class="spec-mono" fill="#C83232">VERTICAL (optically centered content)</text>
+    <text x="24" y="198" class="spec-mono">Optical center target: ~43% from top = ~464px on 1080 canvas</text>
+    <text x="24" y="214" class="spec-mono">Content cluster top:   360-420px (varies by content height)</text>
+    <text x="24" y="230" class="spec-mono">Bottom breathing room: 120px minimum below last content element</text>
+    <text x="24" y="246" class="spec-mono">For top-heavy slides (lists, comparison): content top at 140-180px</text>
+
+    <text x="24" y="278" class="spec-mono" fill="#C83232">INTERNAL CLUSTER SPACING</text>
+    <text x="24" y="298" class="spec-mono">Tight:  8-12px  (label to its value, related micro-elements)</text>
+    <text x="24" y="314" class="spec-mono">Normal: 16-24px (headline to body, item to item in a list)</text>
+    <text x="24" y="330" class="spec-mono">Wide:   32-48px (section to section, cluster to metadata)</text>
+  </g>
+</svg>

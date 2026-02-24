@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+      .spec-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #999; }
+      .spec-subtitle { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 18px; fill: #2A2A2A; letter-spacing: -0.02em; }
+      .spec-mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #2A2A2A; }
+      .spec-mono-sm { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #999; }
+      .dim-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #C83232; }
+      .dim-solid { stroke: #C83232; stroke-width: 0.75; }
+      .callout-line { stroke: #C83232; stroke-width: 0.5; }
+      .callout-dot { fill: #C83232; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="900" fill="#FAFAF8"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1400" height="80" fill="#2A2A2A"/>
+  <text x="48" y="35" font-family="'Inter Tight', sans-serif" font-weight="900" font-size="22" fill="#F0EDEA" letter-spacing="-0.04em">TIGHT MARGINS</text>
+  <text x="48" y="58" font-family="'JetBrains Mono', monospace" font-size="11" fill="#D0CCC8">Design System Specification &#8212; 03 Single Concept Slide</text>
+  <line x1="48" y1="68" x2="380" y2="68" stroke="#C83232" stroke-width="2"/>
+
+  <!-- Slide at 60% scale (648x648) -->
+  <g transform="translate(48, 120)">
+    <!-- Background -->
+    <rect width="648" height="648" fill="#F0EDEA" stroke="#D0CCC8" stroke-width="0.5"/>
+
+    <!-- Ruled lines (32px interval at 60% = 19.2px) -->
+    <g opacity="0.35">
+      <line x1="0" y1="38.4" x2="648" y2="38.4" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="57.6" x2="648" y2="57.6" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="76.8" x2="648" y2="76.8" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="96" x2="648" y2="96" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="115.2" x2="648" y2="115.2" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="134.4" x2="648" y2="134.4" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="153.6" x2="648" y2="153.6" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="172.8" x2="648" y2="172.8" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="192" x2="648" y2="192" stroke="#D0CCC8" stroke-width="0.3"/>
+    </g>
+
+    <!-- Red margin line at 144px (= 86.4px at 60%) -->
+    <line x1="86.4" y1="0" x2="86.4" y2="648" stroke="#C83232" stroke-width="1.2" opacity="0.7"/>
+
+    <!-- Slide number in left column -->
+    <text x="38.4" y="48" font-family="'JetBrains Mono', monospace" font-size="10" fill="#D0CCC8">02</text>
+
+    <!-- Content area starts at 176px (= 105.6 at 60%) -->
+    <!-- Headline -->
+    <text x="105.6" y="190" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="40.8" fill="#2A2A2A" letter-spacing="-0.02em">One Big Idea Here</text>
+
+    <!-- Body text with emphasis -->
+    <text x="105.6" y="242" font-family="'Newsreader', serif" font-weight="500" font-size="19.2" fill="#2A2A2A">Body text goes here. Keep it to three lines</text>
+    <text x="105.6" y="269" font-family="'Newsreader', serif" font-weight="500" font-size="19.2" fill="#2A2A2A">maximum. The key insight is that</text>
+    <text x="105.6" y="296" font-family="'Newsreader', serif" font-weight="500" font-size="19.2" fill="#2A2A2A"><tspan font-weight="700" fill="#2A2A2A">emphasis words</tspan> get red underline.</text>
+    <!-- Red underline under emphasis -->
+    <line x1="105.6" y1="299" x2="198" y2="299" stroke="#C83232" stroke-width="1.2"/>
+
+    <!-- Annotation overlays -->
+    <!-- Headline zone -->
+    <rect x="105.6" y="158" width="456" height="42" fill="none" stroke="#C83232" stroke-width="0.5" stroke-dasharray="3,2" rx="1"/>
+    <!-- Body zone -->
+    <rect x="105.6" y="224" width="390" height="90" fill="none" stroke="#C83232" stroke-width="0.5" stroke-dasharray="3,2" rx="1"/>
+  </g>
+
+  <!-- Dimension callouts -->
+  <g transform="translate(48, 120)">
+    <!-- Margin line callout -->
+    <line x1="86.4" y1="-12" x2="86.4" y2="-4" class="dim-solid"/>
+    <text x="86.4" y="-16" class="dim-text" text-anchor="middle">144px</text>
+
+    <!-- Content start callout -->
+    <line x1="105.6" y1="-12" x2="105.6" y2="-4" class="dim-solid"/>
+    <text x="105.6" y="-16" class="dim-text" text-anchor="middle">176px</text>
+
+    <!-- Slide number callout -->
+    <line x1="38.4" y1="48" x2="-15" y2="60" class="callout-line"/>
+    <circle cx="38.4" cy="48" r="2" class="callout-dot"/>
+    <text x="-18" y="56" class="dim-text" text-anchor="end">x:64</text>
+    <text x="-18" y="68" class="dim-text" text-anchor="end">y:80</text>
+  </g>
+
+  <!-- Spec details on right side -->
+  <g transform="translate(740, 120)">
+    <text x="0" y="0" class="spec-subtitle">Single Concept Slide</text>
+    <text x="0" y="18" class="spec-label">The workhorse. One idea, stated cleanly.</text>
+
+    <text x="0" y="50" class="spec-mono" fill="#C83232">BACKGROUND</text>
+    <text x="0" y="68" class="spec-mono">#F0EDEA (Paper) + RuledLines + MarginLine</text>
+
+    <text x="0" y="100" class="spec-mono" fill="#C83232">SLIDE NUMBER</text>
+    <text x="0" y="118" class="spec-mono">Font: JetBrains Mono 16px</text>
+    <text x="0" y="134" class="spec-mono">Color: #D0CCC8 (Rule Grey)</text>
+    <text x="0" y="150" class="spec-mono">Position: left: 64px, top: 80px</text>
+    <text x="0" y="166" class="spec-mono">Sits in left margin column</text>
+
+    <text x="0" y="198" class="spec-mono" fill="#C83232">HEADLINE (Inter Tight)</text>
+    <text x="0" y="216" class="spec-mono">weight: 700, size: 68px</text>
+    <text x="0" y="232" class="spec-mono">line-height: 1.1, tracking: -0.02em</text>
+    <text x="0" y="248" class="spec-mono">color: #2A2A2A (Ink Black)</text>
+    <text x="0" y="264" class="spec-mono">max-width: 760px</text>
+    <text x="0" y="280" class="spec-mono">margin-bottom: 32px</text>
+    <rect x="0" y="288" width="400" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="302" class="dim-text">LIMIT: 50 chars, max 8 words</text>
+
+    <text x="0" y="328" class="spec-mono" fill="#C83232">BODY (Newsreader)</text>
+    <text x="0" y="346" class="spec-mono">weight: 500, size: 32px</text>
+    <text x="0" y="362" class="spec-mono">line-height: 1.4</text>
+    <text x="0" y="378" class="spec-mono">color: #2A2A2A (Ink Black)</text>
+    <text x="0" y="394" class="spec-mono">max-width: 650px</text>
+    <rect x="0" y="402" width="400" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="416" class="dim-text">LIMIT: 200 chars, max 3 lines</text>
+
+    <text x="0" y="448" class="spec-mono" fill="#C83232">EMPHASIS TREATMENT</text>
+    <text x="0" y="466" class="spec-mono">Comma-separated words get:</text>
+    <text x="0" y="482" class="spec-mono">  font-weight: 700</text>
+    <text x="0" y="498" class="spec-mono">  color: #2A2A2A (same as body)</text>
+    <text x="0" y="514" class="spec-mono">  + red underline (2px, #C83232)</text>
+    <text x="0" y="530" class="spec-mono">  underline offset: -2px from baseline</text>
+    <rect x="0" y="538" width="400" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="552" class="dim-text">LIMIT: 30 chars, max 3 comma-separated words</text>
+
+    <text x="0" y="584" class="spec-mono" fill="#C83232">LAYOUT POSITIONING</text>
+    <text x="0" y="602" class="spec-mono">Content area: left: 176px, right: 64px</text>
+    <text x="0" y="618" class="spec-mono">Vertical: optical center (top: 43%, translateY: -43%)</text>
+    <text x="0" y="634" class="spec-mono">  → Cluster floats at ~43% of slide height</text>
+    <text x="0" y="650" class="spec-mono">  → Adapts to content height automatically</text>
+    <text x="0" y="666" class="spec-mono">  → Matches quote-slide, section-divider centering</text>
+    <text x="0" y="682" class="spec-mono">z-index: 20 (above ruled lines)</text>
+    <rect x="0" y="690" width="400" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="704" class="dim-text">METHOD: flex/transform optical center, NOT fixed top px</text>
+  </g>
+</svg>

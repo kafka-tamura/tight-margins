@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+      .spec-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #999; }
+      .spec-subtitle { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 18px; fill: #2A2A2A; letter-spacing: -0.02em; }
+      .spec-mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #2A2A2A; }
+      .spec-mono-sm { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #999; }
+      .dim-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #C83232; }
+      .dim-solid { stroke: #C83232; stroke-width: 0.75; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="800" fill="#FAFAF8"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1400" height="80" fill="#2A2A2A"/>
+  <text x="48" y="35" font-family="'Inter Tight', sans-serif" font-weight="900" font-size="22" fill="#F0EDEA" letter-spacing="-0.04em">TIGHT MARGINS</text>
+  <text x="48" y="58" font-family="'JetBrains Mono', monospace" font-size="11" fill="#D0CCC8">Design System Specification &#8212; 06 Punchline Slide</text>
+  <line x1="48" y1="68" x2="360" y2="68" stroke="#C83232" stroke-width="2"/>
+
+  <!-- Slide at 60% (648x648) -->
+  <g transform="translate(48, 110)">
+    <rect width="648" height="648" fill="#F0EDEA" stroke="#D0CCC8" stroke-width="0.5"/>
+
+    <!-- Ruled lines -->
+    <g opacity="0.35">
+      <line x1="0" y1="38.4" x2="648" y2="38.4" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="57.6" x2="648" y2="57.6" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="76.8" x2="648" y2="76.8" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="96" x2="648" y2="96" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="115.2" x2="648" y2="115.2" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="288" x2="648" y2="288" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="307.2" x2="648" y2="307.2" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="326.4" x2="648" y2="326.4" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="345.6" x2="648" y2="345.6" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="364.8" x2="648" y2="364.8" stroke="#D0CCC8" stroke-width="0.3"/>
+    </g>
+
+    <!-- Red margin line -->
+    <line x1="86.4" y1="0" x2="86.4" y2="648" stroke="#C83232" stroke-width="1.2" opacity="0.7"/>
+
+    <!-- Punchline text - vertically centered -->
+    <text x="105.6" y="300" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="34" fill="#2A2A2A" letter-spacing="-0.02em">The emptiness IS the</text>
+    <text x="105.6" y="340" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="34" fill="#2A2A2A" letter-spacing="-0.02em"><tspan fill="#C83232">emphasis</tspan>.</text>
+
+    <!-- Content area zone -->
+    <rect x="105.6" y="260" width="504" height="100" fill="none" stroke="#C83232" stroke-width="0.4" stroke-dasharray="3,2" rx="1"/>
+
+    <!-- "Emptiness" annotation arrows pointing to whitespace -->
+    <g opacity="0.4">
+      <text x="324" y="180" font-family="'JetBrains Mono', monospace" font-size="8" fill="#C83232" text-anchor="middle">vast white space</text>
+      <text x="324" y="192" font-family="'JetBrains Mono', monospace" font-size="8" fill="#C83232" text-anchor="middle">is intentional</text>
+      <line x1="324" y1="196" x2="324" y2="252" stroke="#C83232" stroke-width="0.3" stroke-dasharray="2,3"/>
+    </g>
+  </g>
+
+  <!-- Spec notes -->
+  <g transform="translate(740, 110)">
+    <text x="0" y="0" class="spec-subtitle">Punchline Slide</text>
+    <text x="0" y="18" class="spec-label">The sentence the entire carousel was building toward. Mostly empty space.</text>
+
+    <text x="0" y="50" class="spec-mono" fill="#C83232">BACKGROUND</text>
+    <text x="0" y="68" class="spec-mono">#F0EDEA (Paper) + RuledLines + MarginLine</text>
+
+    <text x="0" y="100" class="spec-mono" fill="#C83232">LAYOUT</text>
+    <text x="0" y="118" class="spec-mono">Content area: left: 176px</text>
+    <text x="0" y="134" class="spec-mono">Content area: right: 64px</text>
+    <text x="0" y="150" class="spec-mono">Content area: top: 0, bottom: 0</text>
+    <text x="0" y="166" class="spec-mono">Vertically centered (flex, align: center)</text>
+    <text x="0" y="182" class="spec-mono">z-index: 20</text>
+
+    <text x="0" y="218" class="spec-mono" fill="#C83232">PUNCHLINE TEXT (Inter Tight)</text>
+    <text x="0" y="236" class="spec-mono">weight: 700</text>
+    <text x="0" y="252" class="spec-mono">size: 56px</text>
+    <text x="0" y="268" class="spec-mono">line-height: 1.1</text>
+    <text x="0" y="284" class="spec-mono">tracking: -0.02em</text>
+    <text x="0" y="300" class="spec-mono">color: #2A2A2A (Ink Black)</text>
+    <text x="0" y="316" class="spec-mono">max-width: 700px</text>
+    <rect x="0" y="326" width="450" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="340" class="dim-text">LIMIT: 80 chars, max 12 words</text>
+
+    <text x="0" y="376" class="spec-mono" fill="#C83232">EMPHASIS WORD</text>
+    <text x="0" y="394" class="spec-mono">One word rendered in Margin Red (#C83232)</text>
+    <text x="0" y="410" class="spec-mono">Same font-weight and size as surrounding text</text>
+    <text x="0" y="426" class="spec-mono">Only color changes (no underline, no bold diff)</text>
+    <text x="0" y="442" class="spec-mono">Matched case-insensitively via regex split</text>
+    <rect x="0" y="452" width="450" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="466" class="dim-text">LIMIT: 15 chars, exactly 1 word</text>
+
+    <text x="0" y="504" class="spec-mono" fill="#C83232">DESIGN PRINCIPLE</text>
+    <text x="0" y="522" class="spec-mono">The punchline slide is MOSTLY EMPTY.</text>
+    <text x="0" y="538" class="spec-mono">The whitespace is the emphasis.</text>
+    <text x="0" y="554" class="spec-mono">No subtitle, no caption, no metadata.</text>
+    <text x="0" y="570" class="spec-mono">Just one sentence against ruled paper.</text>
+
+    <text x="0" y="608" class="spec-mono" fill="#C83232">COMPARISON: EMPHASIS TREATMENT</text>
+    <text x="0" y="626" class="spec-mono">Single Concept: bold + red underline</text>
+    <text x="0" y="642" class="spec-mono">Punchline:      color change only (red text)</text>
+  </g>
+</svg>

@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+      .spec-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #999; }
+      .spec-subtitle { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 18px; fill: #2A2A2A; letter-spacing: -0.02em; }
+      .spec-mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #2A2A2A; }
+      .spec-mono-sm { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #999; }
+      .dim-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #C83232; }
+      .dim-solid { stroke: #C83232; stroke-width: 0.75; }
+      .callout-line { stroke: #C83232; stroke-width: 0.5; }
+      .callout-dot { fill: #C83232; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="900" fill="#FAFAF8"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1400" height="80" fill="#2A2A2A"/>
+  <text x="48" y="35" font-family="'Inter Tight', sans-serif" font-weight="900" font-size="22" fill="#F0EDEA" letter-spacing="-0.04em">TIGHT MARGINS</text>
+  <text x="48" y="58" font-family="'JetBrains Mono', monospace" font-size="11" fill="#D0CCC8">Design System Specification &#8212; 25 Blank Slide</text>
+  <line x1="48" y1="68" x2="340" y2="68" stroke="#C83232" stroke-width="2"/>
+
+  <!-- Slide at 60% scale (648x648) -->
+  <g transform="translate(48, 110)">
+    <!-- Background -->
+    <rect width="648" height="648" fill="#F0EDEA" stroke="#D0CCC8" stroke-width="0.5"/>
+
+    <!-- Ruled lines (32px interval at 60% = 19.2px) -->
+    <g opacity="0.35">
+      <line x1="0" y1="38.4" x2="648" y2="38.4" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="57.6" x2="648" y2="57.6" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="76.8" x2="648" y2="76.8" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="96" x2="648" y2="96" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="115.2" x2="648" y2="115.2" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="134.4" x2="648" y2="134.4" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="518.4" x2="648" y2="518.4" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="537.6" x2="648" y2="537.6" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="556.8" x2="648" y2="556.8" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="576" x2="648" y2="576" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="595.2" x2="648" y2="595.2" stroke="#D0CCC8" stroke-width="0.3"/>
+      <line x1="0" y1="614.4" x2="648" y2="614.4" stroke="#D0CCC8" stroke-width="0.3"/>
+    </g>
+
+    <!-- Red margin line at 144px (= 86.4px at 60%) -->
+    <line x1="86.4" y1="0" x2="86.4" y2="648" stroke="#C83232" stroke-width="1.2" opacity="0.7"/>
+
+    <!-- Slide number in left column -->
+    <text x="38.4" y="48" font-family="'JetBrains Mono', monospace" font-size="10" fill="#D0CCC8">03</text>
+
+    <!-- Header at top — 180px (= 108 at 60%) -->
+    <text x="105.6" y="108" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="24" fill="#2A2A2A" letter-spacing="-0.02em">Let that sink in.</text>
+
+    <!-- Bottom callout at ~1000px (= 600 at 60%) -->
+    <text x="105.6" y="590" font-family="'Newsreader', Georgia, serif" font-style="italic" font-weight="400" font-size="10.8" fill="#D0CCC8">This is what most people get wrong.</text>
+
+    <!-- Annotation: header zone -->
+    <rect x="105.6" y="82" width="420" height="36" fill="none" stroke="#C83232" stroke-width="0.4" stroke-dasharray="3,2" rx="1"/>
+
+    <!-- Annotation: callout zone -->
+    <rect x="105.6" y="574" width="320" height="28" fill="none" stroke="#C83232" stroke-width="0.4" stroke-dasharray="3,2" rx="1"/>
+
+    <!-- "Whitespace" annotation arrow pointing to vast middle -->
+    <g opacity="0.4">
+      <text x="324" y="310" font-family="'JetBrains Mono', monospace" font-size="8" fill="#C83232" text-anchor="middle">vast intentional</text>
+      <text x="324" y="322" font-family="'JetBrains Mono', monospace" font-size="8" fill="#C83232" text-anchor="middle">whitespace</text>
+      <text x="324" y="334" font-family="'JetBrains Mono', monospace" font-size="8" fill="#C83232" text-anchor="middle">~600px breathing</text>
+      <line x1="324" y1="260" x2="324" y2="296" stroke="#C83232" stroke-width="0.3" stroke-dasharray="2,3"/>
+      <line x1="324" y1="342" x2="324" y2="380" stroke="#C83232" stroke-width="0.3" stroke-dasharray="2,3"/>
+    </g>
+  </g>
+
+  <!-- Dimension callouts -->
+  <g transform="translate(48, 110)">
+    <!-- Content start callout -->
+    <line x1="105.6" y1="-12" x2="105.6" y2="-4" class="dim-solid"/>
+    <text x="105.6" y="-16" class="dim-text" text-anchor="middle">176px</text>
+
+    <!-- Header y callout on left -->
+    <line x1="-12" y1="108" x2="-4" y2="108" class="dim-solid"/>
+    <text x="-18" y="112" class="dim-text" text-anchor="end">y:180</text>
+
+    <!-- Bottom callout y callout on left -->
+    <line x1="-12" y1="590" x2="-4" y2="590" class="dim-solid"/>
+    <text x="-18" y="594" class="dim-text" text-anchor="end">y:1000</text>
+  </g>
+
+  <!-- Spec notes on right side -->
+  <g transform="translate(740, 110)">
+    <text x="0" y="0" class="spec-subtitle">Blank Slide</text>
+    <text x="0" y="18" class="spec-label">The pause. Header at top, callout at bottom, vast whitespace between.</text>
+    <text x="0" y="34" class="spec-label">Use before a data point, after a build-up, or to create carousel rhythm.</text>
+
+    <text x="0" y="66" class="spec-mono" fill="#C83232">BACKGROUND</text>
+    <text x="0" y="84" class="spec-mono">#F0EDEA (Paper) + RuledLines + MarginLine</text>
+
+    <text x="0" y="116" class="spec-mono" fill="#C83232">SLIDE NUMBER</text>
+    <text x="0" y="134" class="spec-mono">Font: JetBrains Mono 16px</text>
+    <text x="0" y="150" class="spec-mono">Color: #D0CCC8 (Rule Grey)</text>
+    <text x="0" y="166" class="spec-mono">Position: left: 64px, top: 80px</text>
+    <text x="0" y="182" class="spec-mono">Sits in left margin column</text>
+
+    <text x="0" y="214" class="spec-mono" fill="#C83232">HEADER (Inter Tight)</text>
+    <text x="0" y="232" class="spec-mono">weight: 700, size: 40px</text>
+    <text x="0" y="248" class="spec-mono">line-height: 1.15, tracking: -0.02em</text>
+    <text x="0" y="264" class="spec-mono">color: #2A2A2A (Ink Black)</text>
+    <text x="0" y="280" class="spec-mono">max-width: 760px</text>
+    <text x="0" y="296" class="spec-mono">Position: x: 176px, y: 180px (top-anchored)</text>
+    <text x="0" y="312" class="spec-mono">NOT optically centered &#8212; deliberately high</text>
+    <rect x="0" y="320" width="400" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="334" class="dim-text">LIMIT: 60 chars, max 10 words</text>
+
+    <text x="0" y="366" class="spec-mono" fill="#C83232">BOTTOM CALLOUT (Newsreader italic)</text>
+    <text x="0" y="384" class="spec-mono">weight: 400, style: italic, size: 18px</text>
+    <text x="0" y="400" class="spec-mono">line-height: 1.4, color: #D0CCC8 (Rule Grey)</text>
+    <text x="0" y="416" class="spec-mono">max-width: 500px, max 2 lines</text>
+    <text x="0" y="432" class="spec-mono">Position: x: 176px, bottom: 80px from slide edge</text>
+    <text x="0" y="448" class="spec-mono">This is the &quot;whisper&quot; level &#8212; barely there</text>
+    <rect x="0" y="456" width="400" height="20" rx="1" fill="rgba(200,50,50,0.04)" stroke="#C83232" stroke-width="0.3"/>
+    <text x="8" y="470" class="dim-text">LIMIT: 120 chars (optional &#8212; can be empty)</text>
+
+    <text x="0" y="506" class="spec-mono" fill="#C83232">DESIGN PRINCIPLE</text>
+    <text x="0" y="524" class="spec-mono">The blank slide is MOSTLY EMPTY by design.</text>
+    <text x="0" y="540" class="spec-mono">Header anchors the eye at top. Callout grounds at bottom.</text>
+    <text x="0" y="556" class="spec-mono">~600px of vertical whitespace between them is the point.</text>
+    <text x="0" y="572" class="spec-mono">The paper breathes. The ruled lines are visible texture.</text>
+    <text x="0" y="588" class="spec-mono">Use to create rhythmic contrast: dense &rarr; blank &rarr; dense.</text>
+
+    <text x="0" y="624" class="spec-mono" fill="#C83232">COMPARISON TO PUNCHLINE</text>
+    <text x="0" y="642" class="spec-mono">Punchline: one centered statement, no metadata</text>
+    <text x="0" y="658" class="spec-mono">Blank: top/bottom framing, structural whitespace</text>
+    <text x="0" y="674" class="spec-mono">Punchline is a climax. Blank is a breath.</text>
+  </g>
+</svg>

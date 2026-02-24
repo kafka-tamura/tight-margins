@@ -185,8 +185,15 @@ const TEMPLATES = {
         placeholder: "4 Communication Styles",
       },
       {
+        key: "diagram_type",
+        label: "Diagram Type",
+        type: "select",
+        options: ["flow", "quadrant", "cycle", "hierarchy"],
+        placeholder: "",
+      },
+      {
         key: "labels",
-        label: "Labels (comma-separated, max 8)",
+        label: "Labels (max 8)",
         max: 200,
         placeholder: "Messenger, Filter, Diffuser, Prism",
       },
@@ -253,6 +260,80 @@ const TEMPLATES = {
       },
     ],
   },
+  numbered_list: {
+    name: "Numbered List",
+    fields: [
+      { key: "headline", label: "Headline", max: 40, placeholder: "Three signs it's working" },
+      { key: "item1_title", label: "Item 1 title", max: 30, placeholder: "People steal your language" },
+      { key: "item1_body", label: "Item 1 description", max: 80, placeholder: "When someone outside your team uses your exact framing without prompting.", multiline: true },
+      { key: "item2_title", label: "Item 2 title", max: 30, placeholder: "Decisions speed up" },
+      { key: "item2_body", label: "Item 2 description", max: 80, placeholder: "The model answers questions before you have to.", multiline: true },
+      { key: "item3_title", label: "Item 3 title", max: 30, placeholder: "Exceptions prove the rule" },
+      { key: "item3_body", label: "Item 3 description", max: 80, placeholder: "Edge cases feel obvious instead of destabilising.", multiline: true },
+      { key: "item4_title", label: "Item 4 title (optional)", max: 30, placeholder: "" },
+      { key: "item4_body", label: "Item 4 description (optional)", max: 80, placeholder: "", multiline: true },
+      { key: "item5_title", label: "Item 5 title (optional)", max: 30, placeholder: "" },
+      { key: "item5_body", label: "Item 5 description (optional)", max: 80, placeholder: "", multiline: true },
+    ],
+  },
+  quote: {
+    name: "Quote",
+    fields: [
+      { key: "quote_text", label: "Quote", max: 160, placeholder: "The best frameworks don't tell you what to think. They tell you what to look at.", multiline: true },
+      { key: "attribution", label: "Attribution", max: 40, placeholder: "Charlie Munger" },
+      { key: "role", label: "Role / source (optional)", max: 60, placeholder: "Vice Chairman, Berkshire Hathaway" },
+    ],
+  },
+  section_divider: {
+    name: "Section Divider",
+    fields: [
+      { key: "part_label", label: "Part label", max: 20, placeholder: "PART TWO" },
+      { key: "section_title", label: "Section title", max: 30, placeholder: "The Solution" },
+    ],
+  },
+  two_up: {
+    name: "Two-Up Callout",
+    fields: [
+      { key: "headline", label: "Headline", max: 40, placeholder: "Two things we got wrong" },
+      { key: "item1_title", label: "Item 1 title", max: 35, placeholder: "We optimised for speed" },
+      { key: "item1_body", label: "Item 1 body", max: 140, placeholder: "Speed is addictive. We shipped fast and assumed the market would reward us. It didn't.", multiline: true },
+      { key: "item2_title", label: "Item 2 title", max: 35, placeholder: "We hired for skill, not fit" },
+      { key: "item2_body", label: "Item 2 body", max: 140, placeholder: "Brilliant people in the wrong context become blockers, not builders.", multiline: true },
+    ],
+  },
+  three_up: {
+    name: "Three-Up Callout",
+    fields: [
+      { key: "headline", label: "Headline", max: 40, placeholder: "The three pillars" },
+      { key: "item1_title", label: "Item 1 title", max: 20, placeholder: "Clarity" },
+      { key: "item1_body", label: "Item 1 body", max: 100, placeholder: "Everyone knows what the decision is and why it was made.", multiline: true },
+      { key: "item2_title", label: "Item 2 title", max: 20, placeholder: "Constraint" },
+      { key: "item2_body", label: "Item 2 body", max: 100, placeholder: "The edges are defined. You know what's out of scope.", multiline: true },
+      { key: "item3_title", label: "Item 3 title", max: 20, placeholder: "Rhythm" },
+      { key: "item3_body", label: "Item 3 body", max: 100, placeholder: "Progress is visible. Feedback loops are short.", multiline: true },
+    ],
+  },
+  checklist: {
+    name: "Checklist",
+    fields: [
+      { key: "headline", label: "Headline", max: 40, placeholder: "Building frameworks" },
+      { key: "do1", label: "Do #1", max: 60, placeholder: "Start with the decision it needs to support" },
+      { key: "do2", label: "Do #2", max: 60, placeholder: "Test with real edge cases early" },
+      { key: "do3", label: "Do #3", max: 60, placeholder: "Kill your darlings if they don't earn a slot" },
+      { key: "do4", label: "Do #4 (optional)", max: 60, placeholder: "" },
+      { key: "dont1", label: "Don't #1", max: 60, placeholder: "Design for theoretical completeness" },
+      { key: "dont2", label: "Don't #2", max: 60, placeholder: "Add axes to look rigorous" },
+      { key: "dont3", label: "Don't #3", max: 60, placeholder: "Name it before you've validated it" },
+      { key: "dont4", label: "Don't #4 (optional)", max: 60, placeholder: "" },
+    ],
+  },
+  blank: {
+    name: "Blank",
+    fields: [
+      { key: "header", label: "Header (top)", max: 60, placeholder: "Let that sink in." },
+      { key: "callout", label: "Callout (bottom, optional)", max: 120, placeholder: "This is what most people get wrong about building in public.", multiline: true },
+    ],
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -261,15 +342,15 @@ const TEMPLATES = {
 const SEQUENCES = {
   argument: {
     name: "The Argument",
-    desc: "8–10 slides. Frameworks, mental models, structured insights.",
+    desc: "10 slides. Frameworks, mental models, structured insights.",
     slides: [
       { template: "cover", locked: true, note: "Hook — provocative title" },
-      { template: "single", note: "Setup — establish context" },
-      { template: "single", note: "Complication — introduce problem" },
+      { template: "single", note: "Setup — establish the context" },
+      { template: "single", note: "Complication — introduce the problem" },
       { template: "framework", note: "Model — present the framework" },
-      { template: "single", note: "Unpack — component 1" },
-      { template: "single", note: "Unpack — component 2" },
-      { template: "single", note: "Unpack — component 3" },
+      { template: "numbered_list", note: "Breakdown — key components" },
+      { template: "comparison", note: "Contrast — the old vs new way" },
+      { template: "quote", note: "Validate — expert backing" },
       { template: "punchline", note: "Payoff — the key insight" },
       { template: "data", note: "Proof — validating data" },
       { template: "cta", locked: true, note: "Exit — subscribe" },
@@ -277,28 +358,62 @@ const SEQUENCES = {
   },
   hottake: {
     name: "The Hot Take",
-    desc: "6–8 slides. Provocative claim, sharp observation.",
+    desc: "7 slides. Provocative claim, sharp observation.",
     slides: [
       { template: "cover", locked: true, note: "Hook — bold claim" },
       { template: "data", note: "Shock — the credible number" },
       { template: "single", note: "Context — why it matters" },
-      { template: "comparison", note: "Contrast — wisdom vs reality" },
+      { template: "checklist", note: "Reality check — do vs don't" },
       { template: "punchline", note: "Resolution — the real insight" },
+      { template: "quote", note: "Close — a voice that agrees" },
       { template: "cta", locked: true, note: "Exit — subscribe" },
     ],
   },
   casestudy: {
     name: "The Case Study",
-    desc: "8–12 slides. Real-world decision analysis.",
+    desc: "10 slides. Real-world decision analysis.",
     slides: [
       { template: "cover", locked: true, note: "Hook — the decision" },
       { template: "single", note: "Situation — what was at stake" },
       { template: "data", note: "Scale — tangible stakes" },
-      { template: "single", note: "Constraint — the tight margin" },
-      { template: "comparison", note: "Options — choices & tradeoffs" },
+      { template: "section_divider", note: "Pivot — entering analysis" },
+      { template: "two_up", note: "Options — two choices compared" },
+      { template: "comparison", note: "Tradeoffs — side by side" },
       { template: "single", note: "Decision — what was chosen" },
       { template: "punchline", note: "Outcome — what happened" },
-      { template: "single", note: "Lesson — generalizable insight" },
+      { template: "quote", note: "Reflection — the lesson" },
+      { template: "cta", locked: true, note: "Exit — subscribe" },
+    ],
+  },
+  listicle: {
+    name: "The Listicle",
+    desc: "8 slides. Numbered insights, high scannability.",
+    slides: [
+      { template: "cover", locked: true, note: "Hook — the list promise" },
+      { template: "single", note: "Setup — why this list matters" },
+      { template: "numbered_list", note: "List part 1 — first items" },
+      { template: "numbered_list", note: "List part 2 — more items" },
+      { template: "three_up", note: "Summary — three takeaways" },
+      { template: "data", note: "Anchor — a proof point" },
+      { template: "punchline", note: "Close — the one-liner" },
+      { template: "cta", locked: true, note: "Exit — subscribe" },
+    ],
+  },
+  playbook: {
+    name: "The Playbook",
+    desc: "12 slides. Deep structured guide with sections.",
+    slides: [
+      { template: "cover", locked: true, note: "Hook — the playbook title" },
+      { template: "single", note: "Overview — what this covers" },
+      { template: "section_divider", note: "Part 1 — first section" },
+      { template: "numbered_list", note: "Steps — the process" },
+      { template: "two_up", note: "Key contrast — a critical choice" },
+      { template: "section_divider", note: "Part 2 — second section" },
+      { template: "checklist", note: "Standards — do vs don't" },
+      { template: "three_up", note: "Principles — three pillars" },
+      { template: "quote", note: "Authority — expert voice" },
+      { template: "data", note: "Results — proof it works" },
+      { template: "punchline", note: "Payoff — the closing insight" },
       { template: "cta", locked: true, note: "Exit — subscribe" },
     ],
   },
@@ -335,21 +450,28 @@ function drawMarginLine(ctx, x = C.marginLine, opacity = 0.7) {
 
 function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
   if (!text) return 0;
-  const words = text.split(" ");
-  let line = "";
+  const paragraphs = text.split("\n");
   const lines = [];
-  for (const word of words) {
-    const test = line + word + " ";
-    if (ctx.measureText(test).width > maxWidth && line !== "") {
-      lines.push(line.trim());
-      line = word + " ";
-    } else {
-      line = test;
+  for (const paragraph of paragraphs) {
+    if (paragraph.trim() === "") {
+      lines.push(""); // preserve blank lines as spacers
+      continue;
     }
+    const words = paragraph.split(" ");
+    let line = "";
+    for (const word of words) {
+      const test = line + word + " ";
+      if (ctx.measureText(test).width > maxWidth && line !== "") {
+        lines.push(line.trim());
+        line = word + " ";
+      } else {
+        line = test;
+      }
+    }
+    lines.push(line.trim());
   }
-  lines.push(line.trim());
   lines.forEach((l, i) => {
-    ctx.fillText(l, x, y + i * lineHeight);
+    if (l !== "") ctx.fillText(l, x, y + i * lineHeight);
   });
   return lines.length;
 }
@@ -371,19 +493,26 @@ function drawTextWithEmphasis(
   ) {
     return wrapText(ctx, text, x, y, maxWidth, lineHeight);
   }
-  const words = text.split(" ");
-  let line = "";
+  const paragraphs = text.split("\n");
   const lines = [];
-  for (const word of words) {
-    const test = line + word + " ";
-    if (ctx.measureText(test).width > maxWidth && line !== "") {
-      lines.push(line.trim());
-      line = word + " ";
-    } else {
-      line = test;
+  for (const paragraph of paragraphs) {
+    if (paragraph.trim() === "") {
+      lines.push(""); // preserve blank lines as spacers
+      continue;
     }
+    const words = paragraph.split(" ");
+    let line = "";
+    for (const word of words) {
+      const test = line + word + " ";
+      if (ctx.measureText(test).width > maxWidth && line !== "") {
+        lines.push(line.trim());
+        line = word + " ";
+      } else {
+        line = test;
+      }
+    }
+    lines.push(line.trim());
   }
-  lines.push(line.trim());
 
   const origFont = ctx.font;
   const origFill = ctx.fillStyle;
@@ -391,6 +520,7 @@ function drawTextWithEmphasis(
 
   lines.forEach((l, i) => {
     const ly = y + i * lineHeight;
+    if (l === "") return; // blank line spacer — skip rendering
     const lineWords = l.split(" ");
     const spW = ctx.measureText(" ").width;
     let cx = x;
@@ -439,6 +569,16 @@ const renderers = {
 
     const tx = C.coverBandL + 24;
     const maxW = C.coverChannelW - 48;
+
+    // Logo / brand mark at top of channel
+    ctx.save();
+    ctx.fillStyle = C.red;
+    ctx.fillRect(tx, 56, 32, 3);
+    ctx.fillStyle = C.callout;
+    ctx.font = "700 14px 'JetBrains Mono', monospace";
+    ctx.fillText("TIGHT MARGINS", tx, 84);
+    ctx.restore();
+
     ctx.fillStyle = C.ink;
     ctx.font = "700 72px 'Inter Tight', sans-serif";
     const titleLines = wrapText(
@@ -562,29 +702,272 @@ const renderers = {
       .map((s) => s.trim())
       .filter(Boolean)
       .slice(0, 8);
+    const type = data.diagram_type || "flow";
+    const contentW = C.contentEnd - C.contentStart;
+
+    // Helper: measure label width for auto-sizing boxes
+    const labelFont = "500 24px 'JetBrains Mono', monospace";
+
     if (labels.length > 0) {
-      const area = { x: C.contentStart + 20, y: 240, w: 720, h: 540 };
-      const cols = Math.min(labels.length, 4);
-      const rows = Math.ceil(labels.length / cols);
-      const boxW = (area.w - (cols - 1) * 24) / cols;
-      const boxH = Math.min((area.h - (rows - 1) * 24) / rows, 160);
-      labels.forEach((label, i) => {
-        const col = i % cols;
-        const row = Math.floor(i / cols);
-        const bx = area.x + col * (boxW + 24);
-        const by = area.y + row * (boxH + 24);
+      // Diagram area: below title, above caption
+      const areaTop = 230;
+      const areaBot = data.caption ? C.slide - 120 : C.slide - 80;
+      const areaH = areaBot - areaTop;
+      const cx = C.contentStart + contentW / 2;
+      const cy = areaTop + areaH / 2;
+
+      if (type === "flow") {
+        // Horizontal flow with wrapping to 2 rows if needed
+        ctx.font = labelFont;
+        const pad = 28; // horizontal padding inside box
+        const boxH = 64;
+        const arrowW = 36;
+
+        // Measure each box width based on text
+        const boxWidths = labels.map((l) => ctx.measureText(l).width + pad * 2);
+
+        // Try single row first
+        const totalSingleRow =
+          boxWidths.reduce((a, b) => a + b, 0) + (labels.length - 1) * arrowW;
+
+        if (totalSingleRow <= contentW) {
+          // Single row — fits
+          const startX = cx - totalSingleRow / 2;
+          let curX = startX;
+          labels.forEach((label, i) => {
+            const bw = boxWidths[i];
+            ctx.save();
+            ctx.strokeStyle = C.ink;
+            ctx.lineWidth = 2;
+            ctx.strokeRect(curX, cy - boxH / 2, bw, boxH);
+            ctx.fillStyle = C.ink;
+            ctx.font = labelFont;
+            ctx.textAlign = "center";
+            ctx.fillText(label, curX + bw / 2, cy + 8);
+            ctx.textAlign = "start";
+            ctx.restore();
+
+            if (i < labels.length - 1) {
+              const ax = curX + bw + 4;
+              ctx.save();
+              ctx.strokeStyle = C.ink;
+              ctx.lineWidth = 1.5;
+              ctx.beginPath();
+              ctx.moveTo(ax, cy);
+              ctx.lineTo(ax + arrowW - 8, cy);
+              ctx.stroke();
+              ctx.beginPath();
+              ctx.moveTo(ax + arrowW - 8, cy);
+              ctx.lineTo(ax + arrowW - 14, cy - 5);
+              ctx.lineTo(ax + arrowW - 14, cy + 5);
+              ctx.closePath();
+              ctx.fillStyle = C.ink;
+              ctx.fill();
+              ctx.restore();
+            }
+            curX += bw + arrowW;
+          });
+        } else {
+          // Two rows
+          const half = Math.ceil(labels.length / 2);
+          const rows = [labels.slice(0, half), labels.slice(half)];
+          const rowWidths = [boxWidths.slice(0, half), boxWidths.slice(half)];
+
+          rows.forEach((row, ri) => {
+            const rw = rowWidths[ri];
+            const totalW =
+              rw.reduce((a, b) => a + b, 0) + (row.length - 1) * arrowW;
+            const startX = cx - totalW / 2;
+            const rowY = cy - 50 + ri * (boxH + 40);
+            let curX = startX;
+            row.forEach((label, i) => {
+              const bw = rw[i];
+              ctx.save();
+              ctx.strokeStyle = C.ink;
+              ctx.lineWidth = 2;
+              ctx.strokeRect(curX, rowY, bw, boxH);
+              ctx.fillStyle = C.ink;
+              ctx.font = labelFont;
+              ctx.textAlign = "center";
+              ctx.fillText(label, curX + bw / 2, rowY + boxH / 2 + 8);
+              ctx.textAlign = "start";
+              ctx.restore();
+
+              if (i < row.length - 1) {
+                const ax = curX + bw + 4;
+                ctx.save();
+                ctx.strokeStyle = C.ink;
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(ax, rowY + boxH / 2);
+                ctx.lineTo(ax + arrowW - 8, rowY + boxH / 2);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(ax + arrowW - 8, rowY + boxH / 2);
+                ctx.lineTo(ax + arrowW - 14, rowY + boxH / 2 - 5);
+                ctx.lineTo(ax + arrowW - 14, rowY + boxH / 2 + 5);
+                ctx.closePath();
+                ctx.fillStyle = C.ink;
+                ctx.fill();
+                ctx.restore();
+              }
+              curX += bw + arrowW;
+            });
+          });
+        }
+      } else if (type === "quadrant") {
+        // 2×2 quadrant grid — labels in each quadrant
+        const qW = contentW * 0.78;
+        const qH = areaH * 0.82;
+        const qx = cx - qW / 2;
+        const qy = cy - qH / 2;
+
         ctx.save();
-        ctx.strokeStyle = i === 0 ? C.red : C.ink;
+        ctx.strokeStyle = C.ink;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(cx, qy);
+        ctx.lineTo(cx, qy + qH);
+        ctx.moveTo(qx, cy);
+        ctx.lineTo(qx + qW, cy);
+        ctx.stroke();
+        ctx.restore();
+
+        const positions = [
+          { x: qx + qW * 0.25, y: qy + qH * 0.3 },
+          { x: qx + qW * 0.75, y: qy + qH * 0.3 },
+          { x: qx + qW * 0.25, y: qy + qH * 0.7 },
+          { x: qx + qW * 0.75, y: qy + qH * 0.7 },
+        ];
+
+        labels.slice(0, 4).forEach((label, i) => {
+          ctx.save();
+          ctx.fillStyle = C.ink;
+          ctx.font = labelFont;
+          ctx.textAlign = "center";
+          ctx.fillText(label, positions[i].x, positions[i].y + 8);
+          ctx.textAlign = "start";
+          ctx.restore();
+        });
+      } else if (type === "cycle") {
+        // Circular arrangement with dashed ring
+        const n = labels.length;
+        const radius = Math.min(contentW, areaH) * 0.32;
+
+        // Measure max label to size nodes
+        ctx.font = labelFont;
+        const maxLabelW = Math.max(
+          ...labels.map((l) => ctx.measureText(l).width),
+        );
+        const nodeR = Math.max(36, maxLabelW / 2 + 16);
+
+        ctx.save();
+        ctx.strokeStyle = C.grey;
+        ctx.lineWidth = 1;
+        ctx.setLineDash([6, 4]);
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
+
+        labels.forEach((label, i) => {
+          const angle = -Math.PI / 2 + (i / n) * Math.PI * 2;
+          const nx = cx + Math.cos(angle) * radius;
+          const ny = cy + Math.sin(angle) * radius;
+
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(nx, ny, nodeR, 0, Math.PI * 2);
+          ctx.fillStyle = C.paper;
+          ctx.fill();
+          ctx.strokeStyle = C.ink;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          ctx.fillStyle = C.ink;
+          ctx.font = labelFont;
+          ctx.textAlign = "center";
+          ctx.fillText(label, nx, ny + 8);
+          ctx.textAlign = "start";
+          ctx.restore();
+        });
+      } else if (type === "hierarchy") {
+        // Tree: first label = root, rest = children
+        const root = labels[0];
+        const children = labels.slice(1);
+
+        ctx.font = labelFont;
+        const rootW = ctx.measureText(root).width + 56;
+        const boxH = 56;
+        const rootX = cx - rootW / 2;
+        const rootY = areaTop + 20;
+
+        // Root
+        ctx.save();
+        ctx.strokeStyle = C.red;
         ctx.lineWidth = 2;
-        ctx.strokeRect(bx, by, boxW, boxH);
-        ctx.fillStyle = i === 0 ? C.red : C.callout;
-        ctx.font = "400 26px 'JetBrains Mono', monospace";
+        ctx.strokeRect(rootX, rootY, rootW, boxH);
+        ctx.fillStyle = C.red;
+        ctx.font = labelFont;
         ctx.textAlign = "center";
-        ctx.fillText(label, bx + boxW / 2, by + boxH / 2 + 9);
+        ctx.fillText(root, cx, rootY + boxH / 2 + 8);
         ctx.textAlign = "start";
         ctx.restore();
-      });
+
+        if (children.length > 0) {
+          const childBoxWidths = children.map((c) => {
+            ctx.font = labelFont;
+            return ctx.measureText(c).width + 40;
+          });
+          const gap = 20;
+          const totalChildW =
+            childBoxWidths.reduce((a, b) => a + b, 0) +
+            (children.length - 1) * gap;
+          const childStartX = cx - totalChildW / 2;
+          const junctionY = rootY + boxH + 36;
+          const childY = junctionY + 36;
+
+          ctx.save();
+          ctx.strokeStyle = C.ink;
+          ctx.lineWidth = 1.5;
+
+          // Vertical line from root down to junction
+          ctx.beginPath();
+          ctx.moveTo(cx, rootY + boxH);
+          ctx.lineTo(cx, junctionY);
+          ctx.stroke();
+
+          let curX = childStartX;
+          children.forEach((child, i) => {
+            const bw = childBoxWidths[i];
+            const childCx = curX + bw / 2;
+
+            // Horizontal from junction to above child, then down
+            ctx.beginPath();
+            ctx.moveTo(cx, junctionY);
+            ctx.lineTo(childCx, junctionY);
+            ctx.lineTo(childCx, childY);
+            ctx.stroke();
+
+            // Child box
+            ctx.strokeStyle = C.ink;
+            ctx.lineWidth = 1.5;
+            ctx.strokeRect(curX, childY, bw, boxH);
+            ctx.fillStyle = C.ink;
+            ctx.font = labelFont;
+            ctx.textAlign = "center";
+            ctx.fillText(child, childCx, childY + boxH / 2 + 8);
+            ctx.textAlign = "start";
+            ctx.strokeStyle = C.ink;
+
+            curX += bw + gap;
+          });
+          ctx.restore();
+        }
+      }
     }
+
     if (data.caption) {
       ctx.fillStyle = C.callout;
       ctx.font = "500 24px 'Newsreader', Georgia, serif";
@@ -698,6 +1081,356 @@ const renderers = {
       ctx.fillText(data.handle, C.contentStart, 628);
     }
   },
+
+  numbered_list: (ctx, data, slideNum) => {
+    ctx.fillStyle = C.paper;
+    ctx.fillRect(0, 0, C.slide, C.slide);
+    drawRuledLines(ctx);
+    drawMarginLine(ctx);
+    if (slideNum) {
+      ctx.fillStyle = C.grey;
+      ctx.font = "400 20px 'JetBrains Mono', monospace";
+      ctx.fillText(String(slideNum).padStart(2, "0"), 64, 80);
+    }
+    ctx.fillStyle = C.ink;
+    ctx.font = "700 68px 'Inter Tight', sans-serif";
+    const hLines = wrapText(ctx, data.headline || "Your List", C.contentStart, 180, C.contentEnd - C.contentStart, 76);
+
+    const items = [];
+    for (let n = 1; n <= 5; n++) {
+      const t = data[`item${n}_title`];
+      if (t) items.push({ title: t, body: data[`item${n}_body`] || "" });
+    }
+    if (items.length === 0) return;
+
+    const numX = C.contentStart;
+    const textX = C.contentStart + 72;
+    const textW = C.contentEnd - textX;
+    const listStart = Math.max(180 + hLines * 76 + 34, 290);
+    const spacing = items.length <= 3 ? 140 : items.length === 4 ? 118 : 100;
+
+    items.forEach((item, i) => {
+      const baseY = listStart + i * spacing;
+      // Number
+      ctx.fillStyle = C.red;
+      ctx.font = "700 36px 'JetBrains Mono', monospace";
+      ctx.fillText(String(i + 1), numX, baseY + 28);
+      // Title
+      ctx.fillStyle = C.ink;
+      ctx.font = "600 24px 'Inter Tight', sans-serif";
+      ctx.fillText(item.title, textX, baseY + 20);
+      // Body
+      if (item.body) {
+        ctx.font = "400 20px 'Newsreader', Georgia, serif";
+        wrapText(ctx, item.body, textX, baseY + 48, textW, 28);
+      }
+      // Separator between items
+      if (i < items.length - 1) {
+        ctx.save();
+        ctx.strokeStyle = C.grey;
+        ctx.lineWidth = 0.5;
+        ctx.globalAlpha = 0.5;
+        ctx.beginPath();
+        ctx.moveTo(textX, baseY + spacing - 16);
+        ctx.lineTo(C.contentStart + 524, baseY + spacing - 16);
+        ctx.stroke();
+        ctx.restore();
+      }
+    });
+  },
+
+  quote: (ctx, data, slideNum) => {
+    ctx.fillStyle = C.paper;
+    ctx.fillRect(0, 0, C.slide, C.slide);
+    drawRuledLines(ctx);
+    drawMarginLine(ctx);
+    if (slideNum) {
+      ctx.fillStyle = C.grey;
+      ctx.font = "400 20px 'JetBrains Mono', monospace";
+      ctx.fillText(String(slideNum).padStart(2, "0"), 64, 80);
+    }
+    // Decorative opening quote mark
+    ctx.save();
+    ctx.fillStyle = C.red;
+    ctx.globalAlpha = 0.25;
+    ctx.font = "600 120px 'Newsreader', Georgia, serif";
+    ctx.fillText("\u201C", 164, 400);
+    ctx.restore();
+    // Quote text (italic)
+    ctx.fillStyle = C.ink;
+    ctx.font = "italic 500 32px 'Newsreader', Georgia, serif";
+    const qLines = wrapText(ctx, data.quote_text || "Your quote here.", C.contentStart, 440, 740, 46);
+    // Red rule
+    const ruleY = 440 + qLines * 46 + 20;
+    ctx.fillStyle = C.red;
+    ctx.fillRect(C.contentStart, ruleY, 48, 2);
+    // Attribution
+    if (data.attribution) {
+      ctx.fillStyle = C.grey;
+      ctx.font = "400 16px 'JetBrains Mono', monospace";
+      ctx.fillText(data.attribution, C.contentStart, ruleY + 32);
+      if (data.role) {
+        ctx.save();
+        ctx.globalAlpha = 0.7;
+        ctx.font = "400 13px 'JetBrains Mono', monospace";
+        ctx.fillText(data.role, C.contentStart, ruleY + 54);
+        ctx.restore();
+      }
+    }
+  },
+
+  section_divider: (ctx, data) => {
+    ctx.fillStyle = C.paper;
+    ctx.fillRect(0, 0, C.slide, C.slide);
+    drawRuledLines(ctx);
+    drawMarginLine(ctx);
+    // Part label with letter spacing
+    ctx.fillStyle = C.red;
+    ctx.font = "400 16px 'JetBrains Mono', monospace";
+    if ("letterSpacing" in ctx) ctx.letterSpacing = "1.3px";
+    ctx.fillText((data.part_label || "PART ONE").toUpperCase(), C.contentStart, 440);
+    if ("letterSpacing" in ctx) ctx.letterSpacing = "0px";
+    // Red rule
+    ctx.fillRect(C.contentStart, 456, 48, 2);
+    // Section title
+    ctx.fillStyle = C.ink;
+    ctx.font = "700 44px 'Inter Tight', sans-serif";
+    wrapText(ctx, data.section_title || "Section Title", C.contentStart, 510, C.contentEnd - C.contentStart, 52);
+  },
+
+  two_up: (ctx, data, slideNum) => {
+    ctx.fillStyle = C.paper;
+    ctx.fillRect(0, 0, C.slide, C.slide);
+    drawRuledLines(ctx);
+    drawMarginLine(ctx);
+    if (slideNum) {
+      ctx.fillStyle = C.grey;
+      ctx.font = "400 20px 'JetBrains Mono', monospace";
+      ctx.fillText(String(slideNum).padStart(2, "0"), 64, 80);
+    }
+    ctx.fillStyle = C.ink;
+    ctx.font = "700 68px 'Inter Tight', sans-serif";
+    const hLines = wrapText(ctx, data.headline || "Two things", C.contentStart, 180, C.contentEnd - C.contentStart, 76);
+
+    const item1Y = Math.max(180 + hLines * 76 + 12, 268);
+    const item2Y = item1Y + 272;
+    const dividerY = item1Y + 232;
+    const textX = C.contentStart + 80;
+    const textW = C.contentEnd - textX;
+
+    [[data.item1_title, data.item1_body, item1Y], [data.item2_title, data.item2_body, item2Y]].forEach(([title, body, y], i) => {
+      // Decorative number
+      ctx.save();
+      ctx.fillStyle = C.red;
+      ctx.globalAlpha = 0.25;
+      ctx.font = "700 52px 'JetBrains Mono', monospace";
+      ctx.fillText(String(i + 1), C.contentStart, y + 44);
+      ctx.restore();
+      // Title
+      ctx.fillStyle = C.ink;
+      ctx.font = "600 26px 'Inter Tight', sans-serif";
+      ctx.fillText(title || "", textX, y + 28);
+      // Body
+      if (body) {
+        ctx.font = "400 22px 'Newsreader', Georgia, serif";
+        wrapText(ctx, body, textX, y + 60, textW, 32);
+      }
+    });
+    // Divider between items
+    ctx.save();
+    ctx.strokeStyle = C.grey;
+    ctx.lineWidth = 0.5;
+    ctx.globalAlpha = 0.5;
+    ctx.beginPath();
+    ctx.moveTo(textX, dividerY);
+    ctx.lineTo(900, dividerY);
+    ctx.stroke();
+    ctx.restore();
+  },
+
+  three_up: (ctx, data, slideNum) => {
+    ctx.fillStyle = C.paper;
+    ctx.fillRect(0, 0, C.slide, C.slide);
+    drawRuledLines(ctx);
+    drawMarginLine(ctx);
+    if (slideNum) {
+      ctx.fillStyle = C.grey;
+      ctx.font = "400 20px 'JetBrains Mono', monospace";
+      ctx.fillText(String(slideNum).padStart(2, "0"), 64, 80);
+    }
+    ctx.fillStyle = C.ink;
+    ctx.font = "700 68px 'Inter Tight', sans-serif";
+    const hLines = wrapText(ctx, data.headline || "Three pillars", C.contentStart, 180, C.contentEnd - C.contentStart, 76);
+
+    const colW = 256;
+    const gutter = 36;
+    const cols = [C.contentStart, C.contentStart + colW + gutter, C.contentStart + (colW + gutter) * 2];
+    const itemsY = Math.max(180 + hLines * 76 + 34, 290);
+    const circleR = 28;
+
+    // Vertical dividers
+    [cols[1] - gutter / 2, cols[2] - gutter / 2].forEach((dx) => {
+      ctx.save();
+      ctx.strokeStyle = C.grey;
+      ctx.lineWidth = 0.5;
+      ctx.globalAlpha = 0.4;
+      ctx.beginPath();
+      ctx.moveTo(dx, itemsY);
+      ctx.lineTo(dx, C.slide - 64);
+      ctx.stroke();
+      ctx.restore();
+    });
+
+    cols.forEach((colX, i) => {
+      const title = data[`item${i + 1}_title`] || "";
+      const body = data[`item${i + 1}_body`] || "";
+      const cx = colX + circleR;
+      const cy = itemsY + circleR;
+      const color = i === 0 ? C.red : C.ink;
+      // Circle
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx, cy, circleR, 0, Math.PI * 2);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.fillStyle = color;
+      ctx.font = "700 22px 'JetBrains Mono', monospace";
+      ctx.textAlign = "center";
+      ctx.fillText(String(i + 1), cx, cy + 8);
+      ctx.textAlign = "start";
+      ctx.restore();
+      // Title
+      const titleY = itemsY + circleR * 2 + 28;
+      ctx.fillStyle = C.ink;
+      ctx.font = "600 22px 'Inter Tight', sans-serif";
+      ctx.fillText(title, colX, titleY);
+      // Body
+      ctx.font = "400 18px 'Newsreader', Georgia, serif";
+      wrapText(ctx, body, colX, titleY + 28, colW, 26);
+    });
+  },
+
+  checklist: (ctx, data, slideNum) => {
+    ctx.fillStyle = C.paper;
+    ctx.fillRect(0, 0, C.slide, C.slide);
+    drawRuledLines(ctx);
+    drawMarginLine(ctx);
+    if (slideNum) {
+      ctx.fillStyle = C.grey;
+      ctx.font = "400 20px 'JetBrains Mono', monospace";
+      ctx.fillText(String(slideNum).padStart(2, "0"), 64, 80);
+    }
+    ctx.fillStyle = C.ink;
+    ctx.font = "700 68px 'Inter Tight', sans-serif";
+    wrapText(ctx, data.headline || "Do this, not that", C.contentStart, 180, C.contentEnd - C.contentStart, 76);
+
+    const col1X = C.contentStart;
+    const col2X = 612;
+    const colW = 400;
+    const headerY = 256;
+
+    // Center divider
+    ctx.save();
+    ctx.strokeStyle = C.grey;
+    ctx.lineWidth = 0.5;
+    ctx.globalAlpha = 0.3;
+    ctx.beginPath();
+    ctx.moveTo(596, 244);
+    ctx.lineTo(596, C.slide - 80);
+    ctx.stroke();
+    ctx.restore();
+
+    // "DO THIS" header
+    ctx.fillStyle = C.red;
+    ctx.font = "700 14px 'JetBrains Mono', monospace";
+    ctx.fillText("DO THIS", col1X, headerY);
+    const doW = ctx.measureText("DO THIS").width;
+    ctx.save();
+    ctx.strokeStyle = C.red;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(col1X, headerY + 4);
+    ctx.lineTo(col1X + doW, headerY + 4);
+    ctx.stroke();
+    ctx.restore();
+
+    // "NOT THIS" header
+    ctx.fillStyle = C.grey;
+    ctx.font = "700 14px 'JetBrains Mono', monospace";
+    ctx.fillText("NOT THIS", col2X, headerY);
+    const dontW = ctx.measureText("NOT THIS").width;
+    ctx.save();
+    ctx.strokeStyle = C.grey;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(col2X, headerY + 4);
+    ctx.lineTo(col2X + dontW, headerY + 4);
+    ctx.stroke();
+    ctx.restore();
+
+    const doItems = [data.do1, data.do2, data.do3, data.do4].filter(Boolean);
+    const dontItems = [data.dont1, data.dont2, data.dont3, data.dont4].filter(Boolean);
+    const itemSpacing = 80;
+
+    doItems.forEach((item, i) => {
+      const y = 290 + i * itemSpacing;
+      ctx.save();
+      ctx.strokeStyle = C.red;
+      ctx.lineWidth = 2.5;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.beginPath();
+      ctx.moveTo(col1X + 4, y + 10);
+      ctx.lineTo(col1X + 9, y + 16);
+      ctx.lineTo(col1X + 20, y + 3);
+      ctx.stroke();
+      ctx.restore();
+      ctx.fillStyle = C.ink;
+      ctx.font = "400 20px 'Newsreader', Georgia, serif";
+      wrapText(ctx, item, col1X + 32, y + 14, colW - 36, 28);
+    });
+
+    dontItems.forEach((item, i) => {
+      const y = 290 + i * itemSpacing;
+      ctx.save();
+      ctx.strokeStyle = C.grey;
+      ctx.lineWidth = 2.5;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(col2X + 3, y + 3);
+      ctx.lineTo(col2X + 19, y + 19);
+      ctx.moveTo(col2X + 19, y + 3);
+      ctx.lineTo(col2X + 3, y + 19);
+      ctx.stroke();
+      ctx.restore();
+      ctx.fillStyle = C.grey;
+      ctx.font = "400 20px 'Newsreader', Georgia, serif";
+      wrapText(ctx, item, col2X + 32, y + 14, colW - 36, 28);
+    });
+  },
+
+  blank: (ctx, data, slideNum) => {
+    ctx.fillStyle = C.paper;
+    ctx.fillRect(0, 0, C.slide, C.slide);
+    drawRuledLines(ctx);
+    drawMarginLine(ctx);
+    if (slideNum) {
+      ctx.fillStyle = C.grey;
+      ctx.font = "400 20px 'JetBrains Mono', monospace";
+      ctx.fillText(String(slideNum).padStart(2, "0"), 64, 80);
+    }
+    if (data.header) {
+      ctx.fillStyle = C.ink;
+      ctx.font = "700 40px 'Inter Tight', sans-serif";
+      wrapText(ctx, data.header, C.contentStart, 180, 760, 48);
+    }
+    if (data.callout) {
+      ctx.fillStyle = C.grey;
+      ctx.font = "italic 400 18px 'Newsreader', Georgia, serif";
+      wrapText(ctx, data.callout, C.contentStart, 980, 500, 26);
+    }
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -744,6 +1477,166 @@ function SlideCanvas({ template, data, slideNum, size = 540 }) {
 function FieldEditor({ field, value, onChange }) {
   const len = (value || "").length;
   const over = len > field.max;
+
+  // Select-type field (e.g. diagram type)
+  if (field.type === "select") {
+    return (
+      <div style={{ marginBottom: 12 }}>
+        <label
+          style={{
+            fontFamily: "'Inter Tight', sans-serif",
+            fontWeight: 600,
+            fontSize: 12,
+            color: C.ink,
+            display: "block",
+            marginBottom: 4,
+          }}
+        >
+          {field.label}
+        </label>
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+          {field.options.map((opt) => (
+            <button
+              key={opt}
+              onClick={() => onChange(opt)}
+              style={{
+                padding: "5px 14px",
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 12,
+                color: (value || field.options[0]) === opt ? C.red : C.callout,
+                background: "transparent",
+                border: `1.5px solid ${(value || field.options[0]) === opt ? C.red : C.grey}`,
+                borderRadius: 3,
+                cursor: "pointer",
+                fontWeight: (value || field.options[0]) === opt ? 700 : 400,
+              }}
+            >
+              {opt}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Labels editor — individual inputs with add/remove
+  if (field.type === "labels") {
+    const items = (value || "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    // Ensure at least 2 empty slots if nothing entered
+    while (items.length < 2) items.push("");
+
+    const updateItem = (idx, val) => {
+      const copy = [...items];
+      copy[idx] = val;
+      onChange(copy.filter((s) => s.trim()).join(", "));
+    };
+    const removeItem = (idx) => {
+      const copy = items.filter((_, i) => i !== idx);
+      onChange(copy.filter((s) => s.trim()).join(", "));
+    };
+    const addItem = () => {
+      if (items.length < 8)
+        onChange([...items.filter((s) => s.trim()), ""].join(", "));
+    };
+
+    return (
+      <div style={{ marginBottom: 12 }}>
+        <label
+          style={{
+            fontFamily: "'Inter Tight', sans-serif",
+            fontWeight: 600,
+            fontSize: 12,
+            color: C.ink,
+            display: "block",
+            marginBottom: 6,
+          }}
+        >
+          {field.label}
+        </label>
+        {items.map((item, i) => (
+          <div
+            key={i}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              marginBottom: 4,
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 10,
+                color: C.grey,
+                width: 16,
+                textAlign: "right",
+                flexShrink: 0,
+              }}
+            >
+              {i + 1}
+            </span>
+            <input
+              type="text"
+              value={item}
+              onChange={(e) => updateItem(i, e.target.value)}
+              placeholder={
+                field.placeholder
+                  ? field.placeholder.split(",")[i]?.trim() || ""
+                  : ""
+              }
+              maxLength={25}
+              style={{
+                flex: 1,
+                padding: "6px 8px",
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 12,
+                color: C.ink,
+                background: "#fff",
+                border: `1px solid ${C.grey}`,
+                borderRadius: 3,
+                outline: "none",
+              }}
+            />
+            {items.length > 2 && (
+              <button
+                onClick={() => removeItem(i)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: C.grey,
+                  cursor: "pointer",
+                  fontSize: 12,
+                  padding: "2px 4px",
+                }}
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        ))}
+        {items.length < 8 && (
+          <button
+            onClick={addItem}
+            style={{
+              background: "none",
+              border: "none",
+              color: C.red,
+              cursor: "pointer",
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 11,
+              padding: "4px 0",
+              marginLeft: 22,
+            }}
+          >
+            + Add label
+          </button>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div style={{ marginBottom: 12 }}>
@@ -847,7 +1740,7 @@ async function exportPDF(slides) {
     ctx.save();
     ctx.scale(scale, scale);
     const s = slides[i];
-    const showNum = !["cover", "cta", "punchline"].includes(s.template);
+    const showNum = !["cover", "cta", "punchline", "section_divider"].includes(s.template);
     if (renderers[s.template]) {
       renderers[s.template](ctx, s.data || {}, showNum ? i + 1 : null);
     }
@@ -1157,7 +2050,7 @@ export default function App() {
               }}
             >
               RULES: 6–12 slides · Cover always first · CTA always last · No
-              images · No custom colors · 7 templates only
+              images · No custom colors · 14 templates
             </p>
           </div>
         </div>
@@ -1167,7 +2060,7 @@ export default function App() {
 
   const currentSlide = slides[selectedIdx];
   const templateDef = TEMPLATES[currentSlide.template];
-  const showSlideNum = !["cover", "cta", "punchline"].includes(
+  const showSlideNum = !["cover", "cta", "punchline", "section_divider"].includes(
     currentSlide.template,
   );
 
@@ -1216,7 +2109,7 @@ export default function App() {
           template={slides[selectedIdx].template}
           data={slides[selectedIdx].data}
           slideNum={
-            !["cover", "cta", "punchline"].includes(
+            !["cover", "cta", "punchline", "section_divider"].includes(
               slides[selectedIdx].template,
             )
               ? selectedIdx + 1

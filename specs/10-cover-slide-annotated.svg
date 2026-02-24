@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- COVER / CORRIDOR SLIDE — REFINED -->
+  <!-- Design intent: The three bands create a "corridor" metaphor. -->
+  <!-- Content sits in the light channel, optically centered vertically (~43%). -->
+  <!-- The title should feel POWERFUL — it's the hook. -->
+
+  <!-- Left dark band -->
+  <rect x="0" y="0" width="280" height="1080" fill="#333333"/>
+  <!-- Center channel (paper) -->
+  <rect x="280" y="0" width="520" height="1080" fill="#F0EDEA"/>
+  <!-- Right dark band -->
+  <rect x="800" y="0" width="280" height="1080" fill="#333333"/>
+
+  <!-- Red margin line — full opacity on cover, sits at channel left edge -->
+  <line x1="280" y1="0" x2="280" y2="1080" stroke="#C83232" stroke-width="2"/>
+
+  <!-- Content cluster, vertically centered at optical center -->
+  <!-- Channel inner: 280+24=304 to 800-24=776 (width: 472px) -->
+  <!-- Optical center: title baseline roughly at y=470 -->
+
+  <!-- Title: Inter Tight 700, 72px -->
+  <text x="304" y="434" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="72" fill="#2A2A2A" letter-spacing="-0.03em">
+    <tspan x="304" dy="0">Why Most</tspan>
+    <tspan x="304" dy="80">Frameworks</tspan>
+    <tspan x="304" dy="80">Fail</tspan>
+  </text>
+
+  <!-- Red rule separator — 80px wide, 3px tall, 24px below last title line -->
+  <rect x="304" y="598" width="80" height="3" fill="#C83232"/>
+
+  <!-- Subtitle: Newsreader 500, 32px, Margin Red -->
+  <text x="304" y="650" font-family="'Newsreader', Georgia, serif" font-weight="500" font-size="32" fill="#C83232" line-height="1.4">
+    <tspan x="304" dy="0">The difference between a model</tspan>
+    <tspan x="304" dy="45">and a framework that sticks.</tspan>
+  </text>
+
+  <!-- Brand watermark: JetBrains Mono 14px, Rule Grey, pinned to bottom -->
+  <text x="304" y="1032" font-family="'JetBrains Mono', monospace" font-weight="400" font-size="14" fill="#D0CCC8" letter-spacing="0.05em">TIGHT MARGINS</text>
+</svg>
